@@ -22,6 +22,8 @@ function wporg_support_scripts() {
 	wp_enqueue_style( 'forum-wp4-style', get_stylesheet_uri(), [], '20190311' );
 	wp_style_add_data( 'forum-wp4-style', 'rtl', 'replace' );
 
+	wp_enqueue_style( 'learn-site', get_template_directory_uri() . '/learn-site.css', 30 );
+
 	wp_enqueue_script( 'wporg-support-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20181209', true );
 	wp_enqueue_script( 'wporg-support-forums', get_template_directory_uri() . '/js/forums.js', array( 'jquery' ), '20180801', true );
 }
