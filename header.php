@@ -32,12 +32,12 @@ wporg_get_global_header();
 		<header id="masthead" class="site-header <?php echo is_front_page() ? 'home' : ''; ?>" role="banner">
 			<div class="site-branding">
 				<?php if ( is_front_page() ) : ?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'WordPress Support', 'Site title', 'wporg-forums' ); ?></a></h1>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'Help Others Learn WordPress', 'Site title', 'wporg-forums' ); ?></a></h1>
 
 					<p class="site-description">
 						<?php
 						/* Translators: subhead */
-						_e( 'We&#8217;ve got a variety of resources to help you get the most out of WordPress.', 'wporg-forums' );
+						_e( 'Whether you&#8217;re a first-time blogger or seasoned developer, there&#8217;s always more to learn. From the contributors who make WordPress, these vast resourses will help you teach WordPress to others.', 'wporg-forums' );
 						?>
 					</p>
 					<?php get_search_form(); ?>
