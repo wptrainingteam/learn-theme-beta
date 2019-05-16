@@ -23,9 +23,13 @@ if ( !isset( $wporg_global_header_options['in_wrapper'] ) )
 	$wporg_global_header_options['in_wrapper'] = '';
 $wporg_global_header_options['in_wrapper'] .= '<a class="skip-link screen-reader-text" href="#content">' . esc_html__( 'Skip to content', 'wporg-forums' ) . '</a>';
 wporg_get_global_header();
+
+if ( is_front_page() ) {
+	$home_page = 'home ';
+}
 ?>
 
-<div id="page" class="site">
+<div id="page" class="<?php echo esc_html( $home_page ); ?>site">
 	<a class="skip-link screen-reader-text" href="#main"><?php esc_html_e( 'Skip to content', 'wporg-forums' ); ?></a>
 
 	<div id="content" class="site-content">
@@ -42,8 +46,8 @@ wporg_get_global_header();
 					</p>
 					<?php get_search_form(); ?>
 				<?php else : ?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'Support', 'Site title', 'wporg-forums' ); ?></a></p>
-
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'Help Others Learn WordPress', 'Site title', 'wporg-forums' ); ?></a></p>
+					<?php /*
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<button class="menu-toggle dashicons dashicons-arrow-down-alt2" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Primary Menu', 'wporg-forums' ); ?>"></button>
 						<div id="primary-menu" class="menu">
@@ -65,6 +69,7 @@ wporg_get_global_header();
 							</ul>
 						</div>
 					</nav><!-- #site-navigation -->
+					*/ ?>
 				<?php endif; ?>
 			</div><!-- .site-branding -->
 		</header><!-- #masthead -->

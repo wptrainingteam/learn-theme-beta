@@ -92,11 +92,6 @@ get_header(); ?>
 			</div>
 		</section>
 
-		<section class="submit-idea-cta">
-			<h3><?php _e( 'Have an Idea for a Lesson or Workshop? Let us know!' ); ?></h3>
-			<a class="button button-primary" href="#"><?php _e( 'Submit an Idea' ); ?></a>
-		</section>
-
 		<?php if ( ! is_active_sidebar( 'front-page-blocks' ) ) : ?>
 			<?php //get_template_part( 'template-parts/bbpress', 'front' ); ?>
 		<?php else : ?>
