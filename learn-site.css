@@ -1,8 +1,18 @@
 /*
 * Learn Site CSS
+*
+* Author: Chetan Prajapati (chetan200891)
 */
 
+#page {
+	background-color: #f1f1f1;
+}
+
 /* ___ Homepage ___ */
+
+#page.home {
+	background-color: #fff;
+}
 
 .site-header.home .site-title {
 	font-size: 3.10rem;
@@ -155,4 +165,72 @@
 	font-size: 30px;
 	margin-bottom: 30px;
 	margin-top: 0;
+}
+
+/* ___ Lesson Plans ___ */
+
+.lp-list {
+	margin: 0 -15px;
+}
+
+.lp-list .lp-item {
+	display: inline-block;
+	margin-bottom: 30px;
+	margin-right: -4px;
+	padding: 0 15px;
+	vertical-align: top;
+	width: 50%;
+}
+
+.lp-list .lp-item-wrap {
+	background-color: #fff;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
+	padding: 20px;
+}
+
+.lp-list .lp-item h2 {
+	font-size: 20px;
+	margin: 0 0 15px 0;
+}
+
+.lp-list .lp-item .lp-excerpt {
+	font-size: 14px;
+	margin: 0 0 15px 0;
+}
+
+.lp-list .lp-details {
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.lp-list .lp-details .items {
+	float: left;
+	width: 50%;
+}
+
+.lp-list .lp-details .left-items {
+	padding-right: 10px;
+}
+
+.lp-list .lp-details ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lp-list .lp-details ul li {
+	padding: 10px 0 0 30px;
+	position: relative;
+}
+
+.lp-list .lp-details .dashicons {
+	color: #0073aa;
+	left: 0;
+	position: absolute;
+	top: 12px;
+}
+
+.lp-list .lp-details strong {
+	display: inline-block;
+	vertical-align: middle;
 }
