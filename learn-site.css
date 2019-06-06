@@ -272,6 +272,13 @@
 	-webkit-appearance: none;
 }
 
+.contact-form .grunion-field-checkbox-multiple-wrap,
+.contact-form .grunion-field-radio-wrap {
+	display: inline-block;
+	vertical-align: top;
+	width: 45%;
+}
+
 .contact-form .grunion-checkbox-multiple-label,
 .contact-form .grunion-radio-label {
 	font-size: 16px;
