@@ -266,9 +266,9 @@
 	font-family: inherit;
 	font-size: 16px;
 	margin: 0;
-	max-width: 100%;
+	max-width: 100% !important;
 	padding: 10px;
-	width: 100%;
+	width: 100% !important;
 	-webkit-appearance: none;
 }
 
@@ -280,7 +280,7 @@
 
 .contact-form input.checkbox-multiple,
 .contact-form input.radio {
-	margin-bottom: 0;
+	margin-bottom: 0 !important;
 }
 
 .contact-form .pushbutton-wide {
