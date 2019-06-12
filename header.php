@@ -35,18 +35,26 @@ if ( is_front_page() ) {
 	<div id="content" class="site-content">
 		<header id="masthead" class="site-header <?php echo is_front_page() ? 'home' : ''; ?>" role="banner">
 			<div class="site-branding">
-				<?php if ( is_front_page() ) : ?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'Help Others Learn WordPress', 'Site title', 'wporg-forums' ); ?></a></h1>
+				<?php
+				if ( is_front_page() ) {
+				?>
+				<h1 class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php _ex('Help Others Learn WordPress', 'Site title', 'wporg-forums'); ?></a></h1>
 
-					<p class="site-description">
-						<?php
-						/* Translators: subhead */
-						_e( 'Whether you&#8217;re a first-time blogger or seasoned developer, there&#8217;s always more to learn. From the contributors who make WordPress, these vast resourses will help you teach WordPress to others.', 'wporg-forums' );
-						?>
-					</p>
-					<?php get_search_form(); ?>
-				<?php else : ?>
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php _ex( 'Help Others Learn WordPress', 'Site title', 'wporg-forums' ); ?></a></p>
+				<p class="site-description">
+					<?php
+					/* Translators: subhead */
+					_e('Whether you&#8217;re a first-time blogger or seasoned developer, there&#8217;s always more to learn. From the contributors who make WordPress, these vast resourses will help you teach WordPress to others.', 'wporg-forums');
+					?>
+				</p>
+				<?php get_search_form(); ?>
+				<?php
+				} elseif ( is_page() ) {
+				?>
+				<h1 class="site-title"><?php the_title(); ?></h1>
+				<?php
+				} else {
+				?>
+					<p class="site-title"><a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php _ex('Help Others Learn WordPress', 'Site title', 'wporg-forums'); ?></a></p>
 					<?php /*
 					<nav id="site-navigation" class="main-navigation" role="navigation">
 						<button class="menu-toggle dashicons dashicons-arrow-down-alt2" aria-controls="primary-menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Primary Menu', 'wporg-forums' ); ?>"></button>
@@ -70,6 +78,6 @@ if ( is_front_page() ) {
 						</div>
 					</nav><!-- #site-navigation -->
 					*/ ?>
-				<?php endif; ?>
+				<?php } ?>
 			</div><!-- .site-branding -->
 		</header><!-- #masthead -->
