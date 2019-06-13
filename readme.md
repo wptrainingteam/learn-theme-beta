@@ -150,3 +150,5 @@ define( 'WPORGPATH', __DIR__ . '/wp-content/themes/' );
 6. Now you should be able to activate the Learn Dev theme and see the homepage when you look at the front-end of the website.
 
 You're ready to start develping and contributing!
+
+**All accepted changes appear on [https://learnwp.jco.dev/](https://learnwp.jco.dev/), which refreshes every 5 minutes with updates.**
