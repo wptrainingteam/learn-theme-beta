@@ -24,7 +24,7 @@ How to set up your Local Development Site
 ```php
 define( 'WPORGPATH', __DIR__ . '/wp-content/themes/' );
 ```
-
 6. Now you should be able to activate the Learn Dev theme and see the homepage when you look at the front-end of the website.
+7. Optionally activate the `handbook` plugin, and import the XML file located in the uploads folder to import some demonstration lesson plans. These will be updated to a lesson-plan post type shortly.
 
-You're ready to start develping and contributing!
+You're ready to start developing and contributing!

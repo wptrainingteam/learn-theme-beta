@@ -10,13 +10,13 @@
 
 require_once dirname( __FILE__ ) . '/inc/class-markdown-import.php';
 require_once dirname( __FILE__ ) . '/inc/class-handbook.php';
-//require_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
+require_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
 
 /**
  * Registry of actions and filters
  */
 add_action( 'init', array( 'WPOrg_Learn\Markdown_Import', 'action_init' ) );
-//add_action( 'init', array( 'WPOrg_Learn\Shortcodes', 'action_init' ) );
+add_action( 'init', array( 'WPOrg_Learn\Shortcodes', 'action_init' ) );
 add_action( 'wporg_learn_manifest_import', array( 'WPOrg_Learn\Markdown_Import', 'action_wporg_learn_manifest_import' ) );
 add_action( 'wporg_learn_markdown_import', array( 'WPOrg_Learn\Markdown_Import', 'action_wporg_learn_markdown_import' ) );
 add_action( 'load-post.php', array( 'WPOrg_Learn\Markdown_Import', 'action_load_post_php' ) );

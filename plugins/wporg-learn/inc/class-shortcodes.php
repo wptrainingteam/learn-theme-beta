@@ -10,8 +10,8 @@ class Shortcodes{
 	 * Register custom shortcodes.
 	 */
 	public static function action_init() {
-		add_shortcode( 'cli-issue-list', array( __CLASS__, 'issue_list' ) );
-		add_shortcode( 'cli-repo-list', array( __CLASS__, 'repo_list' ) );
+		//add_shortcode( 'learn-issue-list', array( __CLASS__, 'issue_list' ) );
+		//add_shortcode( 'learn-repo-list', array( __CLASS__, 'repo_list' ) );
 	}
 
 	/**
@@ -23,7 +23,7 @@ class Shortcodes{
 		}
 		$filter_label = isset( $atts['label'] ) ? $atts['label'] : '';
 		$out = '<h2>' . sprintf( 'Issues labeled "%s"', esc_html( $filter_label ) ) . '</h2>';
-		$url = 'https://api.github.com/orgs/wp-cli/issues';
+		$url = 'https://api.github.com/orgs/wptrainingteam/issues';
 		$url = add_query_arg( array_map( 'rawurlencode', array(
 			'per_page' => 100,
 			'labels'   => $filter_label,
@@ -41,7 +41,7 @@ class Shortcodes{
 
 		$repository_issues = array(
 			// Root repository should always be first.
-			'wp-cli/wp-cli' => array(),
+			'wptrainingteam/wptrainingteam' => array(),
 		);
 		foreach ( $issues as $issue ) {
 			$repo_name = $issue->repository->full_name;
@@ -93,20 +93,20 @@ class Shortcodes{
 		}
 
 		$out = '<h2>Repositories</h2>';
-		$repos = self::github_request( 'https://api.github.com/orgs/wp-cli/repos?per_page=100' );
+		$repos = self::github_request( 'https://api.github.com/orgs/wptrainingteam/repos?per_page=100' );
 		if ( is_wp_error( $repos ) ) {
 			$out .= '<p>' . esc_html( $repos->get_error_message() ) . '</p>';
 			return $out;
 		}
 		$repo_list = array();
 		foreach( $repos as $repo ) {
-			if ( ! preg_match( '#^wp-cli/.+-command$#', $repo->full_name ) ) {
+			if ( ! preg_match( '#^wptrainingteam/.+-command$#', $repo->full_name ) ) {
 				continue;
 			}
 			$repo_list[] = $repo->full_name;
 		}
 		sort( $repo_list );
-		array_unshift( $repo_list, 'wp-cli/wp-cli' );
+		array_unshift( $repo_list, 'wptrainingteam/wptrainingteam' );
 		$out .= '<table>' . PHP_EOL;
 		$out .= '<thead>' . PHP_EOL;
 		$out .= '<tr>' . PHP_EOL;
