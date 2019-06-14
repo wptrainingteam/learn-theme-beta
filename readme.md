@@ -28,3 +28,4 @@ define( 'WPORGPATH', __DIR__ . '/wp-content/themes/' );
 7. Optionally activate the `handbook` plugin, and import the XML file located in the uploads folder to import some demonstration lesson plans. These will be updated to a lesson-plan post type shortly.
 
 You're ready to start developing and contributing!
+**All accepted changes appear on [https://learnwp.jco.dev/](https://learnwp.jco.dev/), which refreshes every 5 minutes with updates.**
