@@ -17,9 +17,9 @@ How to set up your Local Development Site
 1. Set up a clean local installation of WordPress with your chosen tool (MAMP, WAMP, Local, etc).
 2. Rename your `wp-content` folder to something easy to remember, such as `wp-content-original`.
 3. Clone this repository with the command:
-  ```bash
+```bash
 	git clone https://github.com/wptrainingteam/learn-theme-beta.git wp-content
-	```
+```
 4. In your `wp-config.php` file, add the following line above the WordPress Stop Editing comment:
 ```php
 define( 'WPORGPATH', __DIR__ . '/wp-content/themes/' );
