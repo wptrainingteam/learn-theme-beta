@@ -1,6 +1,6 @@
 Learn Site Theme Beta
 ===================================
-##### Last updated: June 1, 2019
+##### Last updated: June 14, 2019
 
 This is a beta theme to create a new [Learn WordPress website](https://learn.wordpress.org), a project by the [Make WordPress Training team](https://make.wordpress.org/training)
 
