@@ -1,6 +1,6 @@
 <?php
 
-namespace WPOrg_Cli;
+namespace WPOrg_Learn;
 
 class Handbook {
 

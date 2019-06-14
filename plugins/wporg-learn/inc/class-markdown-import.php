@@ -1,17 +1,17 @@
 <?php
 
-namespace WPOrg_Cli;
+namespace WPOrg_Learn;
 
 use WP_Error;
 use WP_Query;
 
 class Markdown_Import {
 
-	private static $handbook_manifest = 'https://raw.githubusercontent.com/wp-cli/handbook/master/bin/handbook-manifest.json';
-	private static $input_name = 'wporg-cli-markdown-source';
-	private static $meta_key = 'wporg_cli_markdown_source';
-	private static $nonce_name = 'wporg-cli-markdown-source-nonce';
-	private static $submit_name = 'wporg-cli-markdown-import';
+	private static $handbook_manifest = 'https://wptrainingteam.github.io/manifest.json';
+	private static $input_name = 'wporg-learn-markdown-source';
+	private static $meta_key = 'wporg_learn_markdown_source';
+	private static $nonce_name = 'wporg-learn-markdown-source-nonce';
+	private static $submit_name = 'wporg-learn-markdown-import';
 	private static $supported_post_types = array( 'handbook' );
 	private static $posts_per_page = 100;
 
@@ -19,15 +19,15 @@ class Markdown_Import {
 	 * Register our cron task if it doesn't already exist
 	 */
 	public static function action_init() {
-		if ( ! wp_next_scheduled( 'wporg_cli_manifest_import' ) ) {
-			wp_schedule_event( time(), '15_minutes', 'wporg_cli_manifest_import' );
+		if ( ! wp_next_scheduled( 'wporg_learn_manifest_import' ) ) {
+			wp_schedule_event( time(), '15_minutes', 'wporg_learn_manifest_import' );
 		}
-		if ( ! wp_next_scheduled( 'wporg_cli_markdown_import' ) ) {
-			wp_schedule_event( time(), '15_minutes', 'wporg_cli_markdown_import' );
+		if ( ! wp_next_scheduled( 'wporg_learn_markdown_import' ) ) {
+			wp_schedule_event( time(), '15_minutes', 'wporg_learn_markdown_import' );
 		}
 	}
 
-	public static function action_wporg_cli_manifest_import() {
+	public static function action_wporg_learn_manifest_import() {
 		$response = wp_remote_get( self::$handbook_manifest );
 		if ( is_wp_error( $response ) ) {
 			return $response;
@@ -49,6 +49,7 @@ class Markdown_Import {
 		foreach( $manifest as $doc ) {
 			// Already exists
 			if ( wp_filter_object_list( $existing, array( 'post_name' => $doc['slug'] ) ) ) {
+				\WP_CLI::log( "Found {$doc['slug']} already exits." );
 				continue;
 			}
 			$post_parent = null;
@@ -107,7 +108,7 @@ class Markdown_Import {
 		return get_post( $post_id );
 	}
 
-	public static function action_wporg_cli_markdown_import() {
+	public static function action_wporg_learn_markdown_import() {
 		$q = new WP_Query( array(
 			'post_type'      => self::$supported_post_types,
 			'post_status'    => 'publish',
@@ -232,7 +233,7 @@ class Markdown_Import {
 		}
 
 		// Transform GitHub repo HTML pages into their raw equivalents
-		$markdown_source = preg_replace( '#https?://github\.com/([^/]+/[^/]+)/blob/(.+)#', 'https://raw.githubusercontent.com/$1/$2', $markdown_source );
+		//$markdown_source = preg_replace( '#https?://github\.com/([^/]+/[^/]+)/blob/(.+)#', 'https://raw.githubusercontent.com/$1/$2', $markdown_source );
 		$markdown_source = add_query_arg( 'v', time(), $markdown_source );
 		$response = wp_remote_get( $markdown_source );
 		if ( is_wp_error( $response ) ) {
