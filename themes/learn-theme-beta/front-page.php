@@ -11,22 +11,22 @@ get_header(); ?>
 	<main id="main" class="site-main home-page" role="main">
 		<section class="quick-intro">
 			<div class="shapes">
-				<a class="parallelogram lesson-plans dashicons-before dashicons-welcome-learn-more" href="#">
+				<a class="parallelogram lesson-plans dashicons-before dashicons-welcome-learn-more" href="/lesson-plans/">
 					<p>
 						<strong><?php _e( 'Lesson Plans', 'wporg-forums' ); ?></strong>
 						<?php
 							_e( 'Are you teaching WordPress to others? These lesson plans are designed to guide and inspire you to deliver great content.', 'wporg-forums' );
 						?>
-						<a href="/lesson-plans/"><?php _e( 'See the Lesson Plans' ); ?></u>
+						<u><?php _e( 'See the Lesson Plans' ); ?></u>
 					</p>
 				</a>
-				<a class="parallelogram workshop-ideas dashicons-before dashicons-lightbulb" href="#">
+				<a class="parallelogram workshop-ideas dashicons-before dashicons-lightbulb" href="/workshops/">
 					<p>
 						<strong><?php _e( 'Workshop Ideas', 'wporg-forums' ); ?></strong>
 						<?php
 							_e( 'Workshops are great way to get people hands-on with WordPress. Here are some ideas to help run a workshop for your own.', 'wporg-forums' );
 						?>
-						<a href="/workshops/"><?php _e( 'View Workshop Ideas' ); ?></u>
+						<u><?php _e( 'View Workshop Ideas' ); ?></u>
 					</p>
 				</a>
 			</div>
@@ -37,7 +37,7 @@ get_header(); ?>
 				<div class="graphic"></div>
 				<h3><?php _e( 'Get Involved' ); ?></h3>
 				<p><?php _e( 'Want to grow WordPress? As part of Training Team you could help others learn WordPress accross the world.' ); ?></p>
-				<a href="#"><?php _e( 'Learn About The Training Team' ); ?></a>
+				<a href=""><?php _e( 'Learn About The Training Team' ); ?></a>
 			</div>
 		</section>
 
