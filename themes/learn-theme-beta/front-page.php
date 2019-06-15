@@ -17,7 +17,7 @@ get_header(); ?>
 						<?php
 							_e( 'Are you teaching WordPress to others? These lesson plans are designed to guide and inspire you to deliver great content.', 'wporg-forums' );
 						?>
-						<u><?php _e( 'See the Lesson Plans' ); ?></u>
+						<a href="/lesson-plans/"><?php _e( 'See the Lesson Plans' ); ?></u>
 					</p>
 				</a>
 				<a class="parallelogram workshop-ideas dashicons-before dashicons-lightbulb" href="#">
@@ -26,7 +26,7 @@ get_header(); ?>
 						<?php
 							_e( 'Workshops are great way to get people hands-on with WordPress. Here are some ideas to help run a workshop for your own.', 'wporg-forums' );
 						?>
-						<u><?php _e( 'View Workshop Ideas' ); ?></u>
+						<a href="/workshops/"><?php _e( 'View Workshop Ideas' ); ?></u>
 					</p>
 				</a>
 			</div>
