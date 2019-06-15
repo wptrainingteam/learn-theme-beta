@@ -305,3 +305,51 @@
 .contact-form .pushbutton-wide:hover {
 	color: #eee;
 }
+
+/* ___ Submit an Idea ___ */
+
+.type-page .submit-idea-cta{
+	padding: .5rem 0 2rem;
+}
+
+.type-page .submit-idea-cta h4{
+	margin: 0 auto 1rem;
+	font-weight: 500;
+}
+
+.idea-type-lists {
+	overflow: hidden;
+	padding-top: 0;
+	padding-bottom: 2rem;
+	margin: 0 auto;
+	max-width: 610px;
+}
+
+.idea-type-lists .col {
+	float: left;
+	padding: 0 35px;
+	width: 50%;
+	font-size: 13px;
+}
+
+.idea-type-lists .col p{
+	color: #666666;
+}
+
+.idea-type-lists .col .dashicons{
+	color: #9ea3a8;
+	width: 65px;
+	height: 65px;
+	display: block;
+	margin: 1rem auto 0;
+}
+
+.idea-type-lists .col .dashicons:before{
+	font-size: 65px;
+}
+
+.idea-type-lists .col .button{
+	font-size: 0.65rem;
+	padding: 0 .9rem;
+	height: 1.763rem;
+}
