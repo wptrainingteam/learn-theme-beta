@@ -37,7 +37,7 @@ get_header(); ?>
 				<div class="graphic"></div>
 				<h3><?php _e( 'Get Involved' ); ?></h3>
 				<p><?php _e( 'Want to grow WordPress? As part of Training Team you could help others learn WordPress accross the world.' ); ?></p>
-				<a href=""><?php _e( 'Learn About The Training Team' ); ?></a>
+				<a href="https://make.wordpress.org/training/handbook/"><?php _e( 'Learn About The Training Team' ); ?></a>
 			</div>
 		</section>
 
