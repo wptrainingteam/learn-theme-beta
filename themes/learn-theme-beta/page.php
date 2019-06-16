@@ -13,7 +13,6 @@
 get_header(); ?>
 
 	<main id="main" class="site-main" role="main">
-		<?php //get_sidebar( 'helphub' ); ?>
 
 		<div id="main-content">
 			<?php
