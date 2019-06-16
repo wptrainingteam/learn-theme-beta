@@ -4,6 +4,7 @@
  *
  * @package WPBBP
  */
+
 ?>
 	<section class="submit-idea-cta">
 		<h3><?php _e( 'Have an Idea for a Lesson or Workshop? Let us know!' ); ?></h3>
@@ -12,4 +13,5 @@
 	</div><!-- #content -->
 </div><!-- #page -->
 
-<?php require WPORGPATH . 'footer.php';
+<?php
+require WPORGPATH . 'footer.php';
