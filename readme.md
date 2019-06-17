@@ -18,7 +18,7 @@ How to set up your Local Development Site
 2. Rename your `wp-content` folder to something easy to remember, such as `wp-content-original`.
 3. Clone this repository with the command:
 ```bash
-	git clone https://github.com/wptrainingteam/learn-theme-beta.git wp-content
+git clone https://github.com/wptrainingteam/learn-theme-beta.git wp-content
 ```
 4. In your `wp-config.php` file, add the following line above the WordPress Stop Editing comment:
 ```php
