@@ -121,7 +121,7 @@ class Handbook {
 		}
 		$markdown_source = str_replace( '/lesson-plan', '', $markdown_source);
 		$markdown_source = str_replace( 'wptrainingteam.github.io', 'github.com/wptrainingteam', $markdown_source);
-		$markdown_source = str_replace( '/README.md', '/edit/master/README.md', $markdown_source );
+		$markdown_source = str_replace( '/README.md', '/edit/dev/README.md', $markdown_source );
 		return $markdown_source;
 	}
 }
