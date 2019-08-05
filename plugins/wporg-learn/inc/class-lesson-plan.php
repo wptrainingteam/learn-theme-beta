@@ -345,4 +345,16 @@ public static function lesson_instruction_type_taxonomy() {
 		$markdown_source = str_replace( '/README.md', '/edit/dev/README.md', $markdown_source );
 		return $markdown_source;
 	}
+
+  public static function replace_image_links( $content ) {
+    $post_id = get_the_ID();
+    $markdown_source = Markdown_Import::get_markdown_source( $post_id );
+    if ( is_wp_error( $markdown_source ) ) {
+      return $content;
+    }
+    $markdown_source = str_replace( '/README.md', '', $markdown_source );
+    $content = str_replace( '<img src="/images/', '<img src="' . $markdown_source . '/images/', $content );
+
+    return $content;
+  }
 }
