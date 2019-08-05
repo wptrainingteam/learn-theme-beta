@@ -11,7 +11,7 @@ get_header(); ?>
 	<main id="main" class="site-main home-page" role="main">
 		<section class="quick-intro">
 			<div class="shapes">
-				<a class="parallelogram lesson-plans dashicons-before dashicons-welcome-learn-more" href="#">
+				<a class="parallelogram lesson-plans dashicons-before dashicons-welcome-learn-more" href="/lesson-plans/">
 					<p>
 						<strong><?php _e( 'Lesson Plans', 'wporg-forums' ); ?></strong>
 						<?php
@@ -20,7 +20,7 @@ get_header(); ?>
 						<u><?php _e( 'See the Lesson Plans' ); ?></u>
 					</p>
 				</a>
-				<a class="parallelogram workshop-ideas dashicons-before dashicons-lightbulb" href="#">
+				<a class="parallelogram workshop-ideas dashicons-before dashicons-lightbulb" href="/workshops/">
 					<p>
 						<strong><?php _e( 'Workshop Ideas', 'wporg-forums' ); ?></strong>
 						<?php
@@ -37,7 +37,7 @@ get_header(); ?>
 				<div class="graphic"></div>
 				<h3><?php _e( 'Get Involved' ); ?></h3>
 				<p><?php _e( 'Want to grow WordPress? As part of Training Team you could help others learn WordPress accross the world.' ); ?></p>
-				<a href="#"><?php _e( 'Learn About The Training Team' ); ?></a>
+				<a href="https://make.wordpress.org/training/handbook/"><?php _e( 'Learn About The Training Team' ); ?></a>
 			</div>
 		</section>
 
