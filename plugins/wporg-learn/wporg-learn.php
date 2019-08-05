@@ -9,8 +9,8 @@
  */
 
 require_once dirname( __FILE__ ) . '/inc/class-markdown-import.php';
-require_once dirname( __FILE__ ) . '/inc/class-handbook.php';
 require_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
+require_once dirname( __FILE__ ) . '/inc/class-lesson-plan.php';
 
 /**
  * Registry of actions and filters
@@ -23,9 +23,10 @@ add_action( 'load-post.php', array( 'WPOrg_Learn\Markdown_Import', 'action_load_
 add_action( 'edit_form_after_title', array( 'WPOrg_Learn\Markdown_Import', 'action_edit_form_after_title' ) );
 add_action( 'save_post', array( 'WPOrg_Learn\Markdown_Import', 'action_save_post' ) );
 add_filter( 'cron_schedules', array( 'WPOrg_Learn\Markdown_Import', 'filter_cron_schedules' ) );
-add_filter( 'the_title', array( 'WPOrg_Learn\Handbook', 'filter_the_title_edit_link' ), 10, 2 );
-add_filter( 'get_edit_post_link', array( 'WPOrg_Learn\Handbook', 'redirect_edit_link_to_github' ), 10, 3 );
-add_filter( 'o2_filter_post_actions', array( 'WPOrg_Learn\Handbook', 'redirect_o2_edit_link_to_github' ), 11, 2 );
+add_filter( 'the_title', array( 'WPOrg_Learn\Lesson_Plan', 'filter_the_title_edit_link' ), 10, 2 );
+add_filter( 'get_edit_post_link', array( 'WPOrg_Learn\Lesson_Plan', 'redirect_edit_link_to_github' ), 10, 3 );
+add_filter( 'o2_filter_post_actions', array( 'WPOrg_Learn\Lesson_Plan', 'redirect_o2_edit_link_to_github' ), 11, 2 );
+add_action( 'init', array('WPORG_Learn\Lesson_Plan', 'lesson_plan_post_type') );
 
 add_action( 'wp_head', function(){
 	?>
