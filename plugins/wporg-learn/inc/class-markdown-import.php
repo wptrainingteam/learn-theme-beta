@@ -49,7 +49,9 @@ class Markdown_Import {
 		foreach( $manifest as $doc ) {
 			// Already exists
 			if ( wp_filter_object_list( $existing, array( 'post_name' => $doc['slug'] ) ) ) {
-				\WP_CLI::log( "Found {$doc['slug']} already exits." );
+				if ( class_exists( 'WP_CLI' ) ) {
+					\WP_CLI::log( "Found {$doc['slug']} already exits." );
+				}
 				continue;
 			}
 			$post_parent = null;
