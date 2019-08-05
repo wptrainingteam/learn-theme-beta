@@ -7,12 +7,12 @@ use WP_Query;
 
 class Markdown_Import {
 
-	private static $handbook_manifest = 'https://wptrainingteam.github.io/manifest.json';
+	private static $lesson_plan_manifest = 'https://wptrainingteam.github.io/manifest.json';
 	private static $input_name = 'wporg-learn-markdown-source';
 	private static $meta_key = 'wporg_learn_markdown_source';
 	private static $nonce_name = 'wporg-learn-markdown-source-nonce';
 	private static $submit_name = 'wporg-learn-markdown-import';
-	private static $supported_post_types = array( 'handbook' );
+	private static $supported_post_types = array( 'lesson_plan' );
 	private static $posts_per_page = 100;
 
 	/**
@@ -28,7 +28,7 @@ class Markdown_Import {
 	}
 
 	public static function action_wporg_learn_manifest_import() {
-		$response = wp_remote_get( self::$handbook_manifest );
+		$response = wp_remote_get( self::$lesson_plan_manifest );
 		if ( is_wp_error( $response ) ) {
 			return $response;
 		} elseif ( 200 !== wp_remote_retrieve_response_code( $response ) ) {
@@ -38,7 +38,7 @@ class Markdown_Import {
 		if ( ! $manifest ) {
 			return new WP_Error( 'invalid-manifest', 'Manifest did not unfurl properly.' );;
 		}
-		// Fetch all handbook posts for comparison
+		// Fetch all lesson plan posts for comparison
 		$q = new WP_Query( array(
 			'post_type'      => self::$supported_post_types,
 			'post_status'    => 'publish',
@@ -84,16 +84,16 @@ class Markdown_Import {
 			}
 		}
 		if ( class_exists( 'WP_CLI' ) ) {
-			\WP_CLI::success( "Successfully created {$created} handbook pages." );
+			\WP_CLI::success( "Successfully created {$created} lesson plan pages." );
 		}
 	}
 
 	/**
-	 * Create a new handbook page from the manifest document
+	 * Create a new lesson plan page from the manifest document
 	 */
 	private static function create_post_from_manifest_doc( $doc, $post_parent = null ) {
 		$post_data = array(
-			'post_type'   => 'handbook',
+			'post_type'   => 'lesson_plan',
 			'post_status' => 'publish',
 			'post_parent' => $post_parent,
 			'post_title'  => sanitize_text_field( wp_slash( $doc['title'] ) ),
@@ -132,7 +132,7 @@ class Markdown_Import {
 		}
 		if ( class_exists( 'WP_CLI' ) ) {
 			$total = count( $ids );
-			\WP_CLI::success( "Successfully updated {$success} of {$total} handbook pages." );
+			\WP_CLI::success( "Successfully updated {$success} of {$total} lesson plan pages." );
 		}
 	}
 
