@@ -2,7 +2,10 @@
 namespace WPOrg_Learn;
 
 class Lesson_Plan {
-// Register Custom Post Type
+
+/**
+  *  Register Lesson Plan Post Type
+  */
 public static function lesson_plan_post_type() {
 
 	$labels = array(
@@ -58,8 +61,172 @@ public static function lesson_plan_post_type() {
 	register_post_type( 'lesson_plan', $args );
 }
 
+/**
+  * Register Length Taxonomy
+  */
+public static function lesson_length_taxonomy() {
+
+	$labels = array(
+		'name'                       => _x( 'Lengths', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Length', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Length', 'wporg_learn' ),
+		'all_items'                  => __( 'All Lengths', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Length', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Length:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Length', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add New Length', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Length', 'wporg_learn' ),
+		'update_item'                => __( 'Update Length', 'wporg_learn' ),
+		'view_item'                  => __( 'View Length', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate lengths with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove lengths', 'wporg_learn' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular lengths', 'wporg_learn' ),
+		'search_items'               => __( 'Search lengths', 'wporg_learn' ),
+		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
+		'no_terms'                   => __( 'No lengths', 'wporg_learn' ),
+		'items_list'                 => __( 'Lengths list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'lengths list navigation', 'wporg_learn' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'length', array( 'lesson_plan' ), $args );
+
+}
+
+/**
+  * Register Lesson Level Taxonomy
+  */
+public static function lesson_level_taxonomy() {
+
+	$labels = array(
+		'name'                       => _x( 'Levels', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Level', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Level', 'wporg_learn' ),
+		'all_items'                  => __( 'All Levels', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Level', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Level:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Level Name', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add New Level', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Level', 'wporg_learn' ),
+		'update_item'                => __( 'Update Level', 'wporg_learn' ),
+		'view_item'                  => __( 'View Level', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate levels with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove levels', 'wporg_learn' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular levels', 'wporg_learn' ),
+		'search_items'               => __( 'Search Levels', 'wporg_learn' ),
+		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
+		'no_terms'                   => __( 'No levels', 'wporg_learn' ),
+		'items_list'                 => __( 'Levels list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'Levels list navigation', 'wporg_learn' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'level', array( 'lesson_plan' ), $args );
+
+}
+
+/**
+  * Register Lesson Audience Taxonomy
+  */
+public static function lesson_audience_taxonomy() {
+
+	$labels = array(
+		'name'                       => _x( 'Audiences', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Audience', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Audience', 'wporg_learn' ),
+		'all_items'                  => __( 'All Audiences', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Audience', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Audience:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Audience Name', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add Audience Level', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Audience', 'wporg_learn' ),
+		'update_item'                => __( 'Update Audience', 'wporg_learn' ),
+		'view_item'                  => __( 'View Audience', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate Audiences with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove Audiences', 'wporg_learn' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular Audiences', 'wporg_learn' ),
+		'search_items'               => __( 'Search Audiences', 'wporg_learn' ),
+		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
+		'no_terms'                   => __( 'No Audiences', 'wporg_learn' ),
+		'items_list'                 => __( 'Audiences list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'Audiences list navigation', 'wporg_learn' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'audience', array( 'lesson_plan' ), $args );
+
+}
+
+/**
+  * Register Instruction Type Taxonomy
+  */
+public static function lesson_instruction_type_taxonomy() {
+
+	$labels = array(
+		'name'                       => _x( 'Instruction Types', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Instruction Type', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Instruction Type', 'wporg_learn' ),
+		'all_items'                  => __( 'All Instruction Types', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Instruction Type', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Instruction Type:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Instruction Type Name', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add Instruction Type Level', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Instruction Type', 'wporg_learn' ),
+		'update_item'                => __( 'Update Instruction Type', 'wporg_learn' ),
+		'view_item'                  => __( 'View Instruction Type', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate Instruction Types with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove Instruction Types', 'wporg_learn' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular Instruction Types', 'wporg_learn' ),
+		'search_items'               => __( 'Search Instruction Types', 'wporg_learn' ),
+		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
+		'no_terms'                   => __( 'No Instruction Types', 'wporg_learn' ),
+		'items_list'                 => __( 'Instruction Types list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'Instruction Types list navigation', 'wporg_learn' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => false,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => false,
+		'show_in_rest'               => true,
+	);
+	register_taxonomy( 'instruction_type', array( 'lesson_plan' ), $args );
+
+}
+
 	/**
-	 * Append a "Edit on GitHub" link to Lesson Plan document titles
+	 * Append an "Edit on GitHub" link to Lesson Plan document titles
 	 */
 	public static function filter_the_title_edit_link( $title, $id = null ) {
 		// Only apply to the main title for the document

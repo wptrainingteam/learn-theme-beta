@@ -26,7 +26,11 @@ add_filter( 'cron_schedules', array( 'WPOrg_Learn\Markdown_Import', 'filter_cron
 add_filter( 'the_title', array( 'WPOrg_Learn\Lesson_Plan', 'filter_the_title_edit_link' ), 10, 2 );
 add_filter( 'get_edit_post_link', array( 'WPOrg_Learn\Lesson_Plan', 'redirect_edit_link_to_github' ), 10, 3 );
 add_filter( 'o2_filter_post_actions', array( 'WPOrg_Learn\Lesson_Plan', 'redirect_o2_edit_link_to_github' ), 11, 2 );
-add_action( 'init', array('WPORG_Learn\Lesson_Plan', 'lesson_plan_post_type') );
+add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_plan_post_type' ) );
+add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_length_taxonomy' ) );
+add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_level_taxonomy' ) );
+add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_audience_taxonomy' ) );
+add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_instruction_type_taxonomy' ) );
 
 add_action( 'wp_head', function(){
 	?>
