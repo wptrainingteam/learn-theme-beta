@@ -115,11 +115,13 @@ class Handbook {
 		if ( is_wp_error( $markdown_source ) ) {
 			return '';
 		}
-		if ( 'github.com' !== parse_url( $markdown_source, PHP_URL_HOST )
+		if ( 'wptrainingteam.github.io' !== parse_url( $markdown_source, PHP_URL_HOST )
 			|| false !== stripos( $markdown_source, '/edit/master/' ) ) {
 			return $markdown_source;
 		}
-		$markdown_source = str_replace( '/blob/master/', '/edit/master/', $markdown_source );
+		$markdown_source = str_replace( '/lesson-plan', '', $markdown_source);
+		$markdown_source = str_replace( 'wptrainingteam.github.io', 'github.com/wptrainingteam', $markdown_source);
+		$markdown_source = str_replace( '/README.md', '/edit/master/README.md', $markdown_source );
 		return $markdown_source;
 	}
 }
