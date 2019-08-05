@@ -31,6 +31,7 @@ add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_length_taxonomy' )
 add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_level_taxonomy' ) );
 add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_audience_taxonomy' ) );
 add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_instruction_type_taxonomy' ) );
+add_filter( 'the_content', array('WPORG_Learn\Lesson_Plan', 'replace_image_links' ) );
 
 add_action( 'wp_head', function(){
 	?>
