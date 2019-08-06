@@ -103,31 +103,31 @@ public static function lesson_length_taxonomy() {
 }
 
 /**
-  * Register Lesson Level Taxonomy
+  * Register Lesson Experience Level Taxonomy
   */
 public static function lesson_level_taxonomy() {
 
 	$labels = array(
-		'name'                       => _x( 'Levels', 'Taxonomy General Name', 'wporg_learn' ),
-		'singular_name'              => _x( 'Level', 'Taxonomy Singular Name', 'wporg_learn' ),
-		'menu_name'                  => __( 'Level', 'wporg_learn' ),
-		'all_items'                  => __( 'All Levels', 'wporg_learn' ),
-		'parent_item'                => __( 'Parent Level', 'wporg_learn' ),
-		'parent_item_colon'          => __( 'Parent Level:', 'wporg_learn' ),
-		'new_item_name'              => __( 'New Level Name', 'wporg_learn' ),
-		'add_new_item'               => __( 'Add New Level', 'wporg_learn' ),
-		'edit_item'                  => __( 'Edit Level', 'wporg_learn' ),
-		'update_item'                => __( 'Update Level', 'wporg_learn' ),
-		'view_item'                  => __( 'View Level', 'wporg_learn' ),
-		'separate_items_with_commas' => __( 'Separate levels with commas', 'wporg_learn' ),
-		'add_or_remove_items'        => __( 'Add or remove levels', 'wporg_learn' ),
+		'name'                       => _x( 'Experience Levels', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Experience Level', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Experience Level', 'wporg_learn' ),
+		'all_items'                  => __( 'All Experience Levels', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Experience Level', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Experience Level:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Experience Level Name', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add New Experience Level', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Experience Level', 'wporg_learn' ),
+		'update_item'                => __( 'Update Experience Level', 'wporg_learn' ),
+		'view_item'                  => __( 'View Experience Level', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate experience levels with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove experience levels', 'wporg_learn' ),
 		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
-		'popular_items'              => __( 'Popular levels', 'wporg_learn' ),
-		'search_items'               => __( 'Search Levels', 'wporg_learn' ),
-		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
-		'no_terms'                   => __( 'No levels', 'wporg_learn' ),
-		'items_list'                 => __( 'Levels list', 'wporg_learn' ),
-		'items_list_navigation'      => __( 'Levels list navigation', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular Experience levels', 'wporg_learn' ),
+		'search_items'               => __( 'Search Experience Levels', 'wporg_learn' ),
+		'not_found'                  => __( 'Not Experience Found', 'wporg_learn' ),
+		'no_terms'                   => __( 'No experience levels', 'wporg_learn' ),
+		'items_list'                 => __( 'Experience Levels list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'Experience Levels list navigation', 'wporg_learn' ),
 	);
 	$args = array(
 		'labels'                     => $labels,
