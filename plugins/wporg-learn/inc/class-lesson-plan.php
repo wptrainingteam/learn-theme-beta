@@ -42,7 +42,7 @@ public static function lesson_plan_post_type() {
 		'description'           => __( 'WordPress.org Training Lesson Plan', 'wporg_learn' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'comments', 'revisions', 'custom-fields' ),
-		'taxonomies'            => array( 'length', 'level', 'audience', 'instruction_type' ),
+		'taxonomies'            => array( 'duration', 'level', 'audience', 'instruction_type' ),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -62,31 +62,31 @@ public static function lesson_plan_post_type() {
 }
 
 /**
-  * Register Length Taxonomy
+  * Register duration Taxonomy
   */
-public static function lesson_length_taxonomy() {
+public static function lesson_duration_taxonomy() {
 
 	$labels = array(
-		'name'                       => _x( 'Lengths', 'Taxonomy General Name', 'wporg_learn' ),
-		'singular_name'              => _x( 'Length', 'Taxonomy Singular Name', 'wporg_learn' ),
-		'menu_name'                  => __( 'Length', 'wporg_learn' ),
-		'all_items'                  => __( 'All Lengths', 'wporg_learn' ),
-		'parent_item'                => __( 'Parent Length', 'wporg_learn' ),
-		'parent_item_colon'          => __( 'Parent Length:', 'wporg_learn' ),
-		'new_item_name'              => __( 'New Length', 'wporg_learn' ),
-		'add_new_item'               => __( 'Add New Length', 'wporg_learn' ),
-		'edit_item'                  => __( 'Edit Length', 'wporg_learn' ),
-		'update_item'                => __( 'Update Length', 'wporg_learn' ),
-		'view_item'                  => __( 'View Length', 'wporg_learn' ),
-		'separate_items_with_commas' => __( 'Separate lengths with commas', 'wporg_learn' ),
-		'add_or_remove_items'        => __( 'Add or remove lengths', 'wporg_learn' ),
+		'name'                       => _x( 'Duration', 'Taxonomy General Name', 'wporg_learn' ),
+		'singular_name'              => _x( 'Duration', 'Taxonomy Singular Name', 'wporg_learn' ),
+		'menu_name'                  => __( 'Duration', 'wporg_learn' ),
+		'all_items'                  => __( 'All Durations', 'wporg_learn' ),
+		'parent_item'                => __( 'Parent Duration', 'wporg_learn' ),
+		'parent_item_colon'          => __( 'Parent Duration:', 'wporg_learn' ),
+		'new_item_name'              => __( 'New Duration', 'wporg_learn' ),
+		'add_new_item'               => __( 'Add New Duration', 'wporg_learn' ),
+		'edit_item'                  => __( 'Edit Duration', 'wporg_learn' ),
+		'update_item'                => __( 'Update Duration', 'wporg_learn' ),
+		'view_item'                  => __( 'View Duration', 'wporg_learn' ),
+		'separate_items_with_commas' => __( 'Separate durations with commas', 'wporg_learn' ),
+		'add_or_remove_items'        => __( 'Add or remove durations', 'wporg_learn' ),
 		'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
-		'popular_items'              => __( 'Popular lengths', 'wporg_learn' ),
-		'search_items'               => __( 'Search lengths', 'wporg_learn' ),
+		'popular_items'              => __( 'Popular durations', 'wporg_learn' ),
+		'search_items'               => __( 'Search durations', 'wporg_learn' ),
 		'not_found'                  => __( 'Not Found', 'wporg_learn' ),
-		'no_terms'                   => __( 'No lengths', 'wporg_learn' ),
-		'items_list'                 => __( 'Lengths list', 'wporg_learn' ),
-		'items_list_navigation'      => __( 'lengths list navigation', 'wporg_learn' ),
+		'no_terms'                   => __( 'No durations', 'wporg_learn' ),
+		'items_list'                 => __( 'Durations list', 'wporg_learn' ),
+		'items_list_navigation'      => __( 'Durations list navigation', 'wporg_learn' ),
 	);
 	$args = array(
 		'labels'                     => $labels,
@@ -98,7 +98,7 @@ public static function lesson_length_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'length', array( 'lesson_plan' ), $args );
+	register_taxonomy( 'duration', array( 'lesson_plan' ), $args );
 
 }
 
