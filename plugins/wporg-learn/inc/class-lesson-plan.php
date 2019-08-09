@@ -58,7 +58,7 @@ public static function lesson_plan_post_type() {
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
 	);
-	register_post_type( 'lesson_plan', $args );
+	register_post_type( 'lesson-plan', $args );
 }
 
 /**
@@ -98,7 +98,7 @@ public static function lesson_duration_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'duration', array( 'lesson_plan' ), $args );
+	register_taxonomy( 'duration', array( 'lesson-plan' ), $args );
 
 }
 
@@ -139,7 +139,7 @@ public static function lesson_level_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'level', array( 'lesson_plan' ), $args );
+	register_taxonomy( 'level', array( 'lesson-plan' ), $args );
 
 }
 
@@ -180,7 +180,7 @@ public static function lesson_audience_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'audience', array( 'lesson_plan' ), $args );
+	register_taxonomy( 'audience', array( 'lesson-plan' ), $args );
 
 }
 
@@ -221,7 +221,7 @@ public static function lesson_instruction_type_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'instruction_type', array( 'lesson_plan' ), $args );
+	register_taxonomy( 'instruction_type', array( 'lesson-plan' ), $args );
 
 }
 

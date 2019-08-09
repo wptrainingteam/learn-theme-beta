@@ -12,7 +12,7 @@ class Markdown_Import {
 	private static $meta_key = 'wporg_learn_markdown_source';
 	private static $nonce_name = 'wporg-learn-markdown-source-nonce';
 	private static $submit_name = 'wporg-learn-markdown-import';
-	private static $supported_post_types = array( 'lesson_plan' );
+	private static $supported_post_types = array( 'lesson-plan' );
 	private static $posts_per_page = 100;
 
 	/**
@@ -93,7 +93,7 @@ class Markdown_Import {
 	 */
 	private static function create_post_from_manifest_doc( $doc, $post_parent = null ) {
 		$post_data = array(
-			'post_type'   => 'lesson_plan',
+			'post_type'   => 'lesson-plan',
 			'post_status' => 'publish',
 			'post_parent' => $post_parent,
 			'post_title'  => sanitize_text_field( wp_slash( $doc['title'] ) ),
