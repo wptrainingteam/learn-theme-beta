@@ -58,7 +58,7 @@ public static function lesson_plan_post_type() {
 		'capability_type'       => 'page',
 		'show_in_rest'          => true,
 	);
-	register_post_type( 'lesson_plan', $args );
+	register_post_type( 'lesson-plan', $args );
 }
 
 /**
