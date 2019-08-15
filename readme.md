@@ -27,6 +27,11 @@ define( 'JETPACK_DEV_DEBUG', true );
 ```
 5. Now you should be able to activate the Learn Theme Beta and see the homepage when you look at the front-end of the website.
 6. Activate all of the plugins, and import the XML file located in the uploads folder to import lesson plans and handbook articles.
+7. Optionally, you can wait 15-30 minutes (make sure to load the website in your browser to trigger WP Cron) and the lessons will be imported via the WPOrg-Learn plugin, or you can manually import them with WP-CLI:
+```bash
+wp cron event run wporg_learn_manifest_import
+wp cron event run wporg_learn_markdown_import
+```
 
 You're ready to start developing and contributing!
 **All accepted changes to the master branch appear on [https://learnwp.jco.dev/](https://learnwp.jco.dev/), which refreshes every 5 minutes with updates.**
