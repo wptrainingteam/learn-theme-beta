@@ -12,7 +12,7 @@
 <div class="lp-item">
 	<div class="lp-item-wrap">
 		<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
-		<p class="lp-excerpt"><?php the_excerpt(); ?></p>
+		<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>
 		<div class="lp-details">
 			<div class="left-items items">
 				<ul>
