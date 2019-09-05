@@ -16,6 +16,7 @@ function wporg_support_scripts() {
 	wp_enqueue_style( 'forum-wp4-style', get_stylesheet_uri(), [], '20190311' );
 	wp_style_add_data( 'forum-wp4-style', 'rtl', 'replace' );
 
+	wp_enqueue_style( 'github-markdown', get_stylesheet_directory_uri() . '/github.css', 30 );
 	wp_enqueue_style( 'learn-site', get_stylesheet_directory_uri() . '/learn-site.css', 30 );
 
 }
