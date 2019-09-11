@@ -194,13 +194,15 @@
 	margin-top: 0;
 }
 
-/* ___ Lesson Plans ___ */
+/* ___ Lesson Plans/Workshop ___ */
 
-.lp-list {
+.lp-list,
+.ws-list {
 	margin: 0 -15px;
 }
 
-.lp-list .lp-item {
+.lp-list .lp-item,
+.ws-list .ws-item {
 	display: inline-block;
 	margin-bottom: 30px;
 	margin-right: -4px;
@@ -209,55 +211,122 @@
 	width: 50%;
 }
 
-.lp-list .lp-item-wrap {
+.ws-list .ws-item {
+	width: 100%;
+}
+
+.lp-list .lp-item-wrap,
+.ws-list .ws-item-wrap {
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
 	padding: 20px;
 }
 
-.lp-list .lp-item h2 {
+.ws-list .ws-item-wrap{
+	overflow: hidden;
+}
+
+.lp-list .lp-item h2,
+.ws-list .ws-item h2 {
 	font-size: 20px;
 	margin: 0 0 15px 0;
 }
 
-.lp-list .lp-item .lp-excerpt {
+.lp-list .lp-item .lp-excerpt,
+.ws-list .ws-item .ws-excerpt {
 	font-size: 14px;
 	margin: 0 0 15px 0;
 }
 
-.lp-list .lp-details {
+.ws-list .ws-item .ws-excerpt {
+	width: 70%;
+	float: left;
+}
+
+.ws-list .ws-item .ws-excerpt.ws-excerpt-list{
+	width: 80%;
+}
+
+.ws-list .ws-item .ws-excerpt p{
+	margin-top: 0;
+}
+
+.ws-list .ws-item .ws-excerpt ul{
+	margin: 0 0 0 15px;
+	font-size: 13px;
+	line-height: 23px;
+	list-style: square;
+	column-count: 3;
+	column-gap: 0;
+	color: #000000;
+}
+
+.ws-list .ws-item .ws-more{
+	clear: both;
+	font-size: 14px;
+}
+
+.ws-list .ws-item .ws-more a{
+	position: relative;
+	padding-right: 18px;
+}
+
+.ws-list .ws-item .ws-more a:after {
+    content: "\f345";
+    font-family: dashicons;
+    position: absolute;
+    top: 1px;
+    right: 0;
+}
+
+.lp-list .lp-details,
+.ws-list .ws-details {
 	font-size: 14px;
 	overflow: hidden;
 }
 
-.lp-list .lp-details .items {
+.ws-list .ws-details {
+	width: 25%;
+	float: right;
+}
+
+.lp-list .lp-details .items{
 	float: left;
 	width: 50%;
 }
 
-.lp-list .lp-details .left-items {
+.lp-list .lp-details .left-items,
+.ws-list .ws-details .left-items {
 	padding-right: 10px;
 }
 
-.lp-list .lp-details ul {
+.lp-list .lp-details ul,
+.ws-list .ws-details ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.lp-list .lp-details ul li {
+.ws-list .ws-details ul{
+	margin-top: -10px;
+}
+
+.lp-list .lp-details ul li,
+.ws-list .ws-details ul li {
 	padding: 10px 0 0 30px;
 	position: relative;
 }
 
-.lp-list .lp-details .dashicons {
+.lp-list .lp-details .dashicons,
+.ws-list .ws-details .dashicons {
 	color: #0073aa;
 	left: 0;
 	position: absolute;
 	top: 12px;
 }
 
-.lp-list .lp-details strong {
+.lp-list .lp-details strong,
+.ws-list .ws-details strong {
 	display: inline-block;
 	vertical-align: middle;
 }
