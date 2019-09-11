@@ -12,6 +12,30 @@
 	color: #fff;
 }
 
+/* ___ Home Search Form ___ */
+
+.site-header .search-form label{
+	float: left;
+}
+
+.site-header .search-form .search-submit{
+	background: #fff url(//s.w.org/wp-includes/images/admin-bar-sprite.png?d=20120831) no-repeat 2px 5px;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	float: left;
+	height: 26px;
+	margin: 7px -35px;
+	padding: 0;
+	text-shadow: none !important;
+	width: 26px;
+}
+
+.search-form .search-field {
+    font-size: .8rem;
+    padding: 0.5rem;
+}
+
 /* ___ Homepage ___ */
 
 #page.home {
@@ -196,10 +220,6 @@
 	margin: 0 0 15px 0;
 }
 
-.lp-list .lp-item h2 a {
-	font-weight: 400;
-}
-
 .lp-list .lp-item .lp-excerpt {
 	font-size: 14px;
 	margin: 0 0 15px 0;
@@ -219,47 +239,27 @@
 	padding-right: 10px;
 }
 
-.lp-list .lp-details ul,
-.lp-content .lp-details ul {
+.lp-list .lp-details ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.lp-list .lp-details ul li,
-.lp-content .lp-details ul li {
-	margin: 0;
+.lp-list .lp-details ul li {
 	padding: 10px 0 0 30px;
 	position: relative;
 }
 
-.lp-list .lp-details .dashicons,
-.lp-content .lp-details .dashicons {
+.lp-list .lp-details .dashicons {
 	color: #0073aa;
 	left: 0;
 	position: absolute;
 	top: 12px;
 }
 
-.lp-list .lp-details strong,
-.lp-content .lp-details strong {
+.lp-list .lp-details strong {
 	display: inline-block;
 	vertical-align: middle;
-}
-
-/* ___ Single Lesson Plan ___ */
-
-.lp-content {
-	min-height: 1000px;
-	padding-right: 300px;
-	position: relative;
-}
-
-.lp-content .lp-details {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 260px;
 }
 
 /* ___ Page ___ */
