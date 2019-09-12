@@ -1,4 +1,3 @@
-
 <div id="wporg-footer">
 	<div class="wrapper">
 		<ul>
@@ -40,11 +39,10 @@
 		</ul>
 	</div>
 
-		<p class="cip cip-image">Code is Poetry.</p>
+	<p class="cip cip-image">Code is Poetry.</p>
 </div>
 
 <script src="https://s.w.org/style/js/navigation.min.js?20190128"></script>
-
 <script type="text/javascript" src="https://gravatar.com/js/gprofiles.js"></script>
 <?php wp_footer(); ?>
 	</body>

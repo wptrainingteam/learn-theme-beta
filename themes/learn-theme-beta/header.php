@@ -46,7 +46,15 @@ if ( is_front_page() ) {
 					_e('Whether you&#8217;re a first-time blogger or seasoned developer, there&#8217;s always more to learn. From the contributors who make WordPress, these vast resourses will help you teach WordPress to others.', 'wporg-forums');
 					?>
 				</p>
-				<?php get_search_form(); ?>
+
+			    <form role="search" method="get" class="search-form" action="<?php esc_url( home_url( '/' ) ) ?>">
+			        <label>
+			            <span class="screen-reader-text"><?php _e('Search for:', 'wporg-forums' ) ?></span>
+			            <input type="search" class="search-field" placeholder="<?php esc_attr_e( 'Search Lesson Plans and Workshop Ideas', 'wporg-forums' )?>" value="<?php get_search_query() ?>" name="s" />
+			        </label>
+			        <button type="submit" class="search-submit"><span class="screen-reader-text"><?php esc_attr_e( 'Search', 'wporg-forums' ) ?></span></button>
+			    </form>
+						
 				<?php
 				} elseif ( is_page() ) {
 				?>
