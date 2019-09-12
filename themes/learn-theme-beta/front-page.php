@@ -92,6 +92,8 @@ get_header(); ?>
 			</div>
 		</section>
 
+		<?php wporg_submit_idea_cta(); ?>
+		
 		<?php if ( ! is_active_sidebar( 'front-page-blocks' ) ) : ?>
 			<?php //get_template_part( 'template-parts/bbpress', 'front' ); ?>
 		<?php else : ?>
