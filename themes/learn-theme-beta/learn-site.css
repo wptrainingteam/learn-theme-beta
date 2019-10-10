@@ -12,30 +12,6 @@
 	color: #fff;
 }
 
-/* ___ Home Search Form ___ */
-
-.site-header .search-form label{
-	float: left;
-}
-
-.site-header .search-form .search-submit{
-	background: #fff url(//s.w.org/wp-includes/images/admin-bar-sprite.png?d=20120831) no-repeat 2px 5px;
-	border: none;
-	border-radius: 0;
-	box-shadow: none;
-	float: left;
-	height: 26px;
-	margin: 7px -35px;
-	padding: 0;
-	text-shadow: none !important;
-	width: 26px;
-}
-
-.search-form .search-field {
-    font-size: .8rem;
-    padding: 0.5rem;
-}
-
 /* ___ Homepage ___ */
 
 #page.home {
@@ -194,15 +170,13 @@
 	margin-top: 0;
 }
 
-/* ___ Lesson Plans/Workshop ___ */
+/* ___ Lesson Plans ___ */
 
-.lp-list,
-.ws-list {
+.lp-list {
 	margin: 0 -15px;
 }
 
-.lp-list .lp-item,
-.ws-list .ws-item {
+.lp-list .lp-item {
 	display: inline-block;
 	margin-bottom: 30px;
 	margin-right: -4px;
@@ -211,114 +185,56 @@
 	width: 50%;
 }
 
-.ws-list .ws-item {
-	width: 100%;
-}
-
-.lp-list .lp-item-wrap,
-.ws-list .ws-item-wrap {
+.lp-list .lp-item-wrap {
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
 	padding: 20px;
 }
 
-.ws-list .ws-item-wrap{
-	overflow: hidden;
-}
-
-.lp-list .lp-item h2,
-.ws-list .ws-item h2 {
+.lp-list .lp-item h2 {
 	font-size: 20px;
 	margin: 0 0 15px 0;
 }
 
-.lp-list .lp-item .lp-excerpt,
-.ws-list .ws-item .ws-excerpt {
+.lp-list .lp-item h2 a {
+	font-weight: 400;
+}
+
+.lp-list .lp-item .lp-excerpt {
 	font-size: 14px;
 	margin: 0 0 15px 0;
 }
 
-.ws-list .ws-item .ws-excerpt {
-	width: 70%;
-	float: left;
-}
-
-.ws-list .ws-item .ws-excerpt.ws-excerpt-list{
-	width: 80%;
-}
-
-.ws-list .ws-item .ws-excerpt p{
-	margin-top: 0;
-}
-
-.ws-list .ws-item .ws-excerpt ul{
-	margin: 0 0 0 15px;
-	font-size: 13px;
-	line-height: 23px;
-	list-style: square;
-	column-count: 3;
-	column-gap: 0;
-	color: #000000;
-}
-
-.ws-list .ws-item .ws-more{
-	clear: both;
-	font-size: 14px;
-}
-
-.ws-list .ws-item .ws-more a{
-	position: relative;
-	padding-right: 18px;
-}
-
-.ws-list .ws-item .ws-more a:after {
-    content: "\f345";
-    font-family: dashicons;
-    position: absolute;
-    top: 1px;
-    right: 0;
-}
-
-.lp-list .lp-details,
-.ws-list .ws-details {
+.lp-list .lp-details {
 	font-size: 14px;
 	overflow: hidden;
 }
 
-.ws-list .ws-details {
-	width: 25%;
-	float: right;
-}
-
-.lp-list .lp-details .items{
+.lp-list .lp-details .items {
 	float: left;
 	width: 50%;
 }
 
-.lp-list .lp-details .left-items,
-.ws-list .ws-details .left-items {
+.lp-list .lp-details .left-items {
 	padding-right: 10px;
 }
 
 .lp-list .lp-details ul,
-.ws-list .ws-details ul {
+.lp-content .lp-details ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
-.ws-list .ws-details ul{
-	margin-top: -10px;
-}
-
 .lp-list .lp-details ul li,
-.ws-list .ws-details ul li {
+.lp-content .lp-details ul li {
+	margin: 0;
 	padding: 10px 0 0 30px;
 	position: relative;
 }
 
 .lp-list .lp-details .dashicons,
-.ws-list .ws-details .dashicons {
+.lp-content .lp-details .dashicons {
 	color: #0073aa;
 	left: 0;
 	position: absolute;
@@ -326,9 +242,24 @@
 }
 
 .lp-list .lp-details strong,
-.ws-list .ws-details strong {
+.lp-content .lp-details strong {
 	display: inline-block;
 	vertical-align: middle;
+}
+
+/* ___ Single Lesson Plan ___ */
+
+.lp-content {
+	min-height: 1000px;
+	padding-right: 300px;
+	position: relative;
+}
+
+.lp-content .lp-details {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 260px;
 }
 
 /* ___ Page ___ */
