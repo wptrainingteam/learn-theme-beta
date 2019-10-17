@@ -262,6 +262,40 @@
 	width: 260px;
 }
 
+.lp-content .lp-details .lp-links {
+	margin-top: 20px;
+}
+
+.lp-content .lp-details .lp-links li {
+	padding: 0 0 15px 0;
+}
+
+.lp-content .lp-details .lp-links li a {
+	background-color: #f8f8f8;
+	border: 1px #ccc solid;
+	border-radius: 3px;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+	color: #666666;
+	display: inline-block;
+	font-size: 14px;
+	min-width: 220px;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+
+.lp-details .lp-links li a .dashicons {
+	color: #666666;
+	font-size: 16px;
+	position: relative;
+	top: 3px;
+}
+
+.lp-content .lp-details .lp-links li a:hover {
+	background-color: #f8f8f8;
+	border-color: #999;
+	color: #777777;
+}
+
 /* ___ Page ___ */
 
 .type-page .entry-content {
