@@ -25,26 +25,36 @@
 			);
 			?>
 			<div class="lp-details">
-				<div class="items">
-					<ul>
-						<li>
-							<span class="dashicons dashicons-clock"></span>
-							Length: <strong>1 Hour</strong>
-						</li>
-						<li>
-							<span class="dashicons dashicons-admin-users"></span>
-							Audience: <strong>Developers</strong>
-						</li>
-						<li>
-							<span class="dashicons dashicons-dashboard"></span>
-							Level: <strong>Beginning</strong>
-						</li>
-						<li>
-							<span class="dashicons dashicons-welcome-learn-more"></span>
-							Type of Instruction: <strong>Presentation, Demostration</strong>
-						</li>
-					</ul>
-				</div>
+				<ul>
+					<li>
+						<span class="dashicons dashicons-clock"></span>
+						Length: <strong>1 Hour</strong>
+					</li>
+					<li>
+						<span class="dashicons dashicons-admin-users"></span>
+						Audience: <strong>Developers</strong>
+					</li>
+					<li>
+						<span class="dashicons dashicons-dashboard"></span>
+						Level: <strong>Beginning</strong>
+					</li>
+					<li>
+						<span class="dashicons dashicons-welcome-learn-more"></span>
+						Type of Instruction: <strong>Presentation, Demostration</strong>
+					</li>
+				</ul>
+
+				<ul class="lp-links">
+					<li>
+						<a href="#" target="_blank"><span class="dashicons dashicons-admin-page"></span> <?php _e( 'View Lesson Plan Slides' ); ?></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><span class="dashicons dashicons-download"></span> <?php _e( 'Download Lesson Slides' ); ?></a>
+					</li>
+					<li>
+						<a href="#" target="_blank"><span class="dashicons dashicons-admin-post"></span> <?php _e( 'Print Lesson Plan' ); ?></a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div><!-- .entry-content -->
