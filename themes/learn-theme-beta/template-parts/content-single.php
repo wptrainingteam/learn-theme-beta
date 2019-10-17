@@ -55,6 +55,13 @@
 						<a href="#" target="_blank"><span class="dashicons dashicons-admin-post"></span> <?php _e( 'Print Lesson Plan' ); ?></a>
 					</li>
 				</ul>
+
+				<div class="lp-suggestion">
+					<h4><?php _e( 'Suggestions' ); ?></h4>
+					<p><?php _e( 'Found a typo, grammar error,or outdated screenshot?' ); ?></p>
+					<p><?php _e( 'Used this lesson plan in your event and have some suggestions?' ); ?></p>
+					<a href="#"><?php _e( 'Let us know!' ); ?></a>
+				</div>
 			</div>
 		</div>
 	</div><!-- .entry-content -->
