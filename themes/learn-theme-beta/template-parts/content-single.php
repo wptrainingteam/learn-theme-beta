@@ -25,7 +25,7 @@
 			);
 			?>
 			<div class="lp-details">
-				<div class="left-items items">
+				<div class="items">
 					<ul>
 						<li>
 							<span class="dashicons dashicons-clock"></span>
@@ -39,10 +39,6 @@
 							<span class="dashicons dashicons-dashboard"></span>
 							Level: <strong>Beginning</strong>
 						</li>
-					</ul>
-				</div>
-				<div class="right-items items">
-					<ul>
 						<li>
 							<span class="dashicons dashicons-welcome-learn-more"></span>
 							Type of Instruction: <strong>Presentation, Demostration</strong>
