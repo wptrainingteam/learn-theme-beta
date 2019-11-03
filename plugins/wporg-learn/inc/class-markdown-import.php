@@ -258,6 +258,8 @@ class Markdown_Import {
 		jetpack_require_lib( 'markdown' );
 		$parser = new \WPCom_GHF_Markdown_Parser;
 		$html = $parser->transform( $markdown );
+		$html = self::replace_markdown_checkboxes( $html );
+
 		$post_data = array(
 			'ID'           => $post_id,
 			'post_content' => wp_filter_post_kses( wp_slash( $html ) ),
@@ -279,5 +281,32 @@ class Markdown_Import {
 		}
 
 		return $markdown_source;
+	}
+
+	/**
+	 * Replace markdown checkboxes in the post-processed HTML.
+	 * 
+	 * @param string $html The HTML after translation from markup.
+	 * 
+	 * @return string The HTML after potentially replacing markdown checkboxes with HTML ones.
+	 */
+	public static function replace_markdown_checkboxes( $html ) {
+		$empty_check_markup = '<input type="checkbox" id="" disabled="" class="task-list-item-checkbox">';
+		$full_check_markup = '<input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked="">';
+
+		// We need to allow inputs with all of our attributes for wp_filter_post_kses().
+		global $allowedposttags;
+
+		$allowedposttags['input'] = [
+			'type'     => [],
+			'disabled' => [],
+			'checked'  => [],
+			'class'    => [],
+			'id'       => [],
+		];
+
+		$html = preg_replace( '/\[ \]/', $empty_check_markup, $html );
+		$html = preg_replace( '/\[x\]/', $full_check_markup, $html );
+		return $html;
 	}
 }
