@@ -49,7 +49,6 @@ class Jetpack_Options {
 					'site_icon_url',               // (string) url to the full site icon
 					'site_icon_id',                // (int)    Attachment id of the site icon file
 					'dismissed_manage_banner',     // (bool) Dismiss Jetpack manage banner allows the user to dismiss the banner permanently
-					'restapi_stats_cache',         // (array) Stats Cache data.
 					'unique_connection',           // (array)  A flag to determine a unique connection to wordpress.com two values "connected" and "disconnected" with values for how many times each has occured
 					'protect_whitelist',           // (array) IP Address for the Protect module to ignore
 					'sync_error_idc',              // (bool|array) false or array containing the site's home and siteurl at time of IDC error
@@ -62,6 +61,7 @@ class Jetpack_Options {
 					'static_asset_cdn_files',      // (array) An nested array of files that we can swap out for cdn versions.
 					'mapbox_api_key',              // (string) Mapbox API Key, for use with Map block.
 					'mailchimp',                   // (string) Mailchimp keyring data, for mailchimp block.
+					'xmlrpc_errors',               // (array) Keys are XML-RPC signature error codes. Values are truthy.
 				);
 
 			case 'private':

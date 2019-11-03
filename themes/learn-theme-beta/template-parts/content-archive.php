@@ -9,18 +9,35 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<h2 class="entry-title">
-			<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-				<?php the_title(); ?>
-			</a>
-		</h2>
-	</header><!-- .entry-header -->
-
-	<div class="entry-content">
-		<div class="container">
-			<?php the_excerpt(); ?>
+<div class="lp-item">
+	<div class="lp-item-wrap">
+		<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
+		<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>
+		<div class="lp-details">
+			<div class="left-items items">
+				<ul>
+					<li>
+						<span class="dashicons dashicons-clock"></span>
+						Length: <strong>1 Hour</strong>
+					</li>
+					<li>
+						<span class="dashicons dashicons-admin-users"></span>
+						Audience: <strong>Developers</strong>
+					</li>
+					<li>
+						<span class="dashicons dashicons-dashboard"></span>
+						Level: <strong>Beginning</strong>
+					</li>
+				</ul>
+			</div>
+			<div class="right-items items">
+				<ul>
+					<li>
+						<span class="dashicons dashicons-welcome-learn-more"></span>
+						Type of Instruction: <strong>Presentation, Demostration</strong>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div><!-- .entry-content -->
-</article><!-- #post-## -->
+	</div>
+</div>

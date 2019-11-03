@@ -2,6 +2,9 @@
 /**
  * Handles fetching of the site's plan from WordPress.com and caching the value locally.
  *
+ * Not to be confused with the `Jetpack_Plans` class (in `_inc/lib/plans.php`), which
+ * fetches general information about all available plans from WordPress.com, side-effect free.
+ *
  * @package Jetpack
  */
 
@@ -43,13 +46,6 @@ class Jetpack_Plan {
 
 		// Bail if there were no results or plan details returned.
 		if ( ! is_array( $results ) || ! isset( $results['plan'] ) ) {
-			return false;
-		}
-
-		$current_plan = get_option( self::PLAN_OPTION, array() );
-
-		// If the plans don't differ, then there's nothing to do.
-		if ( ! empty( $current_plan ) && $current_plan['product_slug'] === $results['plan']['product_slug'] ) {
 			return false;
 		}
 

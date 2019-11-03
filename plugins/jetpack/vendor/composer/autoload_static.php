@@ -4,9 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
+class ComposerStaticInit30b12068da0b1e31b3e1fe9908dc47ad
 {
     public static $files = array (
+        'bce4ecd6aabb2a2948e06d0e2c4ea9a6' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/load-ixr.php',
         '009de6aaa0d497eacea41fab13fc05f1' => __DIR__ . '/..' . '/automattic/jetpack-compat/functions.php',
     );
 
@@ -45,14 +46,19 @@ class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
         ),
         'Automattic\\Jetpack\\' => 
         array (
-            0 => __DIR__ . '/..' . '/automattic/jetpack-constants/src',
-            1 => __DIR__ . '/..' . '/automattic/jetpack-tracking/src',
-            2 => __DIR__ . '/..' . '/automattic/jetpack-assets/src',
-            3 => __DIR__ . '/..' . '/automattic/jetpack-jitm/src',
+            0 => __DIR__ . '/..' . '/automattic/jetpack-error/src',
+            1 => __DIR__ . '/..' . '/automattic/jetpack-constants/src',
+            2 => __DIR__ . '/..' . '/automattic/jetpack-abtest/src',
+            3 => __DIR__ . '/..' . '/automattic/jetpack-tracking/src',
+            4 => __DIR__ . '/..' . '/automattic/jetpack-assets/src',
+            5 => __DIR__ . '/..' . '/automattic/jetpack-jitm/src',
+            6 => __DIR__ . '/..' . '/automattic/jetpack-status/src',
+            7 => __DIR__ . '/..' . '/automattic/jetpack-roles/src',
         ),
     );
 
     public static $classMap = array (
+        'Automattic\\Jetpack\\Abtest' => __DIR__ . '/..' . '/automattic/jetpack-abtest/src/Abtest.php',
         'Automattic\\Jetpack\\Assets' => __DIR__ . '/..' . '/automattic/jetpack-assets/src/Assets.php',
         'Automattic\\Jetpack\\Assets\\Logo' => __DIR__ . '/..' . '/automattic/jetpack-logo/src/Logo.php',
         'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => __DIR__ . '/..' . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php',
@@ -63,8 +69,11 @@ class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
         'Automattic\\Jetpack\\Connection\\REST_Connector' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/REST_Connector.php',
         'Automattic\\Jetpack\\Connection\\XMLRPC_Connector' => __DIR__ . '/..' . '/automattic/jetpack-connection/src/XMLRPC_Connector.php',
         'Automattic\\Jetpack\\Constants' => __DIR__ . '/..' . '/automattic/jetpack-constants/src/Constants.php',
+        'Automattic\\Jetpack\\Error' => __DIR__ . '/..' . '/automattic/jetpack-error/src/Error.php',
         'Automattic\\Jetpack\\JITM' => __DIR__ . '/..' . '/automattic/jetpack-jitm/src/JITM.php',
         'Automattic\\Jetpack\\Plugin\\Tracking' => __DIR__ . '/../..' . '/src/Tracking.php',
+        'Automattic\\Jetpack\\Roles' => __DIR__ . '/..' . '/automattic/jetpack-roles/src/Roles.php',
+        'Automattic\\Jetpack\\Status' => __DIR__ . '/..' . '/automattic/jetpack-status/src/Status.php',
         'Automattic\\Jetpack\\Sync\\Actions' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/Actions.php',
         'Automattic\\Jetpack\\Sync\\Codec_Interface' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/Codec_Interface.php',
         'Automattic\\Jetpack\\Sync\\Defaults' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/Defaults.php',
@@ -88,6 +97,7 @@ class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
         'Automattic\\Jetpack\\Sync\\Modules\\Posts' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Posts.php',
         'Automattic\\Jetpack\\Sync\\Modules\\Protect' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Protect.php',
         'Automattic\\Jetpack\\Sync\\Modules\\Stats' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Stats.php',
+        'Automattic\\Jetpack\\Sync\\Modules\\Term_Relationships' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Term_Relationships.php',
         'Automattic\\Jetpack\\Sync\\Modules\\Terms' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Terms.php',
         'Automattic\\Jetpack\\Sync\\Modules\\Themes' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Themes.php',
         'Automattic\\Jetpack\\Sync\\Modules\\Updates' => __DIR__ . '/..' . '/automattic/jetpack-sync/src/modules/Updates.php',
@@ -107,6 +117,8 @@ class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
         'Automattic\\Jetpack\\Tracking' => __DIR__ . '/..' . '/automattic/jetpack-tracking/src/Tracking.php',
         'JetpackTracking' => __DIR__ . '/..' . '/automattic/jetpack-compat/legacy/class.jetpack-tracks.php',
         'Jetpack_Client' => __DIR__ . '/..' . '/automattic/jetpack-compat/legacy/class.jetpack-client.php',
+        'Jetpack_IXR_Client' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class.jetpack-ixr-client.php',
+        'Jetpack_IXR_ClientMulticall' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class.jetpack-ixr-client-multicall.php',
         'Jetpack_Options' => __DIR__ . '/..' . '/automattic/jetpack-options/legacy/class.jetpack-options.php',
         'Jetpack_Signature' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class.jetpack-signature.php',
         'Jetpack_Sync_Actions' => __DIR__ . '/..' . '/automattic/jetpack-compat/legacy/class.jetpack-sync-actions.php',
@@ -114,14 +126,15 @@ class ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e
         'Jetpack_Sync_Settings' => __DIR__ . '/..' . '/automattic/jetpack-compat/legacy/class.jetpack-sync-settings.php',
         'Jetpack_Tracks_Client' => __DIR__ . '/..' . '/automattic/jetpack-tracking/legacy/class.tracks-client.php',
         'Jetpack_Tracks_Event' => __DIR__ . '/..' . '/automattic/jetpack-tracking/legacy/class.tracks-event.php',
+        'Jetpack_XMLRPC_Server' => __DIR__ . '/..' . '/automattic/jetpack-connection/legacy/class.jetpack-xmlrpc-server.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit5985f1a10284eb0c27302a6c5f7c4d3e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit30b12068da0b1e31b3e1fe9908dc47ad::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit30b12068da0b1e31b3e1fe9908dc47ad::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit30b12068da0b1e31b3e1fe9908dc47ad::$classMap;
 
         }, null, ClassLoader::class);
     }

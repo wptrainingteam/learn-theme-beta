@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Automattic\\Jetpack\\Abtest' => $vendorDir . '/automattic/jetpack-abtest/src/Abtest.php',
     'Automattic\\Jetpack\\Assets' => $vendorDir . '/automattic/jetpack-assets/src/Assets.php',
     'Automattic\\Jetpack\\Assets\\Logo' => $vendorDir . '/automattic/jetpack-logo/src/Logo.php',
     'Automattic\\Jetpack\\Autoloader\\AutoloadGenerator' => $vendorDir . '/automattic/jetpack-autoloader/src/AutoloadGenerator.php',
@@ -16,8 +17,11 @@ return array(
     'Automattic\\Jetpack\\Connection\\REST_Connector' => $vendorDir . '/automattic/jetpack-connection/src/REST_Connector.php',
     'Automattic\\Jetpack\\Connection\\XMLRPC_Connector' => $vendorDir . '/automattic/jetpack-connection/src/XMLRPC_Connector.php',
     'Automattic\\Jetpack\\Constants' => $vendorDir . '/automattic/jetpack-constants/src/Constants.php',
+    'Automattic\\Jetpack\\Error' => $vendorDir . '/automattic/jetpack-error/src/Error.php',
     'Automattic\\Jetpack\\JITM' => $vendorDir . '/automattic/jetpack-jitm/src/JITM.php',
     'Automattic\\Jetpack\\Plugin\\Tracking' => $baseDir . '/src/Tracking.php',
+    'Automattic\\Jetpack\\Roles' => $vendorDir . '/automattic/jetpack-roles/src/Roles.php',
+    'Automattic\\Jetpack\\Status' => $vendorDir . '/automattic/jetpack-status/src/Status.php',
     'Automattic\\Jetpack\\Sync\\Actions' => $vendorDir . '/automattic/jetpack-sync/src/Actions.php',
     'Automattic\\Jetpack\\Sync\\Codec_Interface' => $vendorDir . '/automattic/jetpack-sync/src/Codec_Interface.php',
     'Automattic\\Jetpack\\Sync\\Defaults' => $vendorDir . '/automattic/jetpack-sync/src/Defaults.php',
@@ -41,6 +45,7 @@ return array(
     'Automattic\\Jetpack\\Sync\\Modules\\Posts' => $vendorDir . '/automattic/jetpack-sync/src/modules/Posts.php',
     'Automattic\\Jetpack\\Sync\\Modules\\Protect' => $vendorDir . '/automattic/jetpack-sync/src/modules/Protect.php',
     'Automattic\\Jetpack\\Sync\\Modules\\Stats' => $vendorDir . '/automattic/jetpack-sync/src/modules/Stats.php',
+    'Automattic\\Jetpack\\Sync\\Modules\\Term_Relationships' => $vendorDir . '/automattic/jetpack-sync/src/modules/Term_Relationships.php',
     'Automattic\\Jetpack\\Sync\\Modules\\Terms' => $vendorDir . '/automattic/jetpack-sync/src/modules/Terms.php',
     'Automattic\\Jetpack\\Sync\\Modules\\Themes' => $vendorDir . '/automattic/jetpack-sync/src/modules/Themes.php',
     'Automattic\\Jetpack\\Sync\\Modules\\Updates' => $vendorDir . '/automattic/jetpack-sync/src/modules/Updates.php',
@@ -60,6 +65,8 @@ return array(
     'Automattic\\Jetpack\\Tracking' => $vendorDir . '/automattic/jetpack-tracking/src/Tracking.php',
     'JetpackTracking' => $vendorDir . '/automattic/jetpack-compat/legacy/class.jetpack-tracks.php',
     'Jetpack_Client' => $vendorDir . '/automattic/jetpack-compat/legacy/class.jetpack-client.php',
+    'Jetpack_IXR_Client' => $vendorDir . '/automattic/jetpack-connection/legacy/class.jetpack-ixr-client.php',
+    'Jetpack_IXR_ClientMulticall' => $vendorDir . '/automattic/jetpack-connection/legacy/class.jetpack-ixr-client-multicall.php',
     'Jetpack_Options' => $vendorDir . '/automattic/jetpack-options/legacy/class.jetpack-options.php',
     'Jetpack_Signature' => $vendorDir . '/automattic/jetpack-connection/legacy/class.jetpack-signature.php',
     'Jetpack_Sync_Actions' => $vendorDir . '/automattic/jetpack-compat/legacy/class.jetpack-sync-actions.php',
@@ -67,4 +74,5 @@ return array(
     'Jetpack_Sync_Settings' => $vendorDir . '/automattic/jetpack-compat/legacy/class.jetpack-sync-settings.php',
     'Jetpack_Tracks_Client' => $vendorDir . '/automattic/jetpack-tracking/legacy/class.tracks-client.php',
     'Jetpack_Tracks_Event' => $vendorDir . '/automattic/jetpack-tracking/legacy/class.tracks-event.php',
+    'Jetpack_XMLRPC_Server' => $vendorDir . '/automattic/jetpack-connection/legacy/class.jetpack-xmlrpc-server.php',
 );

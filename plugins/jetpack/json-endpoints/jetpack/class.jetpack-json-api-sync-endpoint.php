@@ -271,9 +271,16 @@ class Jetpack_JSON_API_Sync_Close_Endpoint extends Jetpack_JSON_API_Sync_Endpoin
 		$request_body ['buffer_id'] = preg_replace( '/[^A-Za-z0-9]/', '', $request_body['buffer_id'] );
 		$request_body['item_ids'] = array_filter( array_map( array( 'Jetpack_JSON_API_Sync_Close_Endpoint', 'sanitize_item_ids' ), $request_body['item_ids'] ) );
 
-		$buffer = new Queue_Buffer( $request_body['buffer_id'], $request_body['item_ids'] );
 		$queue = new Queue( $queue_name );
 
+		$items = $queue->peek_by_id( $request_body['item_ids'] );
+
+		/** This action is documented in packages/sync/src/modules/Full_Sync.php */
+		$full_sync_module = Modules::get_module( 'full-sync' );
+
+		$full_sync_module->update_sent_progress_action( $items );
+
+		$buffer = new Queue_Buffer( $request_body['buffer_id'], $request_body['item_ids'] );
 		$response = $queue->close( $buffer, $request_body['item_ids'] );
 
 		if ( is_wp_error( $response ) ) {
@@ -281,7 +288,8 @@ class Jetpack_JSON_API_Sync_Close_Endpoint extends Jetpack_JSON_API_Sync_Endpoin
 		}
 
 		return array(
-			'success' => $response
+			'success' => $response,
+			'status' => Actions::get_sync_status(),
 		);
 	}
 
@@ -313,6 +321,39 @@ class Jetpack_JSON_API_Sync_Unlock_Endpoint extends Jetpack_JSON_API_Sync_Endpoi
 		$response = $queue->unlock();
 		return array(
 			'success' => $response
+		);
+	}
+}
+
+class Jetpack_JSON_API_Sync_Object_Id_Range extends Jetpack_JSON_API_Sync_Endpoint {
+	protected function result() {
+		$args = $this->query_args();
+
+		$module_name = $args['sync_module'];
+		$batch_size  = $args['batch_size'];
+
+		if ( ! $this->is_valid_sync_module( $module_name ) ) {
+			return new WP_Error( 'invalid_module', 'This sync module cannot be used to calculate a range.', 400 );
+		}
+
+		$module = Modules::get_module( $module_name );
+
+		return array(
+			'ranges' => $module->get_min_max_object_ids_for_batches( $batch_size ),
+		);
+	}
+
+	protected function is_valid_sync_module( $module_name ) {
+		return in_array(
+			$module_name,
+			array(
+				'comments',
+				'posts',
+				'terms',
+				'term_relationships',
+				'users',
+			),
+			true
 		);
 	}
 }

@@ -186,11 +186,66 @@ class Jetpack_Search {
 			add_action( 'init', array( $this, 'set_filters_from_widgets' ) );
 
 			add_action( 'pre_get_posts', array( $this, 'maybe_add_post_type_as_var' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_assets' ) );
 		} else {
 			add_action( 'update_option', array( $this, 'track_widget_updates' ), 10, 3 );
 		}
 
 		add_action( 'jetpack_deactivate_module_search', array( $this, 'move_search_widgets_to_inactive' ) );
+	}
+
+	/**
+	 * Loads assets for Jetpack Search Prototype featuring Search As You Type experience.
+	 */
+	public function load_assets() {
+		if ( defined( 'JETPACK_SEARCH_PROTOTYPE' ) ) {
+			$script_relative_path = '_inc/build/instant-search/jp-search.bundle.js';
+			if ( file_exists( JETPACK__PLUGIN_DIR . $script_relative_path ) ) {
+				$script_version = self::get_asset_version( $script_relative_path );
+				$script_path    = plugins_url( $script_relative_path, JETPACK__PLUGIN_FILE );
+				wp_enqueue_script( 'jetpack-instant-search', $script_path, array(), $script_version, true );
+				$_blog_id = Jetpack::get_option( 'id' );
+				// This is probably a temporary filter for testing the prototype.
+				$options = array(
+					'siteId' => $_blog_id,
+				);
+				/**
+				 * Customize Instant Search Options.
+				 *
+				 * @module search
+				 *
+				 * @since 7.7.0
+				 *
+				 * @param array $options Array of parameters used in Instant Search queries.
+				 */
+				$options = apply_filters( 'jetpack_instant_search_options', $options );
+
+				wp_localize_script(
+					'jetpack-instant-search',
+					'jetpack_instant_search_options',
+					$options
+				);
+			}
+
+			$style_relative_path = '_inc/build/instant-search/instant-search.min.css';
+			if ( file_exists( JETPACK__PLUGIN_DIR . $script_relative_path ) ) {
+				$style_version = self::get_asset_version( $style_relative_path );
+				$style_path    = plugins_url( $style_relative_path, JETPACK__PLUGIN_FILE );
+				wp_enqueue_style( 'jetpack-instant-search', $style_path, array(), $style_version );
+			}
+		}
+	}
+
+	/**
+	 * Get the version number to use when loading the file. Allows us to bypass cache when developing.
+	 *
+	 * @param string $file Path of the file we are looking for.
+	 * @return string $script_version Version number.
+	 */
+	public static function get_asset_version( $file ) {
+		return Jetpack::is_development_version() && file_exists( JETPACK__PLUGIN_DIR . $file )
+			? filemtime( JETPACK__PLUGIN_DIR . $file )
+			: JETPACK__VERSION;
 	}
 
 	/**
@@ -341,7 +396,7 @@ class Jetpack_Search {
 
 		$do_authenticated_request = false;
 
-		if ( class_exists( 'Client' ) &&
+		if ( class_exists( 'Automattic\\Jetpack\\Connection\\Client' ) &&
 			isset( $es_args['authenticated_request'] ) &&
 			true === $es_args['authenticated_request'] ) {
 			$do_authenticated_request = true;
