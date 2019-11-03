@@ -412,3 +412,27 @@
 	padding: 0 .9rem;
 	height: 1.763rem;
 }
+
+/*--------------------------------------------------------------
+# Contributor Day Styles - Submit Workshop Form
+--------------------------------------------------------------*/
+.contact-form .grunion-field-label {
+    font-size: 13px;
+}
+
+.contact-form .grunion-checkbox-multiple-label, .contact-form .grunion-radio-label {
+    font-size: 13px;
+}
+
+.contact-form .grunion-field-checkbox-multiple-wrap, .contact-form .grunion-field-radio-wrap {
+    width: 29%;
+    margin: 10px;
+}
+
+input.text {
+    height: 40px;
+}
+
+.custom-subheader{
+	margin-bottom: 0.4em;
+}
