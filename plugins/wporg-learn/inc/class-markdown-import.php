@@ -4,6 +4,7 @@ namespace WPOrg_Learn;
 
 use WP_Error;
 use WP_Query;
+use DOMDocument;
 
 class Markdown_Import {
 
@@ -268,6 +269,9 @@ class Markdown_Import {
 			$post_data['post_title'] = sanitize_text_field( wp_slash( $title ) );
 		}
 		wp_update_post( $post_data );
+
+		self::set_post_terms_from_markdown( $post_data['post_content'], $post_id );
+
 		return true;
 	}
 
@@ -292,7 +296,7 @@ class Markdown_Import {
 	 */
 	public static function replace_markdown_checkboxes( $html ) {
 		$empty_check_markup = '<input type="checkbox" id="" disabled="" class="task-list-item-checkbox">';
-		$full_check_markup = '<input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked="">';
+		$full_check_markup = '<input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked="checked">';
 
 		// We need to allow inputs with all of our attributes for wp_filter_post_kses().
 		global $allowedposttags;
@@ -306,7 +310,90 @@ class Markdown_Import {
 		];
 
 		$html = preg_replace( '/\[ \]/', $empty_check_markup, $html );
-		$html = preg_replace( '/\[x\]/', $full_check_markup, $html );
+		$html = preg_replace( '/\[[xX]\]/', $full_check_markup, $html );
 		return $html;
+	}
+
+	/**
+	 * Set a newly created post's terms based on things found within its parsed HTML
+	 * from the original markdown.
+	 * 
+	 * @param string $html    The HTML string output from markdown.
+	 * @param int    $post_id The post id to set terms for.
+	 */
+	public static function set_post_terms_from_markdown( $html, $post_id ) {
+		// Load DOMDocument class to parse our HTML.
+		$dom = new DOMDocument();
+
+		$libxml_previous_state = libxml_use_internal_errors(true);
+		$dom->loadHTML($html);
+		libxml_clear_errors();
+		libxml_use_internal_errors($libxml_previous_state);
+
+		// Define our expected text as keys and taxonomy slugs as values.
+		$taxonomies = [
+			'Target Audience'          => 'audience',
+			'Experience Level'         => 'level',
+			'Time Estimate (Duration)' => 'duration',
+			'Type of Instruction'      => 'instruction_type',
+		];
+
+		// We want to look for ul elements after h2 elements.
+		$headers = $dom->getElementsByTagName('h2');
+
+		foreach($headers as $header) {
+			$header_text = trim($header->textContent);
+			if(in_array($header_text, array_keys($taxonomies))) {
+				// This h2 is in our array of taxonomies, let's look for a ul.
+				$found_ul = false;
+				$current_element = $header;
+				$tax_slug = $taxonomies[$header_text];
+
+				while(!$found_ul) {
+					$sibling = $current_element->nextSibling;
+					// If we hit another h2 or the end of the document, break out of the loop.
+					if($sibling && !('h2' == $sibling->nodeName)) {
+						if('ul' == $sibling->nodeName) {
+							// We didn't get to the ul yet, go to the next element.
+							$found_ul = $sibling;
+						} else {
+							// We found our ul, hopefully.
+							$current_element = $sibling;
+						}
+					} else {
+						break;
+					}
+				}
+
+				if($found_ul) {
+					$terms = [];
+					$term_ids = [];
+
+					// Go through each item of our list of potential terms.
+					foreach($found_ul->childNodes as $child) {
+						if($child->childNodes && count($child->childNodes)) {
+							// If this has a checkbox and a non-empty checked attribute, add it to our list.
+							if(!empty($child->childNodes[0]->getAttribute('checked'))) {
+								array_push($terms, $child->childNodes[1]->textContent);								
+							}
+						}
+					}
+
+					foreach($terms as $term) {
+						// Create the term if it exists, otherwise find it.
+						if(!term_exists($term)) {
+							$term_array = wp_insert_term($term, $tax_slug);
+							array_push($term_ids, $term_array['term_id']);
+						} else {
+							$term = get_term_by('name', $term, $tax_slug);
+							array_push($term_ids, $term->term_id);
+						}
+					}
+
+					// Set our post to have the proper terms as determined above.
+					wp_set_post_terms($post_id, $term_ids, $tax_slug, false);
+				}
+			}
+		}
 	}
 }
