@@ -32,6 +32,11 @@ define( 'JETPACK_DEV_DEBUG', true );
 wp cron event run wporg_learn_manifest_import
 wp cron event run wporg_learn_markdown_import
 ```
+8. Activate the JetPack modules __Contact Form__ and __Markdown__
+```bash
+wp jetpack module activate contact-form
+wp jetpack module activate markdown
+```
 
 You're ready to start developing and contributing!
 **All accepted changes to the master branch appear on [https://learnwp.jco.dev/](https://learnwp.jco.dev/), which refreshes every 5 minutes with updates.**
