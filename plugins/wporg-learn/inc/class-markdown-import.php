@@ -12,7 +12,7 @@ class Markdown_Import {
 	private static $meta_key = 'wporg_learn_markdown_source';
 	private static $nonce_name = 'wporg-learn-markdown-source-nonce';
 	private static $submit_name = 'wporg-learn-markdown-import';
-	private static $supported_post_types = array( 'lesson-plan' );
+	private static $supported_post_types = 'lesson-plan';
 	private static $posts_per_page = 100;
 
 	/**
