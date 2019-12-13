@@ -52,7 +52,7 @@ if ( is_front_page() ) {
 			            <span class="screen-reader-text"><?php _e('Search for:', 'wporg-forums' ) ?></span>
 			            <input type="search" class="search-field" placeholder="<?php esc_attr_e( 'Search Lesson Plans and Workshop Ideas', 'wporg-forums' )?>" value="<?php get_search_query() ?>" name="s" />
 			        </label>
-			        <button type="submit" class="search-submit"><span class="screen-reader-text"><?php esc_attr_e( 'Search', 'wporg-forums' ) ?></span></button>
+			        <button type="submit" class="search-submit button button-primary button-search"><i class="dashicons dashicons-search"></i><span class="screen-reader-text"><?php esc_attr_e( 'Search', 'wporg-forums' ) ?></span></button>
 			    </form>
 						
 				<?php

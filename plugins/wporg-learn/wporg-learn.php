@@ -11,6 +11,7 @@
 require_once dirname( __FILE__ ) . '/inc/class-markdown-import.php';
 require_once dirname( __FILE__ ) . '/inc/class-shortcodes.php';
 require_once dirname( __FILE__ ) . '/inc/class-lesson-plan.php';
+require_once dirname( __FILE__ ) . '/inc/class-workshop.php';
 
 /**
  * Registry of actions and filters
@@ -32,6 +33,29 @@ add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_level_taxonomy' ) 
 add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_audience_taxonomy' ) );
 add_action( 'init', array( 'WPORG_Learn\Lesson_Plan', 'lesson_instruction_type_taxonomy' ) );
 add_filter( 'the_content', array('WPORG_Learn\Lesson_Plan', 'replace_image_links' ) );
+
+
+add_action( 'init', array( 'WPORG_Learn\Workshop', 'workshop_post_type' ) );
+add_action( 'init', array( 'WPORG_Learn\Workshop', 'lesson_workshop_taxonomy' ) );
+
+
+/**
+ * Add a query parameter and rewrites for the main lesson-plan/workshop search function
+ */
+function add_category($vars) {
+	$vars[] = 'category';
+	return $vars;
+}
+add_filter('query_vars', 'add_category');
+ 
+function string_url_rewrite() {
+	global $wp_rewrite;
+    add_rewrite_rule('^workshops/([^/]+)/?$', 'index.php?post_type=workshop&category=$matches[1]', 'top');
+    add_rewrite_rule('^lesson-plans/([^/]+)/?$', 'index.php?post_type=lesson-plan&category=$matches[1]', 'top');
+    $wp_rewrite->flush_rules(true);
+}
+
+add_action('init', 'string_url_rewrite', 10, 0);
 
 add_action( 'wp_head', function(){
 	?>

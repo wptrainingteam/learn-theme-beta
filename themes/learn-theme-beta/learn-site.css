@@ -4,6 +4,10 @@
 * Author: Chetan Prajapati (chetan200891)
 */
 
+body:not(.trac):not(.home-page) #main {
+	margin-top: 0.5rem;
+}
+
 #page {
 	background-color: #f1f1f1;
 }
@@ -250,16 +254,16 @@
 /* ___ Single Lesson Plan ___ */
 
 .lp-content {
-	min-height: 1000px;
-	padding-right: 300px;
-	position: relative;
+	display: flex;
+	justify-content: space-between;
 }
 
-.lp-content .lp-details {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 260px;
+.lp-content .lp-content-inner {
+	width: 64%;
+}
+
+.lp-content .lp-sidebar {
+	width: 30%;
 }
 
 .lp-content .lp-details .lp-links {
@@ -407,12 +411,6 @@
 	font-size: 65px;
 }
 
-.idea-type-lists .col .button{
-	font-size: 0.65rem;
-	padding: 0 .9rem;
-	height: 1.763rem;
-}
-
 /*--------------------------------------------------------------
 # Contributor Day Styles - Submit Workshop Form
 --------------------------------------------------------------*/
@@ -435,4 +433,19 @@ input.text {
 
 .custom-subheader{
 	margin-bottom: 0.4em;
+}
+
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+.no-padding {
+	padding: 0 !important; /* We want to overwrite all applied padding */
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
 }

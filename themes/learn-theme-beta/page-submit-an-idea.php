@@ -13,12 +13,14 @@ get_header(); ?>
 		while ( have_posts() ) :
 			the_post();
 			?>
-				<div class="bbp-breadcrumb">
-					<p>
-						<a href="https://wordpress.org/" class="bbp-breadcrumb-home">Learn Home</a>
-						<span class="bbp-breadcrumb-sep">»</span>
-						<span class="bbp-breadcrumb-current">Submit an Idea</span>
-					</p>
+				<div class="clearfix">
+					<div class="bbp-breadcrumb">
+						<p>
+							<a href="<?php echo home_url(); ?>" class="bbp-breadcrumb-home">Learn Home</a>
+							<span class="bbp-breadcrumb-sep">»</span>
+							<span class="bbp-breadcrumb-current">Submit an Idea</span>
+						</p>
+					</div>
 				</div>
 
 				<div id="submit-an-idea" class="type-page">
@@ -32,7 +34,7 @@ get_header(); ?>
 									<p>
 									Workshops are a collection of leesions and a great way to get people hands-on with WordPress.
 									</p>
-									<a class="button button-primary" href="#"><?php _e( 'Workshop Idea' ); ?></a>
+									<a class="button button-primary button-large" href="/submit-workshop-idea"><?php _e( 'Workshop Idea' ); ?></a>
 								</div>
 								
 								<div class="col">
@@ -40,7 +42,7 @@ get_header(); ?>
 									<p>
 									Lesson plans are designed to guide and inspire others to deliver great content.
 									</p>
-									<a class="button button-primary" href="#"><?php _e( 'Lesson Idea' ); ?></a>
+									<a class="button button-primary button-large" href="/submit-lesson-idea"><?php _e( 'Lesson Idea' ); ?></a>
 								</div>
 							</div>
 
