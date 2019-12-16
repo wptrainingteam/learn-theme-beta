@@ -15,7 +15,7 @@
 		<div class="lp-body">
 			<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>
 			<div class="lp-details">
-				<ul>
+				<ul class="lp-details-list <?php echo (wporg_post_type_is_lesson() ? "lp-details-list--split" : "") ?>">
 					<?php 
 						foreach( wporg_get_custom_taxonomies() as $detail ) {
 							if( !empty( $detail[ 'values' ] ) ) {

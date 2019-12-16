@@ -17,20 +17,22 @@ get_header();
 			?>
 		</div>
 
+		<?php
+			$tax_slugs = wporg_get_tax_slugs_from_workshop();
+			$the_query = wporg_get_lesson_plans_by_tax_slugs_query( $tax_slugs );
+
+			if ( $the_query->have_posts() ) {
+		?>	
+
 		<h2>Workshop Lessons</h2>
-		<div id="lesson-plans" class="lp-list">
-			<?php
-				$tax_slugs = wporg_get_tax_slugs_from_workshop();
-				$the_query = wporg_get_lesson_plans_by_tax_slugs_query( $tax_slugs );
-
-				if ( $the_query->have_posts() ) {
-
-					while ( $the_query->have_posts() ) {
-						$the_query->the_post();
-						get_template_part( 'template-parts/component', 'preview-card' );
-					}		
-				} 
-			?>
+		<div id="lesson-plans" class="lp-list">		
+		<?php
+				while ( $the_query->have_posts() ) {
+					$the_query->the_post();
+					get_template_part( 'template-parts/component', 'preview-card' );
+				}		
+			}
+		?>
 		</div>
 			
 		<?php endwhile; // End of the loop. ?>
