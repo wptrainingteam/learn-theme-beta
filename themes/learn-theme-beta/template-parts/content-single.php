@@ -7,49 +7,6 @@
  * @package WPBBP
  */
 
-
-/**
- * Get the taxonomy line item
- *
- * @return string 
- */
-function get_taxonomy_values( $tax_slug ){
-	$terms = get_the_terms( get_the_ID(), $tax_slug );
-	$mapped_terms = [];
-
-	if( empty( $terms ) ) return '';
-
-	foreach($terms as $term) {
-		array_push( $mapped_terms, $term->name );
-	}
-
-	return implode( ', ', $mapped_terms );
-}
-
-$lesson_details = [
-	[
-		'icon' => 'clock',
-		'label' => 'Length:',
-		'values' => get_taxonomy_values( 'duration' )
-	],
-	[
-		'icon' => 'admin-users',
-		'label' => 'Audience:',
-		'values' => get_taxonomy_values( 'audience' )
-	],
-	[
-		'icon' => 'dashboard',
-		'label' => 'Level:',
-		'values' => get_taxonomy_values( 'level' )
-	],
-	[
-		'icon' => 'welcome-learn-more',
-		'label' => 'Type of Instruction:',
-		'values' => get_taxonomy_values( 'instruction_type' )
-	]
-]
-
-
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -74,7 +31,7 @@ $lesson_details = [
 				<div class="lp-details">
 					<ul>
 						<?php 
-							foreach($lesson_details as $detail) {
+							foreach( wporg_get_custom_taxonomies() as $detail ) {
 								if( !empty( $detail[ 'values' ] ) ) {
 									include( locate_template( 'template-parts/component-taxonomy-item.php' ) ); 
 								}			

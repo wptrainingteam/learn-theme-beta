@@ -113,6 +113,57 @@ function wporg_get_cat_or_default_slug() {
 	return $cat;
 }
 
+
+/**
+ * Get the values associated to the page/post
+ *
+ * @return string 
+ */
+function get_taxonomy_values( $tax_slug ){
+	$terms = get_the_terms( get_the_ID(), $tax_slug );
+	$mapped_terms = [];
+
+	if( empty( $terms ) ) return '';
+
+	foreach($terms as $term) {
+		array_push( $mapped_terms, $term->name );
+	}
+
+	return implode( ', ', $mapped_terms );
+}
+
+
+/**
+ * Returns the taxonomies associated to a lesson or workshop
+ *
+ * @return string
+ */
+function wporg_get_custom_taxonomies() {
+	return [
+		[
+			'icon' => 'clock',
+			'label' => 'Length:',
+			'values' => get_taxonomy_values( 'duration' )
+		],
+		[
+			'icon' => 'admin-users',
+			'label' => 'Audience:',
+			'values' => get_taxonomy_values( 'audience' )
+		],
+		[
+			'icon' => 'dashboard',
+			'label' => 'Level:',
+			'values' => get_taxonomy_values( 'level' )
+		],
+		[
+			'icon' => 'welcome-learn-more',
+			'label' => 'Type of Instruction:',
+			'values' => get_taxonomy_values( 'instruction_type' )
+		]
+	];
+}
+
+
 /**
  * Submit CTA button 
  *
