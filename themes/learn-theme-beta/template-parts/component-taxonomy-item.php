@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying bbPress topics on the front page.
+ * Template part for displaying lesson/workshop details on the content-single part.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
