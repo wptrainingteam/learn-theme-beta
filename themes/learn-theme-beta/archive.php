@@ -62,7 +62,7 @@ get_header();
 			'total' => $category_posts->max_num_pages
 		) );
 	else :
-		get_template_part( 'template-parts/content', 'none' );
+		echo _e("We were unable to find any matches." , 'wporg-learn');
 
 	endif;
 ?>
