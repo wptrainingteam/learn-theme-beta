@@ -37,6 +37,8 @@ add_filter( 'the_content', array('WPORG_Learn\Lesson_Plan', 'replace_image_links
 
 add_action( 'init', array( 'WPORG_Learn\Workshop', 'workshop_post_type' ) );
 add_action( 'init', array( 'WPORG_Learn\Workshop', 'lesson_workshop_taxonomy' ) );
+add_action( 'init', array( 'WPORG_Learn\Workshop', 'workshop_topics_taxonomy' ) );
+
 
 
 /**
@@ -44,14 +46,23 @@ add_action( 'init', array( 'WPORG_Learn\Workshop', 'lesson_workshop_taxonomy' ) 
  */
 function add_category($vars) {
 	$vars[] = 'category';
+
+	// global $wp;
+
+	// var_dump($wp);
 	return $vars;
 }
 add_filter('query_vars', 'add_category');
  
 function string_url_rewrite() {
 	global $wp_rewrite;
-    add_rewrite_rule('^workshops/([^/]+)/?$', 'index.php?post_type=workshop&category=$matches[1]', 'top');
-    add_rewrite_rule('^lesson-plans/([^/]+)/?$', 'index.php?post_type=lesson-plan&category=$matches[1]', 'top');
+
+	add_rewrite_rule('^workshops/([^/]+)/?$', 'index.php?post_type=workshop&category=$matches[1]', 'top');
+	add_rewrite_rule('^workshops/([^/]+)/page/([0-9])/?$', 'index.php?post_type=workshop&category=$matches[1]&page=$matches[2]', 'top');
+
+	add_rewrite_rule('^lesson-plans/([^/]+)/?$', 'index.php?post_type=lesson-plan&category=$matches[1]', 'top');
+	add_rewrite_rule('^lesson-plans/([^/]+)/page/([0-9])/?$', 'index.php?post_type=lesson-plan&category=$matches[1]&page=$matches[2]', 'top');
+
     $wp_rewrite->flush_rules(true);
 }
 

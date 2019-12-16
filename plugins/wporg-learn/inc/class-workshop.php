@@ -41,7 +41,7 @@ class Workshop {
 			'description'           => __( 'WordPress.org Training Workshop', 'wporg_learn' ),
 			'labels'                => $labels,
 			'supports'              => array( 'title', 'editor', 'comments', 'revisions', 'custom-fields' ),
-			'taxonomies'            => array( 'lesson_group', 'category' ),
+			'taxonomies'            => array( 'lesson_group', 'topic', 'category' ),
 			'hierarchical'          => true,
 			'public'                => true,
 			'show_ui'               => true,
@@ -100,5 +100,46 @@ class Workshop {
 		);
 
 		register_taxonomy( 'lesson_group', array( 'workshop', 'lesson-plan' ), $args );
+	}
+
+		/**
+	 * Register Workshop Topics Taxonomy
+	*/
+	public static function workshop_topics_taxonomy() {
+		$labels = array(
+			'name'                       => _x( 'Topics', 'Topic Plans associated to workshop.', 'wporg_learn' ),
+			'singular_name'              => _x( 'Topic', 'Taxonomy Singular Name', 'wporg_learn' ),
+			'menu_name'                  => __( 'Topics', 'wporg_learn' ),
+			'all_items'                  => __( 'All topic', 'wporg_learn' ),
+			'parent_item'                => __( 'Parent topic', 'wporg_learn' ),
+			'parent_item_colon'          => __( 'Parent topic:', 'wporg_learn' ),
+			'new_item_name'              => __( 'New Topic Name', 'wporg_learn' ),
+			'add_new_item'               => __( 'Add Topic', 'wporg_learn' ),
+			'edit_item'                  => __( 'Edit Topic', 'wporg_learn' ),
+			'update_item'                => __( 'Update Topic', 'wporg_learn' ),
+			'view_item'                  => __( 'View Topic', 'wporg_learn' ),
+			'separate_items_with_commas' => __( 'Separate Topic with commas', 'wporg_learn' ),
+			'add_or_remove_items'        => __( 'Add or remove Topic', 'wporg_learn' ),
+			'choose_from_most_used'      => __( 'Choose from the most used', 'wporg_learn' ),
+			'popular_items'              => __( 'Popular Topics', 'wporg_learn' ),
+			'search_items'               => __( 'Search Topics', 'wporg_learn' ),
+			'not_found'                  => __( 'No Topic Found', 'wporg_learn' ),
+			'no_terms'                   => __( 'No Topic ', 'wporg_learn' ),
+			'items_list'                 => __( 'Topic list', 'wporg_learn' ),
+			'items_list_navigation'      => __( 'Topic list navigation', 'wporg_learn' ),
+		);
+
+		$args = array(
+			'labels'                     => $labels,
+			'hierarchical'               => false,
+			'public'                     => true,
+			'show_ui'                    => true,
+			'show_admin_column'          => true,
+			'show_in_nav_menus'          => true,
+			'show_tagcloud'              => false,
+			'show_in_rest'               => true,
+		);
+
+		register_taxonomy( 'topic', array( 'workshop' ), $args );
 	}
 }
