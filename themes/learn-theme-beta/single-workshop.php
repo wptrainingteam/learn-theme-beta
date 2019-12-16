@@ -9,6 +9,9 @@ get_header();
 ?>
 
 	<main id="main" class="site-main page-full-width" role="main">
+	
+		<?php echo get_template_part( 'template-parts/component', 'breadcrumbs' );  ?>
+
 		<div class="type-page github-markdown">
 		<?php
 		while ( have_posts() ) :
