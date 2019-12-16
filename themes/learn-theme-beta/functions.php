@@ -163,6 +163,24 @@ function wporg_get_custom_taxonomies() {
 	];
 }
 
+/**
+ * Returns whether the post type is a workshop
+ *
+ * @return bool
+ */
+function wporg_post_type_is_workshop() {
+	return get_post_type() == 'workshop';
+}
+
+/**
+ * Returns whether the post type is a lesson-plan
+ *
+ * @return bool
+ */
+function wporg_post_type_is_lesson() {
+	return get_post_type() == 'lesson-plan';
+}
+
 
 /**
  * Submit CTA button 
