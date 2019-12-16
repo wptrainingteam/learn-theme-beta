@@ -189,10 +189,28 @@ body:not(.trac):not(.home-page) #main {
 	width: 50%;
 }
 
+.lp-list .lp-item--full {
+	width: 100%;
+}
+
 .lp-list .lp-item-wrap {
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
 	padding: 20px;
+}
+
+.lp-list .lp-item-wrap--split .lp-body {
+	display: flex;
+	justify-content: space-between;
+}
+
+.lp-list .lp-item-wrap--split .lp-body > *:first-child {
+	width: 64%;
+}
+
+.lp-list .lp-item-wrap--split .lp-body > *:last-child {
+	padding-left: 5%;
+	width: 30%;
 }
 
 .lp-list .lp-item h2 {
