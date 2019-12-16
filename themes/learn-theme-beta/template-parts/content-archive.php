@@ -14,30 +14,15 @@
 		<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
 		<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>
 		<div class="lp-details">
-			<div class="left-items items">
-				<ul>
-					<li>
-						<span class="dashicons dashicons-clock"></span>
-						Length: <strong>1 Hour</strong>
-					</li>
-					<li>
-						<span class="dashicons dashicons-admin-users"></span>
-						Audience: <strong>Developers</strong>
-					</li>
-					<li>
-						<span class="dashicons dashicons-dashboard"></span>
-						Level: <strong>Beginning</strong>
-					</li>
-				</ul>
-			</div>
-			<div class="right-items items">
-				<ul>
-					<li>
-						<span class="dashicons dashicons-welcome-learn-more"></span>
-						Type of Instruction: <strong>Presentation, Demostration</strong>
-					</li>
-				</ul>
-			</div>
+			<ul>
+				<?php 
+					foreach( wporg_get_custom_taxonomies() as $detail ) {
+						if( !empty( $detail[ 'values' ] ) ) {
+							include( locate_template( 'template-parts/component-taxonomy-item.php' ) ); 
+						}			
+					}
+				?>
+			</ul>
 		</div>
 	</div>
 </div>
