@@ -36,8 +36,6 @@ h1, h2, h3 { color: #555; }
 }
 
  .home-page .shapes {
-	height: 460px;
-	margin: 0 -60px;
 	position: relative;
 }
 
@@ -46,9 +44,9 @@ h1, h2, h3 { color: #555; }
 	height: 64px;
 	left: -30px;
 	position: relative;
-	-webkit-transform: skew(15deg);
-	-ms-transform: skew(15deg);
-	transform: skew(15deg);
+	-webkit-transform: skew(5deg);
+	-ms-transform: skew(5deg);
+	transform: skew(5deg);
 	width: 64px;
 }
 
@@ -57,14 +55,14 @@ h1, h2, h3 { color: #555; }
 	display: block;
 	margin: 0 auto;
 	opacity: 0.9;
-	padding: 70px 90px;
-	position: absolute;
+	padding: 60px 40px;
+
 	text-align: center;
 	text-decoration: none;
-	-webkit-transform: skew(-15deg);
-	-ms-transform: skew(-15deg);
-	transform: skew(-15deg);
-	width: 50%;
+	-webkit-transform: skew(-5deg);
+	-ms-transform: skew(-5deg);
+	transform: skew(-5deg);
+
 }
 
 .home-page .shapes .parallelogram.lesson-plans {
@@ -76,6 +74,7 @@ h1, h2, h3 { color: #555; }
 
 .home-page .shapes .parallelogram.workshop-ideas {
 	background-color: #0f689c;
+	margin-top: -2rem;
 	right: 30px;
 	top: 50px;
 	z-index: 10;
@@ -94,9 +93,9 @@ h1, h2, h3 { color: #555; }
 	font-size: 16px;
 	font-weight: 300;
 	margin: 0;
-	-webkit-transform: skew(15deg);
-	-ms-transform: skew(15deg);
-	transform: skew(15deg);
+	-webkit-transform: skew(5deg);
+	-ms-transform: skew(5deg);
+	transform: skew(5deg);
 }
 
 .home-page .shapes u {
@@ -104,6 +103,39 @@ h1, h2, h3 { color: #555; }
 	font-size: 18px;
 	padding-top: 15px;
 }
+
+@media only screen and (min-width: 768px) {
+	.home-page .shapes {
+		height: 460px;
+		margin: 0 -60px;
+	}
+
+	.home-page .shapes .parallelogram.workshop-ideas {
+		margin-top: 0;
+	}
+	
+	.home-page .shapes .parallelogram {
+		width: 50%;
+		position: absolute;
+		padding: 70px 90px;
+		-webkit-transform: skew(-15deg);
+		-ms-transform: skew(-15deg);
+		transform: skew(-15deg);
+	}
+
+	.home-page .shapes .parallelogram::before {
+		-webkit-transform: skew(15deg);
+		-ms-transform: skew(15deg);
+		transform: skew(15deg);
+	}
+	
+	.home-page .shapes p {
+		-webkit-transform: skew(15deg);
+		-ms-transform: skew(15deg);
+		transform: skew(15deg);
+	}
+}
+
 
 .about-training {
 	padding-top: 0;
@@ -114,7 +146,7 @@ h1, h2, h3 { color: #555; }
 	max-width: 700px;
 	min-height: 220px;
 	overflow: hidden;
-	padding-left: 230px;
+
 	position: relative;
 }
 
@@ -123,18 +155,28 @@ h1, h2, h3 { color: #555; }
 	-webkit-background-size: 100% 100%;
 	background-size: 100%;
 	background-position: 0 66%;
+	margin: 0 auto;
 	height: 200px;
-	left: 0;
-	position: absolute;
-	top: 0;
 	width: 200px;
 }
 
+
+@media only screen and (min-width: 576px) {
+	.about-training .getin {
+		padding-left: 230px;
+	}
+
+	.about-training .getin .graphic {
+		left: 0;
+		position: absolute;
+		op: 0;
+	}	
+}
+
 .lesson-lists {
-	margin: 0 -15px;
+	margin: 0 -1rem;
 	overflow: hidden;
-	padding-top: 0;
-	padding-bottom: 2rem;
+	padding: 0 1rem 2rem;
 }
 
 .lesson-lists .lesson-item .viewmore::after {
@@ -145,10 +187,23 @@ h1, h2, h3 { color: #555; }
 	right: 0;
 }
 
-.lesson-lists .col {
-	float: left;
-	padding: 15px;
-	width: 33.3333%;
+@media only screen and (min-width: 576px) {
+	.lesson-lists .col {
+		float: left;
+		padding: 15px;
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.lesson-lists {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.lesson-lists .col {
+		width: 33.3333%;
+	}
 }
 
 .lesson-lists .lesson-item {
