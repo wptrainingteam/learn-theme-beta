@@ -196,7 +196,7 @@ body:not(.trac):not(.home-page) #main {
 .lp-list .lp-item-wrap {
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
-	padding: 20px;
+	padding: 1.75rem;
 }
 
 .lp-list .lp-item-wrap--split .lp-body {
@@ -225,6 +225,29 @@ body:not(.trac):not(.home-page) #main {
 .lp-list .lp-item .lp-excerpt {
 	font-size: 14px;
 	margin: 0 0 15px 0;
+	color: #6A6A6A;
+}
+
+.lp-list .lp-topics {
+	margin: 0 0 0 1rem;
+	padding-top: 0.25rem;
+	list-style: square;
+	font-size: 0.75rem;
+}
+
+.lp-list .lp-topics li {
+	padding-bottom: 0.5rem;
+}
+
+.lp-list .lp-topics li:last-child {
+	padding-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+	.lp-list .lp-topics--split li {
+		width: 50%;
+		float: left;
+	}
 }
 
 .lp-list .lp-details {

@@ -125,7 +125,7 @@ function get_taxonomy_values( $tax_slug ){
 
 	if( empty( $terms ) ) return '';
 
-	foreach($terms as $term) {
+	foreach( $terms as $term ) {
 		array_push( $mapped_terms, $term->name );
 	}
 

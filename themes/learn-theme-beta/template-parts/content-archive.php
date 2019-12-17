@@ -7,15 +7,34 @@
  * @package WPBBP
  */
 
+$topic_list = [];
+
+if( wporg_post_type_is_workshop() ) {
+	$topics = get_taxonomy_values( 'topic' );
+
+	if( !empty( $topics ) ) {
+		$topic_list = explode( ',', $topics );
+	}
+}
+
 ?>
 
-<div class="lp-item <?php echo (wporg_post_type_is_workshop() ? "lp-item--full" : "") ?>">
-	<div class="lp-item-wrap <?php echo (wporg_post_type_is_workshop() ? "lp-item-wrap--split" : "") ?>">
+<div class="lp-item <?php echo (wporg_post_type_is_workshop() ? 'lp-item--full' : '') ?>">
+	<div class="lp-item-wrap <?php echo (wporg_post_type_is_workshop() ? 'lp-item-wrap--split' : '') ?>">
 		<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
 		<div class="lp-body">
-			<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>
+			<div>
+				<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>	
+				<?php if( !empty( $topic_list ) ) : ?>
+					<ul class="lp-topics <?php echo count( $topic_list ) > 4 ? 'lp-topics--split' : '' ; ?>">
+					<?php foreach( $topic_list as $topic ) : ?>
+						<li><?php echo $topic; ?></li> 
+					<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
+			</div>
 			<div class="lp-details">
-				<ul class="lp-details-list <?php echo (wporg_post_type_is_lesson() ? "lp-details-list--split" : "") ?>">
+				<ul class="lp-details-list <?php echo wporg_post_type_is_lesson() ? 'lp-details-list--split' : '' ?>">
 					<?php 
 						foreach( wporg_get_custom_taxonomies() as $detail ) {
 							if( !empty( $detail[ 'values' ] ) ) {
