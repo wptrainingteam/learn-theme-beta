@@ -13,10 +13,10 @@
 
 	<div class="entry-content">	
 		<header class="entry-header">
-			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="entry-title h2">', '</h1>' ); ?>
 		</header><!-- .entry-header -->
 		<div class="lp-content">
-			<div class="lp-content-inner">
+			<div class="lp-content-inner github-markdown">
 				<?php
 				the_content();
 				wp_link_pages(
@@ -52,7 +52,7 @@
 					</ul>
 
 					<div class="lp-suggestion">
-						<h4><?php _e( 'Suggestions' ); ?></h4>
+						<h4 class="lp-suggestion_title"><?php _e( 'Suggestions' ); ?></h4>
 						<p><?php _e( 'Found a typo, grammar error,or outdated screenshot?' ); ?></p>
 						<p><?php _e( 'Used this lesson plan in your event and have some suggestions?' ); ?></p>
 						<a href="#"><?php _e( 'Let us know!' ); ?></a>

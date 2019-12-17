@@ -12,7 +12,7 @@ get_header();
 	
 		<?php echo get_template_part( 'template-parts/component', 'breadcrumbs' );  ?>
 
-		<div class="type-page github-markdown">
+		<div class="type-page">
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -27,7 +27,7 @@ get_header();
 			if ( $the_query->have_posts() ) {
 		?>	
 
-		<h2>Workshop Lessons</h2>
+		<h2 class="h3"><?php _e( 'Workshop Lessons', 'wporg-learn' ); ?></h2>
 		<div id="lesson-plans" class="lp-list">		
 		<?php
 				while ( $the_query->have_posts() ) {

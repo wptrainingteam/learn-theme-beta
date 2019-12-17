@@ -10,7 +10,7 @@ get_header(); ?>
 	<main id="main" class="site-main type-page" role="main">
 		<?php echo get_template_part( 'template-parts/component', 'breadcrumbs' );  ?>
 
-		<div id="main-content" class="github-markdown">
+		<div id="main-content">
 			<?php
 
 			while ( have_posts() ) :

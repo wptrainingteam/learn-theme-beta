@@ -21,7 +21,7 @@ if( wporg_post_type_is_workshop() ) {
 
 <div class="lp-item <?php echo (wporg_post_type_is_workshop() ? 'lp-item--full' : '') ?>">
 	<div class="lp-item-wrap <?php echo (wporg_post_type_is_workshop() ? 'lp-item-wrap--split' : '') ?>">
-		<h2><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
+		<h2 class="h4"><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
 		<div class="lp-body">
 			<div>
 				<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>	
