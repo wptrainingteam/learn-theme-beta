@@ -102,7 +102,7 @@ class Workshop {
 		register_taxonomy( 'lesson_group', array( 'workshop', 'lesson-plan' ), $args );
 	}
 
-		/**
+	/**
 	 * Register Workshop Topics Taxonomy
 	*/
 	public static function workshop_topics_taxonomy() {
@@ -142,4 +142,5 @@ class Workshop {
 
 		register_taxonomy( 'topic', array( 'workshop' ), $args );
 	}
+
 }
