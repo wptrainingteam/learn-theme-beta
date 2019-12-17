@@ -65,10 +65,12 @@ if( lesson_came_from_workshop( $referer ) ) {
     // Get information about the post title.
     $post_type = get_post_type_object( get_post_type( get_queried_object() ) );
 
-    array_push( $crumbs, [
-        'label' => ucfirst( $post_type->labels->name ),
-        'url' => home_url( $post_type->has_archive  )
-    ] );
+    if( wporg_post_type_is_lesson() ){
+        array_push( $crumbs, [
+            'label' => ucfirst( $post_type->labels->name ),
+            'url' => home_url( $post_type->has_archive  )
+        ] );
+    }
 }
 
 array_push( $crumbs, [
