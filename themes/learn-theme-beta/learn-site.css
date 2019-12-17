@@ -322,17 +322,6 @@ h1, h2, h3 { color: #555; }
 	font-size: 14px;
 }
 
-@media only screen and (min-width: 768px) {
-	.lp-list .lp-item .lp-excerpt {
-		padding-bottom: 0;
-		height: 85px;
-	}
-
-	.lp-list .lp-item .lp-excerpt--short {
-		height: 75px;
-	}
-}
-
 .lp-list .lp-topics {
 	margin: 0 0 0 1rem;
 	padding-top: 0.25rem;
@@ -365,15 +354,9 @@ h1, h2, h3 { color: #555; }
 	width: 50%;
 }
 
-@media only screen and (min-width: 768px) {
-	.lp-list .lp-details .lp-details-list--split {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		max-height: 125px;
-	}
-
+@media only screen and (min-width: 960px) {
 	.lp-list .lp-details .lp-details-list--split li {
+		float: left;
 		width: 50%;
 	}
 }
