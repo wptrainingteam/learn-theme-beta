@@ -75,10 +75,17 @@ add_action('init', 'string_url_rewrite', 10, 0);
  * @return int (Maybe) modified excerpt length.
  */
 function theme_slug_excerpt_length( $length ) {
+	global $post;
+
 	if ( is_admin() ) {
 			return $length;
 	}
-	return 28;
+
+	if( $post->post_type == 'workshop' ) {
+		return 35;
+	}
+
+	return 25;
 }
 add_filter( 'excerpt_length', 'theme_slug_excerpt_length', 999 );
 
