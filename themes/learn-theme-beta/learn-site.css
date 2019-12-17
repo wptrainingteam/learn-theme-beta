@@ -568,16 +568,27 @@ h1, h2, h3 { color: #555; }
 .idea-type-lists {
 	overflow: hidden;
 	padding-top: 0;
-	padding-bottom: 2rem;
+
 	margin: 0 auto;
 	max-width: 610px;
 }
 
 .idea-type-lists .col {
-	float: left;
 	padding: 0 35px;
-	width: 50%;
 	font-size: 13px;
+	margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 576px) {
+	.idea-type-lists {
+		padding-bottom: 2rem;
+	}
+	
+	.idea-type-lists .col {
+		float: left;
+		width: 50%;
+		margin-bottom: 0;
+	}
 }
 
 .idea-type-lists .col p{
