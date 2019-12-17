@@ -11,7 +11,7 @@
 
 <li>
     <span class="dashicons dashicons-<?php echo $detail[ 'icon' ] ?>"></span>
-    <?php _e( $detail[ 'label'] ); ?>
+    <span><?php _e( $detail[ 'label'] ); ?></span>
     <strong>
         <span><?php echo $detail[ 'values' ] ?></span>
     </strong>

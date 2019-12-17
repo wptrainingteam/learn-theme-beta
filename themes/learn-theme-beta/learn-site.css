@@ -285,7 +285,7 @@ body:not(.trac):not(.home-page) #main {
 .lp-list .lp-details ul li,
 .lp-content .lp-details ul li {
 	margin: 0;
-	padding: 10px 0 0 30px;
+	padding: 0 0 0.5rem 1.5rem;
 	position: relative;
 }
 
@@ -294,13 +294,12 @@ body:not(.trac):not(.home-page) #main {
 	color: #0073aa;
 	left: 0;
 	position: absolute;
-	top: 12px;
+	top: 0.15rem;
 }
 
 .lp-list .lp-details strong,
 .lp-content .lp-details strong {
-	display: inline-block;
-	vertical-align: middle;
+	padding-left: 0.25rem;
 }
 
 /* ___ Single Lesson Plan ___ */
@@ -500,4 +499,13 @@ input.text {
 	content: "";
 	display: table;
 	clear: both;
+}
+
+
+/*--------------------------------------------------------------
+# Overwrites
+--------------------------------------------------------------*/
+
+div.bbp-breadcrumb {
+	margin: 0.75rem 0 1.5rem;
 }
