@@ -68,6 +68,20 @@ function string_url_rewrite() {
 
 add_action('init', 'string_url_rewrite', 10, 0);
 
+/**
+ * Filter the excerpt length to 50 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function theme_slug_excerpt_length( $length ) {
+	if ( is_admin() ) {
+			return $length;
+	}
+	return 28;
+}
+add_filter( 'excerpt_length', 'theme_slug_excerpt_length', 999 );
+
 add_action( 'wp_head', function(){
 	?>
 	<style>

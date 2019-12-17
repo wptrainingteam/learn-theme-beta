@@ -220,9 +220,14 @@ h1, h2, h3 { color: #555; }
 }
 
 .lp-list .lp-item .lp-excerpt {
-	font-size: 14px;
-	margin: 0 0 15px 0;
+	margin: 0;
+	height: 100px;
 	color: #6A6A6A;
+	font-size: 14px;
+}
+
+.lp-list .lp-item .lp-excerpt--short {
+	height: 75px;
 }
 
 .lp-list .lp-topics {

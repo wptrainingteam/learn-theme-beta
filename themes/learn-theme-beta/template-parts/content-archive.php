@@ -24,7 +24,7 @@ if( wporg_post_type_is_workshop() ) {
 		<h2 class="h4"><a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a></h2>
 		<div class="lp-body">
 			<div>
-				<p class="lp-excerpt"><?php echo esc_attr( get_the_excerpt() ); ?></p>	
+				<p class="lp-excerpt <?php echo (wporg_post_type_is_workshop() ? 'lp-excerpt--short' : '') ?>"><?php echo esc_attr( get_the_excerpt() ); ?></p>	
 				<?php if( !empty( $topic_list ) ) : ?>
 					<ul class="lp-topics <?php echo count( $topic_list ) > 4 ? 'lp-topics--split' : '' ; ?>">
 					<?php foreach( $topic_list as $topic ) : ?>
