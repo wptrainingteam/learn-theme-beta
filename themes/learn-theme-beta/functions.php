@@ -52,6 +52,7 @@ function wporg_get_tax_slugs_from_workshop() {
 /**
  * Get the lesson plans associated to a taxonomy
  *
+ * @param string $slugs Comma separated list of taxonomy terms
  * @package WPBBP
  */
 function wporg_get_lesson_plans_by_tax_slugs_query( $slugs ) {
@@ -65,7 +66,6 @@ function wporg_get_lesson_plans_by_tax_slugs_query( $slugs ) {
 			),
 		),
 	);
-
 	
 	// Get all the lesson plans associated to 
 	return new WP_Query( $args );
@@ -117,10 +117,12 @@ function wporg_get_cat_or_default_slug() {
 /**
  * Get the values associated to the page/post
  *
+ * @param string $id Id of the post
+ * @param string $tax_slug The slug for the custom taxonomy
  * @return string 
  */
-function get_taxonomy_values( $tax_slug ){
-	$terms = get_the_terms( get_the_ID(), $tax_slug );
+function get_taxonomy_values( $id, $tax_slug ){
+	$terms = get_the_terms( $id, $tax_slug );
 	$mapped_terms = [];
 
 	if( empty( $terms ) ) return '';
@@ -136,29 +138,30 @@ function get_taxonomy_values( $tax_slug ){
 /**
  * Returns the taxonomies associated to a lesson or workshop
  *
+ * @param string $id Id of the post
  * @return string
  */
-function wporg_get_custom_taxonomies() {
+function wporg_get_custom_taxonomies( $id ) {
 	return [
 		[
 			'icon' => 'clock',
 			'label' => 'Length:',
-			'values' => get_taxonomy_values( 'duration' )
+			'values' => get_taxonomy_values( $id, 'duration' )
 		],
 		[
 			'icon' => 'admin-users',
 			'label' => 'Audience:',
-			'values' => get_taxonomy_values( 'audience' )
+			'values' => get_taxonomy_values( $id, 'audience' )
 		],
 		[
 			'icon' => 'dashboard',
 			'label' => 'Level:',
-			'values' => get_taxonomy_values( 'level' )
+			'values' => get_taxonomy_values( $id, 'level' )
 		],
 		[
 			'icon' => 'welcome-learn-more',
 			'label' => 'Type of Instruction:',
-			'values' => get_taxonomy_values( 'instruction_type' )
+			'values' => get_taxonomy_values( $id, 'instruction_type' )
 		]
 	];
 }

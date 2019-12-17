@@ -10,7 +10,7 @@
 $topic_list = [];
 
 if( wporg_post_type_is_workshop() ) {
-	$topics = get_taxonomy_values( 'topic' );
+	$topics = get_taxonomy_values( get_the_ID(), 'topic' );
 
 	if( !empty( $topics ) ) {
 		$topic_list = explode( ',', $topics );
@@ -36,7 +36,7 @@ if( wporg_post_type_is_workshop() ) {
 			<div class="lp-details">
 				<ul class="lp-details-list <?php echo wporg_post_type_is_lesson() ? 'lp-details-list--split' : '' ?>">
 					<?php 
-						foreach( wporg_get_custom_taxonomies() as $detail ) {
+						foreach( wporg_get_custom_taxonomies( get_the_ID() ) as $detail ) {
 							if( !empty( $detail[ 'values' ] ) ) {
 								include( locate_template( 'template-parts/component-taxonomy-item.php' ) ); 
 							}			

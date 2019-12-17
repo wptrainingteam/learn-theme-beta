@@ -31,7 +31,7 @@
 				<div class="lp-details">
 					<ul>
 						<?php 
-							foreach( wporg_get_custom_taxonomies() as $detail ) {
+							foreach( wporg_get_custom_taxonomies( get_the_ID() ) as $detail ) {
 								if( !empty( $detail[ 'values' ] ) ) {
 									include( locate_template( 'template-parts/component-taxonomy-item.php' ) ); 
 								}			
