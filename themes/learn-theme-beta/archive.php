@@ -69,5 +69,7 @@ get_header();
 
 </main><!-- #main -->
 
+<?php wporg_submit_idea_cta(); ?>
+
 <?php
 get_footer();
