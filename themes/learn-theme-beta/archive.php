@@ -68,7 +68,9 @@ get_header();
 
 </main><!-- #main -->
 
-<?php wporg_submit_idea_cta(); ?>
+<?php if ( $category_posts->have_posts() ) : ?>
+	<?php wporg_submit_idea_cta(); ?>
+<?php endif; ?>
 
 <?php
 get_footer();
