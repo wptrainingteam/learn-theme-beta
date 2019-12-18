@@ -24,48 +24,48 @@ function get_paging_url() {
 	return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . wporg_get_default_cat()->slug . '/page' , $url );
 }
 
+$post_type = get_post_type();
+$paged = ( get_query_var( 'page' ) ) ? absint( get_query_var( 'page' ) ) : 1;
+
+$args = array(
+	'posts_per_page' => get_option( 'posts_per_page' ),
+	'post_type' => $post_type,
+	'category_name' => wporg_get_cat_or_default_slug(),
+	'paged' => $paged,
+);
+
+$category_posts = new \WP_Query( $args );
 
 get_header();
 ?>
+
 <?php get_template_part( 'template-parts/component', 'directory-nav' ); ?>
 
 <main id="main" class="site-main page-full-width" role="main">
-<?php 
-	get_template_part( 'template-parts/component', 'filters' ); 
+	<?php get_template_part( 'template-parts/component', 'filters' ); ?>
 
-	$post_type = get_post_type();
-	$paged = ( get_query_var( 'page' ) ) ? absint( get_query_var( 'page' ) ) : 1;
+	<?php if ( $category_posts->have_posts() ) : ?>
 
-	$args = array(
-		'posts_per_page' => get_option( 'posts_per_page' ),
-		'post_type' => $post_type,
-		'category_name' => wporg_get_cat_or_default_slug(),
-		'paged' => $paged,
-	);
+		<div id="lesson-plans" class="lp-list">
+		
+			<?php while ( $category_posts->have_posts() ) :
+					$category_posts->the_post();
+					get_template_part( 'template-parts/content', 'archive' );
+				endwhile; 
+			?>
+			
+		</div>
+		
+		<?php echo paginate_links( array(
+				'base' => get_paging_url(),
+				'format' => '?page=%#%',
+				'current' => max( 1, get_query_var('page') ),
+				'total' => $category_posts->max_num_pages
+			) ); ?>
 
-	$category_posts = new \WP_Query( $args );
-
-	if ( $category_posts->have_posts() ) :
-		echo '<div id="lesson-plans" class="lp-list">';
-	
-		while ( $category_posts->have_posts() ) :
-			$category_posts->the_post();
-			get_template_part( 'template-parts/content', 'archive' );
-		endwhile;
-
-		echo '</div>';
-
-		echo paginate_links( array(
-			'base' => get_paging_url(),
-			'format' => '?page=%#%',
-			'current' => max( 1, get_query_var('page') ),
-			'total' => $category_posts->max_num_pages
-		) );
-	else :
-		echo _e("We were unable to find any matches." , 'wporg-learn');
-
-	endif;
-?>
+	<?php else : ?>
+		<div class="lp-empty"><?php echo _e("We were unable to find any matches." , 'wporg-learn'); ?></div>
+	<?php endif; ?>
 
 </main><!-- #main -->
 
