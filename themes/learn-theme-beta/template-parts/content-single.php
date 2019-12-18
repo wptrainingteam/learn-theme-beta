@@ -66,7 +66,7 @@ $download_url = wporg_get_download_slides_url();
 						<h4 class="lp-suggestion_title"><?php _e( 'Suggestions' ); ?></h4>
 						<p><?php _e( 'Found a typo, grammar error,or outdated screenshot?' ); ?></p>
 						<p><?php _e( 'Used this lesson plan in your event and have some suggestions?' ); ?></p>
-						<a href="#"><?php _e( 'Let us know!' ); ?></a>
+						<a href="<?php echo esc_url( site_url( '/submit-an-idea/' ) ); ?>"><?php _e( 'Let us know!' ); ?></a>
 					</div>
 				</div>
 			</aside>
