@@ -7,6 +7,10 @@
  * @package WPBBP
  */
 
+
+$slides_url = wporg_get_slides_url();
+$download_url = wporg_get_download_slides_url();
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -40,15 +44,22 @@
 					</ul>
 
 					<ul class="lp-links">
+
+					<?php if( $slides_url ) : ?>
 						<li>
-							<a href="#" target="_blank"><span class="dashicons dashicons-admin-page"></span> <?php _e( 'View Lesson Plan Slides' ); ?></a>
+							<a href="<?php echo $slides_url; ?>" target="_blank"><span class="dashicons dashicons-admin-page"></span> <?php _e( 'View Lesson Plan Slides' ); ?></a>
 						</li>
+					<?php endif; ?>
+
+					<?php if( $download_url ) : ?>
 						<li>
-							<a href="#" target="_blank"><span class="dashicons dashicons-download"></span> <?php _e( 'Download Lesson Slides' ); ?></a>
+							<a href="<?php echo $download_url; ?>"><span class="dashicons dashicons-download"></span> <?php _e( 'Download Lesson Slides' ); ?></a>
 						</li>
-						<li>
+					<?php endif; ?>
+			
+						<!-- <li>
 							<a href="#" target="_blank"><span class="dashicons dashicons-admin-post"></span> <?php _e( 'Print Lesson Plan' ); ?></a>
-						</li>
+						</li> -->
 					</ul>
 
 					<div class="lp-suggestion">

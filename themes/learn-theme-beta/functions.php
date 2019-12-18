@@ -184,6 +184,29 @@ function wporg_post_type_is_lesson() {
 	return get_post_type() == 'lesson-plan';
 }
 
+/**
+ * Returns the custom field view_lesson_plan_slides_url, if it doesn't exists returns false
+ *
+ * @return string|bool
+ */
+function wporg_get_slides_url() {
+	$meta = get_post_meta( get_the_ID(), 'view_lesson_plan_slides_url' );
+
+	// Return the string, not the array
+	return reset( $meta );
+}
+
+/**
+ * Returns the custom field download_lesson_plan_slides_url, if it doesn't exists returns false
+ *
+ * @return string|bool
+ */
+function wporg_get_download_slides_url() {
+	$meta = get_post_meta( get_the_ID(), 'download_lesson_plan_slides_url' );
+
+	// Return the string, not the array
+	return reset( $meta );
+}
 
 /**
  * Submit CTA button 
