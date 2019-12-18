@@ -10,9 +10,9 @@
 ?>
 
 <li>
-    <span class="dashicons dashicons-<?php echo $detail[ 'icon' ] ?>"></span>
-    <span><?php _e( $detail[ 'label'] ); ?></span>
+    <span class="dashicons dashicons-<?php echo $detail[ 'icon' ]; ?>"></span>
+    <span><?php echo $detail[ 'label']; ?></span>
     <strong>
-        <span><?php echo $detail[ 'values' ] ?></span>
+        <span><?php echo $detail[ 'values' ]; ?></span>
     </strong>
 </li>

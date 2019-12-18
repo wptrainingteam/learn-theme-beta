@@ -43,7 +43,7 @@ add_action('init', 'string_url_rewrite', 10, 0);
 add_filter( 'excerpt_length', 'theme_slug_excerpt_length', 999 );
 
 /**
- * Add a query parameter and rewrites for the main lesson-plan/workshop search function
+ * Add a query parameter for use with the lesson-plan/workshop search directory
  * @param array $vars
  * @return array
  */
@@ -58,13 +58,13 @@ function add_category( $vars ) {
 function string_url_rewrite() {
 	global $wp_rewrite;
 
-	add_rewrite_rule('^workshops/([^/]+)/?$', 'index.php?post_type=workshop&category=$matches[1]', 'top');
-	add_rewrite_rule('^workshops/([^/]+)/page/([0-9])/?$', 'index.php?post_type=workshop&category=$matches[1]&page=$matches[2]', 'top');
+	add_rewrite_rule( '^workshops/([^/]+)/?$' , 'index.php?post_type=workshop&category=$matches[1]', 'top' );
+	add_rewrite_rule( '^workshops/([^/]+)/page/([0-9])/?$' , 'index.php?post_type=workshop&category=$matches[1]&page=$matches[2]', 'top' );
 
-	add_rewrite_rule('^lesson-plans/([^/]+)/?$', 'index.php?post_type=lesson-plan&category=$matches[1]', 'top');
-	add_rewrite_rule('^lesson-plans/([^/]+)/page/([0-9])/?$', 'index.php?post_type=lesson-plan&category=$matches[1]&page=$matches[2]', 'top');
+	add_rewrite_rule( '^lesson-plans/([^/]+)/?$' , 'index.php?post_type=lesson-plan&category=$matches[1]', 'top' );
+	add_rewrite_rule( '^lesson-plans/([^/]+)/page/([0-9])/?$' , 'index.php?post_type=lesson-plan&category=$matches[1]&page=$matches[2]', 'top' );
 
-    $wp_rewrite->flush_rules(true);
+    $wp_rewrite->flush_rules( true );
 }
 
 /**

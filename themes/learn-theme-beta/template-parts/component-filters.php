@@ -32,7 +32,7 @@ function is_selected( $str ) {
  * @return string
  */
 function get_filter_class( $str ) {
-    return ( is_selected( $str )? 'current' : '');
+    return ( is_selected( $str ) ? 'current' : '' );
 }
 
 ?>
@@ -40,8 +40,8 @@ function get_filter_class( $str ) {
 
 <div class="wp-filter">
     <ul class="filter-links">
-    <? foreach(wporg_get_filter_categories() as $cat) : ?>
-        <li><a href="<?php echo get_cat_url( $cat->slug ); ?>" class="<?php echo get_filter_class( $cat->slug ) ?>"><?php _ex( $cat->name, 'themes', 'wporg-themes' ); ?></a></li>
+    <? foreach( wporg_get_filter_categories() as $cat ) : ?>
+        <li><a href="<?php echo get_cat_url( $cat->slug ); ?>" class="<?php echo get_filter_class( $cat->slug ) ?>"><?php _ex( $cat->name, 'themes', 'wporg-learn' ); ?></a></li>
     <? endforeach; ?>
     </ul>
 

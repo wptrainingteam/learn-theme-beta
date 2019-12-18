@@ -24,12 +24,11 @@ function get_paging_url() {
 	return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . wporg_get_default_cat()->slug . '/page' , $url );
 }
 
-$post_type = get_post_type();
 $paged = ( get_query_var( 'page' ) ) ? absint( get_query_var( 'page' ) ) : 1;
 
 $args = array(
 	'posts_per_page' => get_option( 'posts_per_page' ),
-	'post_type' => $post_type,
+	'post_type' => get_post_type(),
 	'category_name' => wporg_get_cat_or_default_slug(),
 	'paged' => $paged,
 );
