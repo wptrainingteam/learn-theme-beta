@@ -192,10 +192,7 @@ function wporg_post_type_is_lesson() {
  * @return string|bool
  */
 function wporg_get_slides_url() {
-	$meta = get_post_meta( get_the_ID(), 'view_lesson_plan_slides_url' );
-
-	// Return the string, not the array
-	return reset( $meta );
+	return get_post_meta( get_the_ID(), 'view_lesson_plan_slides_url', true );
 }
 
 /**
@@ -204,10 +201,7 @@ function wporg_get_slides_url() {
  * @return string|bool
  */
 function wporg_get_download_slides_url() {
-	$meta = get_post_meta( get_the_ID(), 'download_lesson_plan_slides_url' );
-
-	// Return the string, not the array
-	return reset( $meta );
+return get_post_meta( get_the_ID(), 'download_lesson_plan_slides_url', true );
 }
 
 /**
