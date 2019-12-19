@@ -28,7 +28,7 @@ class WPorg_Handbook_Walker extends Walker_Page {
 	 * @param int   $max_depth The maximum hierarchical depth.
 	 * @return string The hierarchical item output.
 	 */
-	public function walk( $elements, $max_depth, ...$args ) {
+	public function walk( $elements, $max_depth ) {
 		$args   = array_slice( func_get_args(), 2 );
 		$output = '';
 
