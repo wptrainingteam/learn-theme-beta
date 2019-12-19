@@ -38,15 +38,7 @@ function wporg_get_global_header() {
  * @package WPBBP
  */
 function wporg_get_tax_slugs_from_workshop() {
-	$id = get_the_ID();
-	$taxes = wp_get_post_terms( $id, 'lesson_group' );
-	$tax_slugs = [];
-
-	foreach ( $taxes as $tax ) {
-		array_push( $tax_slugs, $tax->slug );
-	}
-
-	return $tax_slugs;
+	return wp_get_post_terms( get_the_ID(), 'lesson_group',  array( 'fields' => 'slugs' ) );
 }
 
 /**
@@ -124,16 +116,8 @@ function wporg_get_cat_or_default_slug() {
  * @return string 
  */
 function get_taxonomy_values( $id, $tax_slug ){
-	$terms = get_the_terms( $id, $tax_slug );
-	$mapped_terms = [];
-
-	if( empty( $terms ) ) return '';
-
-	foreach( $terms as $term ) {
-		array_push( $mapped_terms, $term->name );
-	}
-
-	return implode( ', ', $mapped_terms );
+	$terms = wp_get_post_terms( $id, $tax_slug, array( 'fields' => 'names' )  );
+	return implode( ', ', $terms );
 }
 
 
