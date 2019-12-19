@@ -15,17 +15,15 @@ namespace WordPressdotorg\Theme;
  * 
  * @return string
  */
-
 function get_paging_url() {
-	$big = 999999999;
+	$non_existing_page_num = 999999999;
 
-	$url = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
+	// We will send a dummy number into the get_pagenum_link to get a url and replace that with a placeholder
+	$url_with_placeholder = str_replace( $non_existing_page_num, '%#%', esc_url( get_pagenum_link( $non_existing_page_num ) ) );
 	$default_cat = wporg_get_default_cat();
-
-	if( $default_cat ) {
-		// Because of routing, we want to inject the first category if they are in the root.
-		return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . $default_cat->slug . '/page' , $url );
-	}
+	
+	// Because of routing, we want to inject the first category if they are in the root.
+	return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . $default_cat->slug . '/page' , $url_with_placeholder );
 }
 
 $paged = ( get_query_var( 'page' ) ) ? absint( get_query_var( 'page' ) ) : 1;
