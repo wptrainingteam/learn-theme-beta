@@ -35,16 +35,19 @@ function get_filter_class( $str ) {
     return ( is_selected( $str ) ? 'current' : '' );
 }
 
+$categories = wporg_get_filter_categories();
+
 ?>
 
+<?php if( $categories ) : ?>
+    <div class="wp-filter">
+        <ul class="filter-links">
+        <? foreach( $categories as $cat ) : ?>
+            <li><a href="<?php echo get_cat_url( $cat->slug ); ?>" class="<?php echo get_filter_class( $cat->slug ) ?>"><?php _ex( $cat->name, 'themes', 'wporg-learn' ); ?></a></li>
+        <? endforeach; ?>
+        </ul>
 
-<div class="wp-filter">
-    <ul class="filter-links">
-    <? foreach( wporg_get_filter_categories() as $cat ) : ?>
-        <li><a href="<?php echo get_cat_url( $cat->slug ); ?>" class="<?php echo get_filter_class( $cat->slug ) ?>"><?php _ex( $cat->name, 'themes', 'wporg-learn' ); ?></a></li>
-    <? endforeach; ?>
-    </ul>
-
-</div><!-- .wp-filter -->
+    </div>
+<?php endif; ?>
 
 
