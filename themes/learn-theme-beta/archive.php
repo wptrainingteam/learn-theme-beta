@@ -20,8 +20,12 @@ function get_paging_url() {
 	$big = 999999999;
 
 	$url = str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) );
-	// Because of routing, we want to inject the first category if they are in the root.
-	return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . wporg_get_default_cat()->slug . '/page' , $url );
+	$default_cat = wporg_get_default_cat();
+
+	if( $default_cat ) {
+		// Because of routing, we want to inject the first category if they are in the root.
+		return preg_replace( '/(workshops|lesson-plans)\/page/', '$1/' . $default_cat->slug . '/page' , $url );
+	}
 }
 
 $paged = ( get_query_var( 'page' ) ) ? absint( get_query_var( 'page' ) ) : 1;
