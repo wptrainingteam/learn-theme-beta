@@ -10,26 +10,16 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if ( is_page_template( 'page-forums-sidebar.php' ) ) : ?>
-		<?php bbp_breadcrumb(); ?>
-	<?php endif; ?>
-
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
-
 	<div class="entry-content">
-		<section>
-			<div class="container">
-				<?php
-				the_content();
+		<section class="no-padding">
+			<?php
+			the_content();
 
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wporg-forums' ),
-					'after'  => '</div>',
-				) );
-				?>
-			</div>
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'wporg-forums' ),
+				'after'  => '</div>',
+			) );
+			?>
 		</section>
 	</div><!-- .entry-content -->
 
