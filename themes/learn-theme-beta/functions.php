@@ -92,10 +92,12 @@ function wporg_get_filter_categories() {
 /**
  * Returns the default filter category key
  *
- * @return string
+ * @return string|null
  */
 function wporg_get_default_cat() {
-	return wporg_get_filter_categories()[ 0 ];
+	$cats = wporg_get_filter_categories();
+
+	return reset( $cats );
 }
 
 /**
