@@ -42,7 +42,7 @@ public static function lesson_plan_post_type() {
 		'description'           => __( 'WordPress.org Training Lesson Plan', 'wporg_learn' ),
 		'labels'                => $labels,
 		'supports'              => array( 'title', 'editor', 'comments', 'revisions', 'custom-fields' ),
-		'taxonomies'            => array( 'duration', 'level', 'audience', 'instruction_type' ),
+		'taxonomies'            => array( 'duration', 'level', 'audience', 'instruction_type', 'category' ),
 		'hierarchical'          => true,
 		'public'                => true,
 		'show_ui'               => true,
@@ -98,7 +98,7 @@ public static function lesson_duration_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'duration', array( 'lesson-plan' ), $args );
+	register_taxonomy( 'duration', array( 'lesson-plan', 'workshop' ), $args );
 
 }
 
@@ -139,7 +139,7 @@ public static function lesson_level_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'level', array( 'lesson-plan' ), $args );
+	register_taxonomy( 'level', array( 'lesson-plan', 'workshop' ), $args );
 
 }
 
@@ -180,7 +180,7 @@ public static function lesson_audience_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'audience', array( 'lesson-plan' ), $args );
+	register_taxonomy( 'audience', array( 'lesson-plan', 'workshop' ), $args );
 
 }
 
@@ -221,7 +221,7 @@ public static function lesson_instruction_type_taxonomy() {
 		'show_tagcloud'              => false,
 		'show_in_rest'               => true,
 	);
-	register_taxonomy( 'instruction_type', array( 'lesson-plan' ), $args );
+	register_taxonomy( 'instruction_type', array( 'lesson-plan', 'workshop' ), $args );
 
 }
 

@@ -4,6 +4,10 @@
 * Author: Chetan Prajapati (chetan200891)
 */
 
+body:not(.trac):not(.home-page) #main {
+	margin-top: 0.5rem;
+}
+
 #page {
 	background-color: #f1f1f1;
 }
@@ -11,6 +15,8 @@
 .site-branding h1 {
 	color: #fff;
 }
+
+h1, h2, h3 { color: #555; }
 
 /* ___ Homepage ___ */
 
@@ -30,8 +36,6 @@
 }
 
  .home-page .shapes {
-	height: 460px;
-	margin: 0 -60px;
 	position: relative;
 }
 
@@ -40,9 +44,9 @@
 	height: 64px;
 	left: -30px;
 	position: relative;
-	-webkit-transform: skew(15deg);
-	-ms-transform: skew(15deg);
-	transform: skew(15deg);
+	-webkit-transform: skew(5deg);
+	-ms-transform: skew(5deg);
+	transform: skew(5deg);
 	width: 64px;
 }
 
@@ -51,14 +55,14 @@
 	display: block;
 	margin: 0 auto;
 	opacity: 0.9;
-	padding: 70px 90px;
-	position: absolute;
+	padding: 60px 40px;
+
 	text-align: center;
 	text-decoration: none;
-	-webkit-transform: skew(-15deg);
-	-ms-transform: skew(-15deg);
-	transform: skew(-15deg);
-	width: 50%;
+	-webkit-transform: skew(-5deg);
+	-ms-transform: skew(-5deg);
+	transform: skew(-5deg);
+
 }
 
 .home-page .shapes .parallelogram.lesson-plans {
@@ -70,6 +74,7 @@
 
 .home-page .shapes .parallelogram.workshop-ideas {
 	background-color: #0f689c;
+	margin-top: -2rem;
 	right: 30px;
 	top: 50px;
 	z-index: 10;
@@ -88,9 +93,9 @@
 	font-size: 16px;
 	font-weight: 300;
 	margin: 0;
-	-webkit-transform: skew(15deg);
-	-ms-transform: skew(15deg);
-	transform: skew(15deg);
+	-webkit-transform: skew(5deg);
+	-ms-transform: skew(5deg);
+	transform: skew(5deg);
 }
 
 .home-page .shapes u {
@@ -98,6 +103,39 @@
 	font-size: 18px;
 	padding-top: 15px;
 }
+
+@media only screen and (min-width: 768px) {
+	.home-page .shapes {
+		height: 460px;
+		margin: 0 -60px;
+	}
+
+	.home-page .shapes .parallelogram.workshop-ideas {
+		margin-top: 0;
+	}
+	
+	.home-page .shapes .parallelogram {
+		width: 50%;
+		position: absolute;
+		padding: 70px 90px;
+		-webkit-transform: skew(-15deg);
+		-ms-transform: skew(-15deg);
+		transform: skew(-15deg);
+	}
+
+	.home-page .shapes .parallelogram::before {
+		-webkit-transform: skew(15deg);
+		-ms-transform: skew(15deg);
+		transform: skew(15deg);
+	}
+	
+	.home-page .shapes p {
+		-webkit-transform: skew(15deg);
+		-ms-transform: skew(15deg);
+		transform: skew(15deg);
+	}
+}
+
 
 .about-training {
 	padding-top: 0;
@@ -108,7 +146,7 @@
 	max-width: 700px;
 	min-height: 220px;
 	overflow: hidden;
-	padding-left: 230px;
+
 	position: relative;
 }
 
@@ -117,18 +155,28 @@
 	-webkit-background-size: 100% 100%;
 	background-size: 100%;
 	background-position: 0 66%;
+	margin: 0 auto;
 	height: 200px;
-	left: 0;
-	position: absolute;
-	top: 0;
 	width: 200px;
 }
 
+
+@media only screen and (min-width: 576px) {
+	.about-training .getin {
+		padding-left: 230px;
+	}
+
+	.about-training .getin .graphic {
+		left: 0;
+		position: absolute;
+		op: 0;
+	}	
+}
+
 .lesson-lists {
-	margin: 0 -15px;
+	margin: 0 -1rem;
 	overflow: hidden;
-	padding-top: 0;
-	padding-bottom: 2rem;
+	padding: 0 1rem 2rem;
 }
 
 .lesson-lists .lesson-item .viewmore::after {
@@ -139,10 +187,23 @@
 	right: 0;
 }
 
-.lesson-lists .col {
-	float: left;
-	padding: 15px;
-	width: 33.3333%;
+@media only screen and (min-width: 576px) {
+	.lesson-lists .col {
+		float: left;
+		padding: 15px;
+		width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.lesson-lists {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.lesson-lists .col {
+		width: 33.3333%;
+	}
 }
 
 .lesson-lists .lesson-item {
@@ -179,21 +240,83 @@
 .lp-list .lp-item {
 	display: inline-block;
 	margin-bottom: 30px;
-	margin-right: -4px;
-	padding: 0 15px;
+	padding: 0 1rem;
 	vertical-align: top;
-	width: 50%;
+
 }
 
-.lp-list .lp-item-wrap {
+.lp-list .lp-item-wrap, .card {
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
-	padding: 20px;
+	padding: 1.75rem;
 }
 
-.lp-list .lp-item h2 {
-	font-size: 20px;
-	margin: 0 0 15px 0;
+@media only screen and (min-width: 768px) {
+	.lp-list .lp-item {
+		width: 50%;
+		margin-right: -4px;
+	}
+
+	.lp-list .lp-item-wrap  {
+		min-height: 300px;
+	}
+}
+
+.lp-list .lp-item--full {
+	width: 100%;
+}
+
+.card {
+	margin-bottom: 30px;
+}
+
+.lp-list .lp-item-wrap--split .lp-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.lp-list .lp-item-wrap--split .lp-body > *:first-child {
+	order: 2;
+}
+
+.lp-list .lp-item-wrap--split .lp-body > *:last-child {
+	order: 1;
+}
+
+.lp-list .lp-item-wrap--split .lp-details-list {
+	margin-bottom: 0.75rem;
+}
+
+.lp-list .lp-item-wrap--split .lp-details-list li {
+	display: inline-block;
+	padding-right: 1rem;
+}
+
+@media only screen and (min-width: 576px) {
+	.lp-list .lp-item-wrap--split .lp-body {
+		flex-direction: row;
+	}
+
+	.lp-list .lp-item-wrap--split .lp-body > *:first-child {
+		width: 64%;
+		order: 1;
+	}
+	
+	.lp-list .lp-item-wrap--split .lp-body > *:last-child {
+		padding-left: 5%;
+		width: 30%;
+		order: 2;
+	}
+
+	.lp-list .lp-item-wrap--split .lp-details-list {
+		margin-bottom: 0;
+	}
+
+	.lp-list .lp-item-wrap--split .lp-details-list li {
+		display: block;
+		padding-right: 0;
+	}
 }
 
 .lp-list .lp-item h2 a {
@@ -201,11 +324,35 @@
 }
 
 .lp-list .lp-item .lp-excerpt {
+	margin: 0;
+	padding-bottom: 1rem;
+	color: #6A6A6A;
 	font-size: 14px;
-	margin: 0 0 15px 0;
 }
 
-.lp-list .lp-details {
+.lp-list .lp-topics {
+	margin: 0 0 0 1rem;
+	padding-top: 0.25rem;
+	list-style: square;
+	font-size: 0.75rem;
+}
+
+.lp-list .lp-topics li {
+	padding-bottom: 0.5rem;
+}
+
+.lp-list .lp-topics li:last-child {
+	padding-bottom: 0;
+}
+
+@media only screen and (min-width: 768px) {
+	.lp-list .lp-topics--split li {
+		width: 50%;
+		float: left;
+	}
+}
+
+.lp-details {
 	font-size: 14px;
 	overflow: hidden;
 }
@@ -213,6 +360,13 @@
 .lp-list .lp-details .items {
 	float: left;
 	width: 50%;
+}
+
+@media only screen and (min-width: 960px) {
+	.lp-list .lp-details .lp-details-list--split li {
+		float: left;
+		width: 50%;
+	}
 }
 
 .lp-list .lp-details .left-items {
@@ -229,7 +383,7 @@
 .lp-list .lp-details ul li,
 .lp-content .lp-details ul li {
 	margin: 0;
-	padding: 10px 0 0 30px;
+	padding: 0 0 0.5rem 1.5rem;
 	position: relative;
 }
 
@@ -238,37 +392,75 @@
 	color: #0073aa;
 	left: 0;
 	position: absolute;
-	top: 12px;
+	top: 0.15rem;
 }
 
-.lp-list .lp-details strong,
 .lp-content .lp-details strong {
-	display: inline-block;
-	vertical-align: middle;
+	padding-left: 0.25rem;
+}
+
+.lp-suggestion_title {
+	margin-bottom: 0;
+	font-size: 0.85rem;
 }
 
 /* ___ Single Lesson Plan ___ */
 
 .lp-content {
-	min-height: 1000px;
-	padding-right: 300px;
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.lp-content .lp-details {
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 260px;
+.lp-content .lp-content-inner {
+	order: 2;
+}
+
+.lp-content .lp-sidebar {
+	order: 1;
+}
+
+.lp-content .lp-details .lp-links, 
+.lp-suggestion { 
+	display: none; 
+}
+
+.lp-sidebar .lp-details ul:first-child li {
+	display: inline-block;
+	padding-right: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+	.lp-content {
+		flex-direction: row;
+	}
+
+	.lp-content .lp-content-inner {
+		width: 64%;
+		order: 1;
+	}
+
+	.lp-content .lp-sidebar {
+		width: 30%; 
+		order: 2;
+	}
+
+	.lp-content .lp-details .lp-links, 
+	.lp-suggestion { 
+		display: block; 
+	}
 }
 
 .lp-content .lp-details .lp-links {
-	margin-top: 20px;
-	margin-bottom: 10px;
+	margin: 1.25rem 0;
 }
 
 .lp-content .lp-details .lp-links li {
-	padding: 0 0 15px 0;
+	padding: 0 0 1rem 0;
+}
+
+.lp-content .lp-details .lp-links li:last-child {
+	padding-bottom: 0;
 }
 
 .lp-content .lp-details .lp-links li a {
@@ -279,13 +471,14 @@
 	color: #666666;
 	display: inline-block;
 	font-size: 14px;
-	min-width: 220px;
+	width: 100%;
+	max-width: 220px;
 	padding: 5px 10px;
 	text-decoration: none;
 }
 
 .lp-details .lp-links li a .dashicons {
-	color: #666666;
+	color: #9A9EA3;
 	font-size: 16px;
 	position: relative;
 	top: 3px;
@@ -295,6 +488,13 @@
 	background-color: #f8f8f8;
 	border-color: #999;
 	color: #777777;
+}
+
+.lp-empty {
+	margin-bottom: 8	rem;
+	min-height: 300px;
+	line-height: 100px;
+	text-align: center;
 }
 
 /* ___ Page ___ */
@@ -379,16 +579,27 @@
 .idea-type-lists {
 	overflow: hidden;
 	padding-top: 0;
-	padding-bottom: 2rem;
+
 	margin: 0 auto;
 	max-width: 610px;
 }
 
 .idea-type-lists .col {
-	float: left;
 	padding: 0 35px;
-	width: 50%;
 	font-size: 13px;
+	margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 576px) {
+	.idea-type-lists {
+		padding-bottom: 2rem;
+	}
+	
+	.idea-type-lists .col {
+		float: left;
+		width: 50%;
+		margin-bottom: 0;
+	}
 }
 
 .idea-type-lists .col p{
@@ -405,12 +616,6 @@
 
 .idea-type-lists .col .dashicons:before{
 	font-size: 65px;
-}
-
-.idea-type-lists .col .button{
-	font-size: 0.65rem;
-	padding: 0 .9rem;
-	height: 1.763rem;
 }
 
 /*--------------------------------------------------------------
@@ -435,4 +640,36 @@ input.text {
 
 .custom-subheader{
 	margin-bottom: 0.4em;
+}
+
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+.no-padding {
+	padding: 0 !important; /* We want to overwrite all applied padding */
+}
+
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+/*--------------------------------------------------------------
+# Overwrites
+--------------------------------------------------------------*/
+
+div.bbp-breadcrumb {
+	margin: 0.75rem 0 1.5rem;
+}
+
+p {
+	margin: 0 0 1rem;
+}
+
+.directory-navigation .menu  {
+	padding: 0;
 }
