@@ -14793,7 +14793,7 @@ That's a lot of PHP files! So how does WordPress know which file to use? That's 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -15019,7 +15019,7 @@ On the left, you will see a list of databases. Select the database that correspo
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -15137,7 +15137,7 @@ A short quiz for students to evaluate their retention of the material presented.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -15473,7 +15473,7 @@ Be sure to give your categories descriptions, and assign one or more posts to ea
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -15904,7 +15904,7 @@ When you update the Parent Theme with a new version, none of these Child Theme f
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -16179,7 +16179,7 @@ Answer: 2&#046; Activate, then configure the plugin.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -16309,7 +16309,7 @@ A short quiz for students to evaluate their retention of the material presented.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -16586,7 +16586,7 @@ Conditional tags are a simple way to check for specific conditions, as a true or
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -17523,7 +17523,7 @@ To move focus to other buttons use Tab or the arrow keys. To return focus to the
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -17726,7 +17726,7 @@ A short quiz for students to evaluate their retention of the material presented.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -17946,7 +17946,7 @@ Now that you are able to use both header and background images, you can try usin
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -18092,7 +18092,7 @@ The Site Logo allows you to replace the default text-based Site Title and Site T
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -18257,7 +18257,7 @@ After previewing your Static Front Page settings and are satisfied with the res
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -18374,7 +18374,7 @@ The Customizer is not required to modify your site, but it offers an easy means 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -18552,7 +18552,7 @@ Suggested exercises are meant to reinforce the acquired knowledge of performing 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -18777,7 +18777,7 @@ Demonstrate the ability to modify posts without opening them in the editor.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -20061,7 +20061,7 @@ Now you are able to Enqueue scripts and styles to add various them to your theme
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -20631,7 +20631,7 @@ It has taken WordPress the better part of a decade to get from its humble begin
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -20790,7 +20790,7 @@ Correct answer - 3. All of the additional image sizes generated by WordPress
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -21045,7 +21045,7 @@ N/A  
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -21193,7 +21193,7 @@ When seeking help related to a plugin or theme, it is very helpful to include co
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -21309,7 +21309,7 @@ If none of the above steps have given you the documentation or answer you need, 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -21488,7 +21488,7 @@ Providing security for all your websites is important. Security is a multi-facet
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -21902,7 +21902,7 @@ The introduction of Gutenberg Blocks now allows users to add <code>Custom HTML</
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -22172,7 +22172,7 @@ Short description of what the exercise does and what skills or knowledge it rein
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -22326,7 +22326,7 @@ Navigate back to the Dashboard by locating the button that looks like this in t
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -22513,7 +22513,7 @@ For the video file let's start with a new post. We will not need sample text for
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -22758,7 +22758,7 @@ WordPress includes a "Custom Menu" widget that can add a menu to a sidebar. This
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23057,7 +23057,7 @@ There are two methods for updating - the easiest is the one-click update, which 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23243,7 +23243,7 @@ Let's change your theme to Twenty Fifteen. You can see you have the same widgets
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23337,7 +23337,7 @@ In the field next to the domain, you can enter a subfolder such as 'blog' or lea
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23542,7 +23542,7 @@ Use one or more of the following themes in your demos:
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23647,7 +23647,7 @@ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23823,7 +23823,7 @@ Calling <tt><a href="http://codex.wordpress.org/Function_Reference/remove_theme_
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -23957,7 +23957,7 @@ Wrap file names in the HTML element <strong>code</strong>: <code>style.css</code
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -24069,7 +24069,7 @@ By default, WordPress installs all new sites to display blog post excerpts on th
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -24530,7 +24530,7 @@ Suggested exercises are meant to reinforce the acquired knowledge of performing 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -24689,7 +24689,7 @@ Once you’ve updated or change these settings, click <strong>Save Changes</stro
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -25042,7 +25042,7 @@ To add author-{role}.php before author.php we can manipulate the actual hierarch
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -25255,7 +25255,7 @@ That's it! That's how a page template is created in WordPress. They are the file
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -25498,7 +25498,7 @@ Loops allow a repeating structure to be applied to content appropriate for the c
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -25665,7 +25665,7 @@ Using a theme you are working with or a general web page, try to navigate the s
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -25898,7 +25898,7 @@ To use the Customizer, click on the section that you are interested in such as C
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -26036,7 +26036,7 @@ A short quiz for students to evaluate their retention of the material presented.
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -26203,7 +26203,7 @@ To get support for themes from WordPress.org, find the theme in the Themes area 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -26330,7 +26330,7 @@ You will be better equipped to work through this lesson if you have experience i
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -26543,7 +26543,7 @@ Wrap file names in the HTML element <strong>code</strong>: <code>style.css</code
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -26898,7 +26898,7 @@ Also note:
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -27127,7 +27127,7 @@ Create a new page template for your child theme. Create a new custom field group
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -27369,7 +27369,7 @@ Correct Answer: 3&#046; Relying on a third party to host your fonts
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -27486,7 +27486,7 @@ A child theme is a theme that builds upon another theme, called the parent theme
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -27630,7 +27630,7 @@ Correct answer: 2. To help search engines crawl your site  
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -27931,7 +27931,7 @@ WordPress is maintained and advanced by a global community of volunteer contribu
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -28172,7 +28172,7 @@ Correct answer: 1&#046; Yes    
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -28436,7 +28436,7 @@ It is a good idea to be able to reset your password before you need to do so. H
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -28583,7 +28583,7 @@ We could infer that if the custom functionality relates to visual presentation, 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -28729,7 +28729,7 @@ People often ask how to make money with their websites. There are various ways t
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -28919,7 +28919,7 @@ Practice adding an additional widget area to your website. You may use the follo
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -29261,7 +29261,7 @@ Thank you for attending today. We will be passing a sign up sheet (or you will r
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -29517,7 +29517,7 @@ Thank you for attending today. We will be passing a sign up sheet (or you will r
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -29765,7 +29765,7 @@ Thank you for attending today. We will be passing a sign up sheet (or you will r
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -29969,7 +29969,7 @@ Thank you for attending today. We will be passing a sign up sheet (or you will r
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -30252,7 +30252,7 @@ Thank you for attending today. We will be passing a sign up sheet (or you will r
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -30445,7 +30445,7 @@ Template variables are automatically added to each part of your site. This is g
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -30715,7 +30715,7 @@ define('DISALLOW_FILE_EDIT', true);
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -30836,7 +30836,7 @@ Akismet is installed by default with WordPress, but if you do not see it in your
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -30992,7 +30992,7 @@ Some more details on optimizing your website can be found at <a href="https://c
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -31256,7 +31256,7 @@ The following exercises reinforce the skills needed to install WordPress: <stron
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -31634,7 +31634,7 @@ Your child theme now has one file that overrides elements in its parent theme's 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -32001,7 +32001,7 @@ Your Child Theme now has one file that overrides elements in its Parent Theme's 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -32162,7 +32162,7 @@ Once your theme is installed, you will need to activate it to make it visible on
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -32295,7 +32295,7 @@ Any website can benefit from an XML sitemap to guide search engines for proper i
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -32692,7 +32692,7 @@ Well done! You have successfully added a new contact form to your website. Now y
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -32926,7 +32926,7 @@ This time you used the <code>wp_enqueue_script()</code> function instead of <cod
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -33003,7 +33003,7 @@ In addition to anti-spam plugins, WordPress has a number of built-in tools that 
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -33087,7 +33087,7 @@ When you are done make sure that the database prefix is the same in wp-config.ph
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -33653,7 +33653,7 @@ Wrap file names in the HTML element <strong>code</strong>: <code>style.css</co
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -33829,7 +33829,7 @@ Calling <tt><a href="http://codex.wordpress.org/Function_Reference/remove_theme_
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -34099,7 +34099,7 @@ There should be one assement item (or more) for each objective listed above. Eac
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -34208,7 +34208,7 @@ An optional section which contains a list of resources that can be used to get m
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -34319,7 +34319,7 @@ An optional section which contains a list of resources that can be used to get m
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -34589,7 +34589,7 @@ Short description of what the exercise does and what skills or knowledge it rein
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -34841,7 +34841,7 @@ Short description of what the exercise does and what skills or knowledge it rein
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
@@ -35098,7 +35098,7 @@ Short description of what the exercise does and what skills or knowledge it rein
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[lesson_plan]]></wp:post_type>
+		<wp:post_type><![CDATA[lesson-plan]]></wp:post_type>
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 														<wp:postmeta>
