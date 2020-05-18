@@ -2,6 +2,7 @@
 
 use Automattic\Jetpack\Assets;
 use Automattic\Jetpack\Assets\Logo as Jetpack_Logo;
+use Automattic\Jetpack\Redirect;
 
 /**
  * This class will handle everything involved with fixing an Identity Crisis.
@@ -36,13 +37,6 @@ class Jetpack_IDC {
 	 */
 	static $current_screen;
 
-	/**
-	 * The link to the support document used to explain Safe Mode to users
-	 *
-	 * @var string
-	 */
-	const SAFE_MODE_DOC_LINK = 'https://jetpack.com/support/safe-mode';
-
 	static function init() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new Jetpack_IDC();
@@ -53,13 +47,21 @@ class Jetpack_IDC {
 
 	private function __construct() {
 		add_action( 'jetpack_sync_processed_actions', array( $this, 'maybe_clear_migrate_option' ) );
-
 		if ( false === $urls_in_crisis = Jetpack::check_identity_crisis() ) {
 			return;
 		}
 
 		self::$wpcom_home_url = $urls_in_crisis['wpcom_home'];
 		add_action( 'init', array( $this, 'wordpress_init' ) );
+	}
+
+	/**
+	 * Gets the link to the support document used to explain Safe Mode to users
+	 *
+	 * @return string
+	 */
+	public static function get_safe_mod_doc_url() {
+		return Redirect::get_url( 'jetpack-support-safe-mode' );
 	}
 
 	/**
@@ -447,7 +449,7 @@ class Jetpack_IDC {
 					'Jetpack has been placed into <a href="%1$s">Safe mode</a> because we noticed this is an exact copy of <a href="%2$s">%3$s</a>.',
 					'jetpack'
 				),
-				esc_url( self::SAFE_MODE_DOC_LINK ),
+				esc_url( self::get_safe_mod_doc_url() ),
 				esc_url( self::$wpcom_home_url ),
 				self::prepare_url_for_display( esc_url_raw( self::$wpcom_home_url ) )
 			),
@@ -472,7 +474,7 @@ class Jetpack_IDC {
 					more about Safe Mode</a>.',
 					'jetpack'
 				),
-				esc_url( self::SAFE_MODE_DOC_LINK )
+				esc_url( self::get_safe_mod_doc_url() )
 			),
 			array( 'a' => array( 'href' => array() ) )
 		);
@@ -666,7 +668,7 @@ class Jetpack_IDC {
 					'Unsure what to do? <a href="%1$s">Read more about Jetpack Safe Mode</a>',
 					'jetpack'
 				),
-				esc_url( self::SAFE_MODE_DOC_LINK )
+				esc_url( self::get_safe_mod_doc_url() )
 			),
 			array( 'a' => array( 'href' => array() ) )
 		);
@@ -688,7 +690,7 @@ class Jetpack_IDC {
 					'Jetpack has been placed into Safe Mode. Learn more about <a href="%1$s">Safe Mode</a>.',
 					'jetpack'
 				),
-				esc_url( self::SAFE_MODE_DOC_LINK )
+				esc_url( self::get_safe_mod_doc_url() )
 			),
 			array( 'a' => array( 'href' => array() ) )
 		);
@@ -717,4 +719,4 @@ class Jetpack_IDC {
 	}
 }
 
-Jetpack_IDC::init();
+add_action( 'plugins_loaded', array( 'Jetpack_IDC', 'init' ) );

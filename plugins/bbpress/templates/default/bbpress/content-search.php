@@ -7,9 +7,12 @@
  * @subpackage Theme
  */
 
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
+
 ?>
 
-<div id="bbpress-forums">
+<div id="bbpress-forums" class="bbpress-wrapper">
 
 	<?php bbp_breadcrumb(); ?>
 
@@ -19,15 +22,15 @@
 
 	<?php if ( bbp_has_search_results() ) : ?>
 
-		 <?php bbp_get_template_part( 'pagination', 'search' ); ?>
+		<?php bbp_get_template_part( 'pagination', 'search' ); ?>
 
-		 <?php bbp_get_template_part( 'loop',       'search' ); ?>
+		<?php bbp_get_template_part( 'loop',       'search' ); ?>
 
-		 <?php bbp_get_template_part( 'pagination', 'search' ); ?>
+		<?php bbp_get_template_part( 'pagination', 'search' ); ?>
 
 	<?php elseif ( bbp_get_search_terms() ) : ?>
 
-		 <?php bbp_get_template_part( 'feedback',   'no-search' ); ?>
+		<?php bbp_get_template_part( 'feedback',   'no-search' ); ?>
 
 	<?php else : ?>
 

@@ -70,6 +70,7 @@ class WordAds {
 
 	/**
 	 * Checks for AMP support and returns true iff active & AMP request
+	 *
 	 * @return boolean True if supported AMP request
 	 *
 	 * @since 7.5.0
@@ -108,6 +109,7 @@ class WordAds {
 
 	/**
 	 * Returns the ad tag property array for supported ad types.
+	 *
 	 * @return array      array with ad tags
 	 *
 	 * @since 7.1.0
@@ -118,6 +120,7 @@ class WordAds {
 
 	/**
 	 * Returns the solo css for unit
+	 *
 	 * @return string the special css for solo units
 	 *
 	 * @since 7.1.0
@@ -174,6 +177,7 @@ class WordAds {
 			 */
 			$ads_txt_content = apply_filters( 'wordads_ads_txt', $ads_txt_transient );
 
+			http_response_code( 200 );
 			header( 'Content-Type: text/plain; charset=utf-8' );
 			echo esc_html( $ads_txt_content );
 			die();
@@ -197,6 +201,7 @@ class WordAds {
 	 * @since 4.5.0
 	 */
 	private function insert_adcode() {
+		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
 		add_action( 'wp_head', array( $this, 'insert_head_meta' ), 20 );
 		add_action( 'wp_head', array( $this, 'insert_head_iponweb' ), 30 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -265,6 +270,35 @@ class WordAds {
 	}
 
 	/**
+	 * Add the IPW resource hints
+	 *
+	 * @since 7.9
+	 */
+	public function resource_hints( $hints, $relation_type ) {
+		if ( 'dns-prefetch' === $relation_type ) {
+			$hints[] = '//s.pubmine.com';
+			$hints[] = '//x.bidswitch.net';
+			$hints[] = '//static.criteo.net';
+			$hints[] = '//ib.adnxs.com';
+			$hints[] = '//aax.amazon-adsystem.com';
+			$hints[] = '//bidder.criteo.com';
+			$hints[] = '//cas.criteo.com';
+			$hints[] = '//gum.criteo.com';
+			$hints[] = '//ads.pubmatic.com';
+			$hints[] = '//gads.pubmatic.com';
+			$hints[] = '//tpc.googlesyndication.com';
+			$hints[] = '//ad.doubleclick.net';
+			$hints[] = '//googleads.g.doubleclick.net';
+			$hints[] = '//www.googletagservices.com';
+			$hints[] = '//cdn.switchadhub.com';
+			$hints[] = '//delivery.g.switchadhub.com';
+			$hints[] = '//delivery.swid.switchadhub.com';
+		}
+
+		return $hints;
+	}
+
+	/**
 	 * IPONWEB metadata used by the various scripts
 	 *
 	 * @return [type] [description]
@@ -300,21 +334,12 @@ HTML;
 		}
 		$data_tags = ( $this->params->cloudflare ) ? ' data-cfasync="false"' : '';
 		echo <<<HTML
-		<link rel='dns-prefetch' href='//s.pubmine.com' />
-		<link rel='dns-prefetch' href='//x.bidswitch.net' />
-		<link rel='dns-prefetch' href='//static.criteo.net' />
-		<link rel='dns-prefetch' href='//ib.adnxs.com' />
-		<link rel='dns-prefetch' href='//aax.amazon-adsystem.com' />
-		<link rel='dns-prefetch' href='//bidder.criteo.com' />
-		<link rel='dns-prefetch' href='//cas.criteo.com' />
-		<link rel='dns-prefetch' href='//gum.criteo.com' />
-		<link rel='dns-prefetch' href='//ads.pubmatic.com' />
-		<link rel='dns-prefetch' href='//gads.pubmatic.com' />
-		<link rel='dns-prefetch' href='//tpc.googlesyndication.com' />
-		<link rel='dns-prefetch' href='//ad.doubleclick.net' />
-		<link rel='dns-prefetch' href='//googleads.g.doubleclick.net' />
-		<link rel='dns-prefetch' href='//www.googletagservices.com' />
-		<script$data_tags async type="text/javascript" src="//s.pubmine.com/head.js"></script>
+		<script$data_tags type="text/javascript">
+		(function(){var g=Date.now||function(){return+new Date};function h(a,b){a:{for(var c=a.length,d="string"==typeof a?a.split(""):a,e=0;e<c;e++)if(e in d&&b.call(void 0,d[e],e,a)){b=e;break a}b=-1}return 0>b?null:"string"==typeof a?a.charAt(b):a[b]};function k(a,b,c){c=null!=c?"="+encodeURIComponent(String(c)):"";if(b+=c){c=a.indexOf("#");0>c&&(c=a.length);var d=a.indexOf("?");if(0>d||d>c){d=c;var e=""}else e=a.substring(d+1,c);a=[a.substr(0,d),e,a.substr(c)];c=a[1];a[1]=b?c?c+"&"+b:b:c;a=a[0]+(a[1]?"?"+a[1]:"")+a[2]}return a};var l=0;function m(a,b){var c=document.createElement("script");c.src=a;c.onload=function(){b&&b(void 0)};c.onerror=function(){b("error")};a=document.getElementsByTagName("head");var d;a&&0!==a.length?d=a[0]:d=document.documentElement;d.appendChild(c)}function n(a){var b=void 0===b?document.cookie:b;return(b=h(b.split("; "),function(c){return-1!=c.indexOf(a+"=")}))?b.split("=")[1]:""}function p(a){return"string"==typeof a&&0<a.length}
+		function r(a,b,c){b=void 0===b?"":b;c=void 0===c?".":c;var d=[];Object.keys(a).forEach(function(e){var f=a[e],q=typeof f;"object"==q&&null!=f||"function"==q?d.push(r(f,b+e+c)):null!==f&&void 0!==f&&(e=encodeURIComponent(b+e),d.push(e+"="+encodeURIComponent(f)))});return d.filter(p).join("&")}function t(a,b){a||((window.__ATA||{}).config=b.c,m(b.url))}var u=Math.floor(1E13*Math.random()),v=window.__ATA||{};window.__ATA=v;v.rid=u;v.createdAt=g();var w=window.__ATA||{},x="s.pubmine.com";
+		w&&w.serverDomain&&(x=w.serverDomain);var y="//"+x+"/conf",z=window.top===window,A=window.__ATA_PP&&window.__ATA_PP.gdpr_applies,B="boolean"===typeof A?Number(A):null,C=window.__ATA_PP||null,D=z?document.referrer?document.referrer:null:null,E=z?window.location.href:document.referrer?document.referrer:null,F,G=n("__ATA_tuuid");F=G?G:null;var H=window.innerWidth+"x"+window.innerHeight,I=n("usprivacy"),J=r({gdpr:B,pp:C,rid:u,src:D,ref:E,tuuid:F,vp:H,us_privacy:I?I:null},"",".");
+		(function(a){var b=void 0===b?"cb":b;l++;var c="callback__"+g().toString(36)+"_"+l.toString(36);a=k(a,b,c);window[c]=function(d){t(void 0,d)};m(a,function(d){d&&t(d)})})(y+"?"+J);}).call(this);
+		</script>
 HTML;
 	}
 
@@ -400,7 +425,7 @@ HTML;
 	}
 
 	/**
-	 * Special cases for inserting header unit via jQuery
+	 * Special cases for inserting header unit via JS
 	 *
 	 * @since 4.5.0
 	 */
@@ -427,7 +452,7 @@ HTML;
 				$selector = '#main';
 				break;
 			case 'twentyfourteen':
-				$selector = 'article:first';
+				$selector = 'article';
 				break;
 		}
 
@@ -436,7 +461,15 @@ HTML;
 		if ( ! self::is_amp() ) {
 			echo <<<HTML
 		<script type="text/javascript">
-			jQuery('.wpcnt-header').insertBefore('$selector');
+			(function ( selector ) {
+				var main = document.querySelector( selector );
+				var headerAd = document.querySelector('.wpcnt-header');
+
+				if ( main ) {
+					main.parentNode.insertBefore( headerAd, main );
+				}
+			})( '$selector' );
+
 		</script>
 HTML;
 		}
@@ -513,9 +546,9 @@ HTML;
 				$section_id = 0 === $this->params->blog_id ? WORDADS_API_TEST_ID : $this->params->blog_id . '5';
 				$snippet    = $this->get_ad_snippet( $section_id, $height, $width, $spot, self::$SOLO_UNIT_CSS );
 			} elseif ( 'top_amp' === $spot ) {
-				// 320x50 unit which can safely be inserted below title, above content in a variety of themes.
-				$width   = 320;
-				$height  = 50;
+				// Ad unit which can safely be inserted below title, above content in a variety of themes.
+				$width   = $this->params->mobile_device ? 320 : 300;
+				$height  = $this->params->mobile_device ? 50 : 250;
 				$snippet = $this->get_ad_snippet( null, $height, $width );
 			}
 		} elseif ( 'house' == $type ) {
@@ -565,7 +598,7 @@ HTML;
 
 		$ad_number = count( $this->ads ) . '-' . uniqid();
 		$data_tags = $this->params->cloudflare ? ' data-cfasync="false"' : '';
-		$css = esc_attr( $css );
+		$css       = esc_attr( $css );
 
 		$loc_id = 100;
 		if ( ! empty( self::$ad_location_ids[ $location ] ) ) {
@@ -594,10 +627,10 @@ HTML;
 	/**
 	 * Returns the complete ad div with snippet to be inserted into the page
 	 *
-	 * @param  string  $spot top, side, inline, or belowpost
-	 * @param  string  $snippet The snippet to insert into the div
-	 * @param  array  $css_classes
-	 * @return string The supporting ad unit div
+	 * @param  string $spot top, side, inline, or belowpost.
+	 * @param  string $snippet The snippet to insert into the div.
+	 * @param  array  $css_classes CSS classes.
+	 * @return string The supporting ad unit div.
 	 *
 	 * @since 7.1
 	 */
@@ -611,9 +644,9 @@ HTML;
 			$css_classes[] = 'wpcnt-header';
 		}
 
-		$spot = esc_attr( $spot );
+		$spot    = esc_attr( $spot );
 		$classes = esc_attr( implode( ' ', $css_classes ) );
-		$about  = esc_html__( 'Advertisements', 'jetpack' );
+		$about   = esc_html__( 'Advertisements', 'jetpack' );
 		return <<<HTML
 		<div class="$classes">
 			<div class="wpa">

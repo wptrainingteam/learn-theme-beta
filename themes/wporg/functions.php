@@ -14,9 +14,9 @@ if ( ! defined( 'WPORGPATH' ) ) {
 	define( 'WPORGPATH', get_parent_theme_file_path( '/inc/' ) );
 }
 
-// Make sure market share is available.
+// This is already defined elsewhere on production, it's only added here for local dev environments.
 if ( ! defined( 'WP_MARKET_SHARE' ) ) {
-	define( 'WP_MARKET_SHARE', 29 );
+	define( 'WP_MARKET_SHARE', 35 );
 }
 
 /**
@@ -71,7 +71,7 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 function set_document_title() {
 	$GLOBALS['pagetitle'] = wp_get_document_title();
 }
-add_action( 'template_redirect', __NAMESPACE__ . '\set_document_title' );
+add_action( 'get_header', __NAMESPACE__ . '\set_document_title', 10 );
 
 /**
  * Set the separator for the document title.
@@ -107,7 +107,7 @@ function scripts() {
 		$GLOBALS['concatenate_scripts'] = true;
 	}
 
-	wp_enqueue_style( 'wporg-style', get_theme_file_uri( '/css/style.css' ), [ 'dashicons', 'open-sans' ], '20180702' );
+	wp_enqueue_style( 'wporg-style', get_theme_file_uri( '/css/style.css' ), [ 'dashicons', 'open-sans' ], '20200403' );
 	wp_style_add_data( 'wporg-style', 'rtl', 'replace' );
 
 	// phpcs:ignore Squiz.PHP.CommentedOutCode.Found, Squiz.Commenting.InlineComment.InvalidEndChar
@@ -237,6 +237,7 @@ function hreflang_link_attributes() {
 
 	$sites = wp_cache_get( 'local-sites', 'locale-associations' );
 
+	// WARNING: for any changes below, check other uses of the `locale-assosciations` group as there's shared cache keys in use.
 	if ( false === $sites ) {
 		global $wpdb;
 
@@ -248,23 +249,42 @@ function hreflang_link_attributes() {
 
 		require_once GLOTPRESS_LOCALES_PATH;
 
-		foreach ( $sites as $site ) {
+		foreach ( $sites as $key => $site ) {
 			$gp_locale = \GP_Locales::by_field( 'wp_locale', $site->locale );
 			if ( ! $gp_locale ) {
-				unset( $sites[ $site->locale ] );
+				unset( $sites[ $key ] );
 				continue;
 			}
 
 			// Skip non-existing subdomains, e.g. 'de_CH_informal'.
 			if ( false !== strpos( $site->subdomain, '_' ) ) {
-				unset( $sites[ $site->locale ] );
+				unset( $sites[ $key ] );
 				continue;
 			}
 
-			if ( isset( $gp_locale->slug ) && ! in_array( $gp_locale->slug, $unsupported_languages ) ) {
-				$sites[ $site->locale ]->hreflang = $gp_locale->slug;
+			// Skip unsupported locales.
+			if ( in_array( $gp_locale->slug, $unsupported_languages ) ) {
+				unset( $sites[ $key ] );
+				continue;
+			}
+
+			$hreflang = false;
+
+			// Note that Google only supports ISO 639-1 codes.
+			if ( isset( $gp_locale->lang_code_iso_639_1 ) && isset( $gp_locale->country_code ) ) {
+				$hreflang = $gp_locale->lang_code_iso_639_1 . '-' . $gp_locale->country_code;
+			} elseif ( isset( $gp_locale->lang_code_iso_639_1 ) ) {
+				$hreflang = $gp_locale->lang_code_iso_639_1;
+			} elseif ( isset( $gp_locale->lang_code_iso_639_2 ) ) {
+				$hreflang = $gp_locale->lang_code_iso_639_2;
+			} elseif ( isset( $gp_locale->lang_code_iso_639_3 ) ) {
+				$hreflang = $gp_locale->lang_code_iso_639_3;
+			}
+
+			if ( $hreflang ) {
+				$sites[ $key ]->hreflang = strtolower( $hreflang );
 			} else {
-				unset( $sites[ $site->locale ] );
+				unset( $sites[ $key ] );
 			}
 		}
 

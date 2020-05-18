@@ -11,6 +11,7 @@
  */
 
 use Automattic\Jetpack\Connection\Client;
+use Automattic\Jetpack\Redirect;
 
 /**
  * Disable direct access.
@@ -81,7 +82,7 @@ function jetpack_store_migration_data( $option_name, $option_value ) {
 		'post_title'            => $option_name,
 		'post_content_filtered' => $option_value,
 		'post_type'             => 'jetpack_migration',
-		'post_date'             => date( 'Y-m-d H:i:s', time() ),
+		'post_date'             => gmdate( 'Y-m-d H:i:s', time() ),
 	);
 
 	$post = get_page_by_title( $option_name, 'OBJECT', 'jetpack_migration' );
@@ -129,8 +130,8 @@ function jetpack_render_tos_blurb() {
 				'strong' => true,
 			)
 		),
-		'https://wordpress.com/tos',
-		'https://jetpack.com/support/what-data-does-jetpack-sync'
+		esc_url( Redirect::get_url( 'wpcom-tos' ) ),
+		esc_url( Redirect::get_url( 'jetpack-support-what-data-does-jetpack-sync' ) )
 	);
 }
 

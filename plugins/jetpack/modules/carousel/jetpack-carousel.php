@@ -1,5 +1,6 @@
 <?php
 use Automattic\Jetpack\Assets;
+use Automattic\Jetpack\Status;
 /*
 Plugin Name: Jetpack Carousel
 Plugin URL: https://wordpress.com/
@@ -314,8 +315,8 @@ class Jetpack_Carousel {
 			 *
 			 * @param bool Enable Jetpack Carousel stat collection. Default false.
 			 */
-			if ( apply_filters( 'jetpack_enable_carousel_stats', false ) && in_array( 'stats', Jetpack::get_active_modules() ) && ! Jetpack::is_development_mode() ) {
-				$localize_strings['stats'] = 'blog=' . Jetpack_Options::get_option( 'id' ) . '&host=' . parse_url( get_option( 'home' ), PHP_URL_HOST ) . '&v=ext&j=' . JETPACK__API_VERSION . ':' . JETPACK__VERSION;
+			if ( apply_filters( 'jetpack_enable_carousel_stats', false ) && in_array( 'stats', Jetpack::get_active_modules() ) && ! ( new Status() )->is_development_mode() ) {
+				$localize_strings['stats'] = 'blog=' . Jetpack_Options::get_option( 'id' ) . '&host=' . wp_parse_url( get_option( 'home' ), PHP_URL_HOST ) . '&v=ext&j=' . JETPACK__API_VERSION . ':' . JETPACK__VERSION;
 
 				// Set the stats as empty if user is logged in but logged-in users shouldn't be tracked.
 				if ( is_user_logged_in() && function_exists( 'stats_get_options' ) ) {
@@ -385,7 +386,7 @@ class Jetpack_Carousel {
 			class_exists( 'Jetpack_AMP_Support' )
 			&& Jetpack_AMP_Support::is_amp_request()
 		) {
-			return $content;
+			return $this->maybe_add_amp_lightbox( $content );
 		}
 
 		if ( ! preg_match_all( '/<img [^>]+>/', $content, $matches ) ) {
@@ -543,10 +544,48 @@ class Jetpack_Carousel {
 			foreach ( (array) $extra_data as $data_key => $data_values ) {
 				$html = str_replace( '<div ', '<div ' . esc_attr( $data_key ) . "='" . json_encode( $data_values ) . "' ", $html );
 				$html = str_replace( '<ul class="wp-block-gallery', '<ul ' . esc_attr( $data_key ) . "='" . json_encode( $data_values ) . "' class=\"wp-block-gallery", $html );
+				$html = str_replace( '<ul class="blocks-gallery-grid', '<ul ' . esc_attr( $data_key ) . "='" . json_encode( $data_values ) . "' class=\"blocks-gallery-grid", $html );
 			}
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Conditionally adds amp-lightbox to galleries and images.
+	 *
+	 * This applies to gallery blocks and shortcodes,
+	 * in addition to images that are wrapped in a link to the page.
+	 * Images wrapped in a link to the media file shouldn't get an amp-lightbox.
+	 *
+	 * @param string $content The content to possibly add amp-lightbox to.
+	 * @return string The content, with amp-lightbox possibly added.
+	 */
+	public function maybe_add_amp_lightbox( $content ) {
+		$content = preg_replace(
+			array(
+				'#(<figure)[^>]*(?=class=(["\']?)[^>]*wp-block-gallery[^>]*\2)#is', // Gallery block.
+				'#(\[gallery)(?=\s+)#', // Gallery shortcode.
+			),
+			array(
+				'\1 data-amp-lightbox="true" ', // https://github.com/ampproject/amp-wp/blob/1094ea03bd5dc92889405a47a8c41de1a88908de/includes/sanitizers/class-amp-gallery-block-sanitizer.php#L84.
+				'\1 amp-lightbox="true"', // https://github.com/ampproject/amp-wp/blob/1094ea03bd5dc92889405a47a8c41de1a88908de/includes/embeds/class-amp-gallery-embed.php#L64.
+			),
+			$content
+		);
+
+		return preg_replace_callback(
+			'#(<a[^>]* href=(["\']?)(\S+)\2>)\s*(<img[^>]*)(class=(["\']?)[^>]*wp-image-[0-9]+[^>]*\6.*>)\s*</a>#is',
+			static function( $matches ) {
+				if ( ! preg_match( '#\.\w+$#', $matches[3] ) ) {
+					// The a[href] doesn't end in a file extension like .jpeg, so this is not a link to the media file, and should get a lightbox.
+					return $matches[4] . ' data-amp-lightbox="true" lightbox="true" ' . $matches[5]; // https://github.com/ampproject/amp-wp/blob/1094ea03bd5dc92889405a47a8c41de1a88908de/includes/sanitizers/class-amp-img-sanitizer.php#L419.
+				}
+
+				return $matches[0];
+			},
+			$content
+		);
 	}
 
 	function get_attachment_comments() {
@@ -685,7 +724,7 @@ class Jetpack_Carousel {
 			'comment_author_email' => $email,
 			'comment_author_url'   => $url,
 			'comment_approved'     => 0,
-			'comment_type'         => '',
+			'comment_type'         => 'comment',
 		);
 
 		if ( ! empty( $user_id ) ) {

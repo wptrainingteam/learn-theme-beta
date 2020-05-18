@@ -30,6 +30,7 @@
 		font-family: Georgia, "Times New Roman", serif;
 		font-size: 30px;
 		margin: 0;
+		margin-left: 60px;
 
 		a {
 			border-bottom: none;
@@ -103,11 +104,7 @@
 			overflow: hidden;
 			padding: 0 0 34px;
 
-			@media screen and (max-width:820px) {
-				display: none;
-			}
-
-			@media screen and (max-width:768px) {
+			@media screen and (max-width:767px) {
 				display: block;
 				float: none;
 				margin: 10px 20px 20px;
@@ -116,6 +113,7 @@
 
 				a {
 					padding: 4px 10px;
+					text-align: center;
 				}
 			}
 
@@ -147,9 +145,11 @@
 			z-index: 99999;
 
 			li a {
+				display: inline-block;
 				height: 24px;
 				line-height: 24px;
 				margin: 0;
+				white-space: nowrap;
 			}
 		}
 	}
@@ -226,6 +226,7 @@
 
 		h2.rosetta {
 			float: left;
+			margin-left: 0;
 			padding: 36px 27px 0;
 		}
 

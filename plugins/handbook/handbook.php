@@ -5,15 +5,19 @@
  * Author: Nacin
  */
 
-require_once dirname( __FILE__ ) . '/inc/callout-boxes.php';
-require_once dirname( __FILE__ ) . '/inc/glossary.php';
-require_once dirname( __FILE__ ) . '/inc/navigation.php';
-require_once dirname( __FILE__ ) . '/inc/breadcrumbs.php';
-require_once dirname( __FILE__ ) . '/inc/table-of-contents.php';
-require_once dirname( __FILE__ ) . '/inc/template-tags.php';
-require_once dirname( __FILE__ ) . '/inc/email-post-changes.php';
-require_once dirname( __FILE__ ) . '/inc/walker.php';
-require_once dirname( __FILE__ ) . '/inc/watchlist.php';
+const WPORG_HANDBOOK_PLUGIN_FILE = __FILE__;
+
+require_once __DIR__ . '/inc/admin-notices.php';
+require_once __DIR__ . '/inc/callout-boxes.php';
+require_once __DIR__ . '/inc/glossary.php';
+require_once __DIR__ . '/inc/navigation.php';
+require_once __DIR__ . '/inc/breadcrumbs.php';
+require_once __DIR__ . '/inc/table-of-contents.php';
+require_once __DIR__ . '/inc/template-tags.php';
+require_once __DIR__ . '/inc/email-post-changes.php';
+require_once __DIR__ . '/inc/walker.php';
+require_once __DIR__ . '/inc/watchlist.php';
+require_once __DIR__ . '/inc/blocks.php';
 
 /**
  * Initialize our handbooks
@@ -42,7 +46,7 @@ class WPorg_Handbook_Init {
 	}
 
 	static public function enqueue_styles() {
-		wp_enqueue_style( 'wporg-handbook-css', plugins_url( '/stylesheets/callout-boxes.css', __FILE__ ), array(), '20180111' );
+		wp_enqueue_style( 'wporg-handbook-css', plugins_url( '/stylesheets/callout-boxes.css', __FILE__ ), array(), '20200121' );
 	}
 
 	static public function enqueue_scripts() {
@@ -138,6 +142,21 @@ class WPorg_Handbook {
 		add_filter( 'o2_post_fragment',                   array( $this, 'o2_post_fragment' ) );
 		add_filter( 'comments_open',                      array( $this, 'comments_open' ), 10, 2 );
 		add_filter( 'wp_nav_menu_objects',                array( $this, 'highlight_menu_handbook_link' ) );
+		add_filter( 'display_post_states',                array( $this, 'display_post_states' ), 10, 2 );
+	}
+
+	/**
+	 * Adds 'Handbook Front Page' post state indicator for handbook landing pages.
+	 *
+	 * @param string[] $post_states An array of post display states.
+	 * @param WP_Post  $post        The current post object.
+	 * @return string[]
+	 */
+	function display_post_states( $post_states, $post ) {
+		if ( $this->post_is_landing_page( $post ) ) {
+			$post_states[] = __( 'Handbook Front Page', 'wporg' );
+		}
+		return $post_states;
 	}
 
 	/**
@@ -277,6 +296,8 @@ class WPorg_Handbook {
 				$post_type === "{$slug}-handbook"
 			||
 				'handbook' === $slug
+			||
+				'welcome'  === $slug
 			)
 		&&
 			! wp_get_post_parent_id( $post )
@@ -388,6 +409,9 @@ class WPorg_Handbook {
 			if ( ! $page ) {
 				$page = get_page_by_path( 'handbook', OBJECT, $this->post_type );
 			}
+			if ( ! $page ) {
+				$page = get_page_by_path( 'welcome', OBJECT, $this->post_type );
+			}
 			if ( $page ) {
 				$query->set( 'p', $page->ID );
 				$query->is_handbook_root     = true;
@@ -416,7 +440,7 @@ class WPorg_Handbook {
 
 		register_sidebar( $sidebar_args );
 
-		require_once dirname( __FILE__ ) . '/inc/widgets.php';
+		require_once __DIR__ . '/inc/widgets.php';
 		register_widget( 'WPorg_Handbook_Pages_Widget' );
 	}
 

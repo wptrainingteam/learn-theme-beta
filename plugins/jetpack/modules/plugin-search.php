@@ -1,6 +1,8 @@
 <?php
 
+use Automattic\Jetpack\Constants;
 use Automattic\Jetpack\Tracking;
+use Automattic\Jetpack\Redirect;
 
 /**
  * Disable direct access and execution.
@@ -15,6 +17,8 @@ if (
 	Jetpack::is_active() &&
 	/** This filter is documented in _inc/lib/admin-pages/class.jetpack-react-page.php */
 	apply_filters( 'jetpack_show_promotions', true ) &&
+	// Disable feature hints when plugins cannot be installed.
+	! Constants::is_true( 'DISALLOW_FILE_MODS' ) &&
 	jetpack_is_psh_active()
 ) {
 	Jetpack_Plugin_Search::init();
@@ -223,7 +227,7 @@ class Jetpack_Plugin_Search {
 					'Learn more about these suggestions.',
 					'jetpack'
 				),
-				'supportLink'    => 'https://jetpack.com/redirect/?source=plugin-hint-learn-support',
+				'supportLink'    => Redirect::get_url( 'plugin-hint-learn-support' ),
 				'hideText'       => esc_html__( 'Hide this suggestion', 'jetpack' ),
 			)
 		);
@@ -274,7 +278,7 @@ class Jetpack_Plugin_Search {
 				'requires_connection' => true,
 				'module' => 'akismet',
 				'sort' => '16',
-				'learn_more_button' => 'https://jetpack.com/features/security/spam-filtering/',
+				'learn_more_button' => Redirect::get_url( 'plugin-hint-upgrade-akismet' ),
 				'configure_url' => admin_url( 'admin.php?page=akismet-key-config' ),
 			),
 		);
@@ -414,23 +418,6 @@ class Jetpack_Plugin_Search {
 	}
 
 	/**
-	 * Builds a URL to purchase and upgrade inserting the site fragment and the affiliate code if it exists.
-	 *
-	 * @param string $feature Module slug (or forged one for extra features).
-	 *
-	 * @since 7.1.0
-	 *
-	 * @return string URL to upgrade.
-	 */
-	private function get_upgrade_url( $feature ) {
-		$site_raw_url = Jetpack::build_raw_urls( get_home_url() );
-		$affiliateCode = Jetpack_Affiliate::init()->get_affiliate_code();
-		$user = wp_get_current_user()->ID;
-		return "https://jetpack.com/redirect/?source=plugin-hint-upgrade-$feature&site=$site_raw_url&u=$user" .
-		       ( $affiliateCode ? "&aff=$affiliateCode" : '' );
-	}
-
-	/**
 	 * Modify the URL to the feature settings, for example Publicize.
 	 * Sharing is included here because while we still have a page in WP Admin,
 	 * we prefer to send users to Calypso.
@@ -443,20 +430,29 @@ class Jetpack_Plugin_Search {
 	 *
 	 */
 	private function get_configure_url( $feature, $configure_url ) {
-		$siteFragment = Jetpack::build_raw_urls( get_home_url() );
 		switch ( $feature ) {
 			case 'sharing':
 			case 'publicize':
-				$configure_url = "https://wordpress.com/marketing/connections/$siteFragment";
+				$configure_url = Redirect::get_url( 'calypso-marketing-connections' );
 				break;
 			case 'seo-tools':
-				$configure_url = "https://wordpress.com/marketing/traffic/$siteFragment#seo";
+				$configure_url = Redirect::get_url(
+					'calypso-marketing-traffic',
+					array(
+						'anchor' => 'seo',
+					)
+				);
 				break;
 			case 'google-analytics':
-				$configure_url = "https://wordpress.com/marketing/traffic/$siteFragment#analytics";
+				$configure_url = Redirect::get_url(
+					'calypso-marketing-traffic',
+					array(
+						'anchor' => 'analytics',
+					)
+				);
 				break;
 			case 'wordads':
-				$configure_url = "https://wordpress.com/ads/settings/$siteFragment";
+				$configure_url = Redirect::get_url( 'wpcom-ads-settings' );
 				break;
 		}
 		return $configure_url;
@@ -479,7 +475,7 @@ class Jetpack_Plugin_Search {
 			$links['jp_get_started'] = '<a
 				id="plugin-select-settings"
 				class="jetpack-plugin-search__primary jetpack-plugin-search__get-started button"
-				href="https://jetpack.com/redirect/?source=plugin-hint-learn-' . $plugin['module'] . '"
+				href="' . esc_url( Redirect::get_url( 'plugin-hint-learn-' . $plugin['module'] ) ) . '"
 				data-module="' . esc_attr( $plugin['module'] ) . '"
 				data-track="get_started"
 				>' . esc_html__( 'Get started', 'jetpack' ) . '</a>';
@@ -516,7 +512,7 @@ class Jetpack_Plugin_Search {
 			$links['jp_get_started'] = '<a
 				id="plugin-select-settings"
 				class="jetpack-plugin-search__primary jetpack-plugin-search__get-started button"
-				href="https://jetpack.com/redirect/?source=plugin-hint-learn-' . $plugin['module'] . '"
+				href="' . esc_url( Redirect::get_url( 'plugin-hint-learn-' . $plugin['module'] ) ) . '"
 				data-module="' . esc_attr( $plugin['module'] ) . '"
 				data-track="get_started"
 				>' . esc_html__( 'Get started', 'jetpack' ) . '</a>';

@@ -15,7 +15,19 @@ if ( ! class_exists( 'Jetpack_Simple_Payments_Widget' ) ) {
 	 * Display a Simple Payments Button as a Widget.
 	 */
 	class Jetpack_Simple_Payments_Widget extends WP_Widget {
-		// https://developer.paypal.com/docs/integration/direct/rest/currency-codes/
+		/**
+		 * Currencies should be supported by PayPal:
+		 * @link https://developer.paypal.com/docs/api/reference/currency-codes/
+		 *
+		 * List has to be in sync with list at the block's client side and API's backend side:
+		 * @link https://github.com/Automattic/jetpack/blob/31efa189ad223c0eb7ad085ac0650a23facf9ef5/extensions/blocks/simple-payments/constants.js#L9-L39
+		 * @link https://github.com/Automattic/jetpack/blob/31efa189ad223c0eb7ad085ac0650a23facf9ef5/modules/simple-payments/simple-payments.php#L386-L415
+		 *
+		 * Indian Rupee (INR) is listed here for backwards compatibility with previously added widgets.
+		 * It's not supported by Simple Payments because at the time of the creation of this file
+		 * because it's limited to in-country PayPal India accounts only.
+		 * Discussion: https://github.com/Automattic/wp-calypso/pull/28236
+		 */
 		private static $supported_currency_list = array(
 			'USD' => '$',
 			'GBP' => '&#163;',
@@ -430,7 +442,7 @@ if ( ! class_exists( 'Jetpack_Simple_Payments_Widget' ) ) {
 
 			// `bumps_stats_extra` only exists on .com
 			if ( function_exists( 'bump_stats_extras' ) ) {
-				require_lib( 'tracks/client' );
+				jetpack_require_lib( 'tracks/client' );
 				tracks_record_event( $current_user, 'simple_payments_button_' . $event_action, $event_properties );
 				/** This action is documented in modules/widgets/social-media-icons.php */
 				do_action( 'jetpack_bump_stats_extra', 'jetpack-simple_payments', $stat_name );

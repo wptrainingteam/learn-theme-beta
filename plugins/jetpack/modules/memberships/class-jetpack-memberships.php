@@ -42,6 +42,21 @@ class Jetpack_Memberships {
 	 * @var array
 	 */
 	private static $tags_allowed_in_the_button = array( 'br' => array() );
+
+	/**
+	 * The minimum required plan for this Gutenberg block.
+	 *
+	 * @var string Plan slug
+	 */
+	private static $required_plan;
+
+	/**
+	 * Track recurring payments block registration.
+	 *
+	 * @var boolean True if block registration has been executed.
+	 */
+	private static $has_registered_block = false;
+
 	/**
 	 * Classic singleton pattern
 	 *
@@ -63,6 +78,8 @@ class Jetpack_Memberships {
 		if ( ! self::$instance ) {
 			self::$instance = new self();
 			self::$instance->register_init_hook();
+			// Yes, `personal-bundle` with a dash, `jetpack_personal` with an underscore. Check the v1.5 endpoint to verify.
+			self::$required_plan = ( defined( 'IS_WPCOM' ) && IS_WPCOM ) ? 'personal-bundle' : 'jetpack_personal';
 		}
 
 		return self::$instance;
@@ -91,6 +108,7 @@ class Jetpack_Memberships {
 	 */
 	private function register_init_hook() {
 		add_action( 'init', array( $this, 'init_hook_action' ) );
+		add_action( 'jetpack_register_gutenberg_extensions', array( $this, 'register_gutenberg_block' ) );
 	}
 
 	/**
@@ -192,8 +210,8 @@ class Jetpack_Memberships {
 		if ( empty( $attrs['planId'] ) ) {
 			return;
 		}
-		$id      = intval( $attrs['planId'] );
-		$product = get_post( $id );
+		$plan_id = intval( $attrs['planId'] );
+		$product = get_post( $plan_id );
 		if ( ! $product || is_wp_error( $product ) ) {
 			return;
 		}
@@ -203,21 +221,8 @@ class Jetpack_Memberships {
 
 		$data = array(
 			'blog_id'      => self::get_blog_id(),
-			'id'           => $id,
+			'plan_id'      => $plan_id,
 			'button_label' => __( 'Your contribution', 'jetpack' ),
-			'powered_text' => __( 'Powered by WordPress.com', 'jetpack' ),
-		);
-
-		$classes = Jetpack_Gutenberg::block_classes(
-			self::$button_block_name,
-			$attrs,
-			array(
-				'wp-block-button__link',
-				'components-button',
-				'is-primary',
-				'is-button',
-				self::$css_classname_prefix . '-' . $data['id'],
-			)
 		);
 
 		if ( isset( $attrs['submitButtonText'] ) ) {
@@ -242,17 +247,34 @@ class Jetpack_Memberships {
 				)
 			);
 		}
-		$button_styles = implode( $button_styles, ';' );
+		$button_styles = implode( ';', $button_styles );
 		add_thickbox();
+		global $wp;
+
+		$button_url = add_query_arg(
+			array(
+				'blog'     => esc_attr( $data['blog_id'] ),
+				'plan'     => esc_attr( $data['plan_id'] ),
+				'lang'     => esc_attr( get_locale() ),
+				'pid'      => esc_attr( get_the_ID() ), // Needed for analytics purposes.
+				'redirect' => esc_attr( rawurlencode( home_url( $wp->request ) ) ), // Needed for redirect back in case of redirect-based flow.
+			),
+			'https://subscribe.wordpress.com/memberships/'
+		);
 		return sprintf(
-			'<button data-blog-id="%d" data-powered-text="%s" data-plan-id="%d" data-lang="%s" class="%s" style="%s">%s</button>',
-			esc_attr( $data['blog_id'] ),
-			esc_attr( $data['powered_text'] ),
-			esc_attr( $data['id'] ),
-			esc_attr( get_locale() ),
-			esc_attr( $classes ),
+			'<div class="%1$s"><a role="button" %6$s href="%2$s" class="%3$s" style="%4$s">%5$s</a></div>',
+			esc_attr(
+				Jetpack_Gutenberg::block_classes(
+					self::$button_block_name,
+					$attrs,
+					array( 'wp-block-button' )
+				)
+			),
+			esc_url( $button_url ),
+			isset( $attrs['submitButtonClasses'] ) ? esc_attr( $attrs['submitButtonClasses'] ) : 'wp-block-button__link',
 			esc_attr( $button_styles ),
-			wp_kses( $data['button_label'], self::$tags_allowed_in_the_button )
+			wp_kses( $data['button_label'], self::$tags_allowed_in_the_button ),
+			isset( $attrs['submitButtonAttributes'] ) ? sanitize_text_field( $attrs['submitButtonAttributes'] ) : '' // Needed for arbitrary target=_blank on WPCOM VIP.
 		);
 	}
 
@@ -276,6 +298,58 @@ class Jetpack_Memberships {
 	 */
 	public static function get_connected_account_id() {
 		return get_option( self::$connected_account_id_option_name );
+	}
+
+	/**
+	 * Whether Recurring Payments are enabled.
+	 *
+	 * @return bool
+	 */
+	public static function is_enabled_jetpack_recurring_payments() {
+		// For WPCOM sites.
+		if ( defined( 'IS_WPCOM' ) && IS_WPCOM && function_exists( 'has_any_blog_stickers' ) ) {
+			$site_id = get_current_blog_id();
+			return has_any_blog_stickers( array( 'personal-plan', 'premium-plan', 'business-plan', 'ecommerce-plan' ), $site_id );
+		}
+
+		// For Jetpack sites.
+		return Jetpack::is_active() && (
+			/** This filter is documented in class.jetpack-gutenberg.php */
+			! apply_filters( 'jetpack_block_editor_enable_upgrade_nudge', false ) || // Remove when the default becomes `true`.
+			Jetpack_Plan::supports( 'recurring-payments' )
+		);
+	}
+
+	/**
+	 * Register the Recurring Payments Gutenberg block
+	 */
+	public function register_gutenberg_block() {
+		// This gate was introduced to prevent duplicate registration. A race condition exists where
+		// the registration that happens via extensions/blocks/recurring-payments/recurring-payments.php
+		// was adding the registration action after the action had been run in some contexts.
+		if ( self::$has_registered_block ) {
+			return;
+		}
+
+		if ( self::is_enabled_jetpack_recurring_payments() ) {
+			jetpack_register_block(
+				'jetpack/recurring-payments',
+				array(
+					'render_callback' => array( $this, 'render_button' ),
+				)
+			);
+		} else {
+			Jetpack_Gutenberg::set_extension_unavailable(
+				'jetpack/recurring-payments',
+				'missing_plan',
+				array(
+					'required_feature' => 'memberships',
+					'required_plan'    => self::$required_plan,
+				)
+			);
+		}
+
+		self::$has_registered_block = true;
 	}
 }
 Jetpack_Memberships::get_instance();
