@@ -97,11 +97,6 @@ function jetpack_get_module_i18n( $key ) {
 				'description' => _x( 'Replaces the admin bar with a useful toolbar to quickly manage your site via WordPress.com.', 'Module Description', 'jetpack' ),
 			),
 
-			'minileven' => array(
-				'name' => _x( 'Mobile Theme', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Enable the Jetpack Mobile theme', 'Module Description', 'jetpack' ),
-			),
-
 			'monitor' => array(
 				'name' => _x( 'Monitor', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Jetpack’s downtime monitoring will continuously watch your site, and alert you the moment that downtime is detected.', 'Module Description', 'jetpack' ),
@@ -137,11 +132,6 @@ function jetpack_get_module_i18n( $key ) {
 				'description' => _x( 'Publicize makes it easy to share your site’s posts on several social media networks automatically when you publish a new post.', 'Module Description', 'jetpack' ),
 			),
 
-			'pwa' => array(
-				'name' => _x( 'Progressive Web Apps', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Speed up and improve the reliability of your site using the latest in web technology.', 'Module Description', 'jetpack' ),
-			),
-
 			'related-posts' => array(
 				'name' => _x( 'Related posts', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Keep visitors engaged on your blog by highlighting relevant and new content at the bottom of each published post.', 'Module Description', 'jetpack' ),
@@ -149,7 +139,7 @@ function jetpack_get_module_i18n( $key ) {
 
 			'search' => array(
 				'name' => _x( 'Search', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Enhanced search, powered by Elasticsearch, a powerful replacement for WordPress search.', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Help visitors quickly find answers with highly relevant instant search results and powerful filtering.', 'Module Description', 'jetpack' ),
 			),
 
 			'seo-tools' => array(
@@ -169,7 +159,7 @@ function jetpack_get_module_i18n( $key ) {
 
 			'shortlinks' => array(
 				'name' => _x( 'WP.me Shortlinks', 'Module Name', 'jetpack' ),
-				'description' => _x( 'Generates shorter links so you can have more space to write on social media sites.', 'Module Description', 'jetpack' ),
+				'description' => _x( 'Generates shorter links using the wp.me domain.', 'Module Description', 'jetpack' ),
 			),
 
 			'sitemaps' => array(
@@ -222,6 +212,11 @@ function jetpack_get_module_i18n( $key ) {
 				'description' => _x( 'Provides additional widgets for use on your site.', 'Module Description', 'jetpack' ),
 			),
 
+			'woocommerce-analytics' => array(
+				'name' => _x( 'WooCommerce Analytics', 'Module Name', 'jetpack' ),
+				'description' => _x( 'Enhanced analytics for WooCommerce and Jetpack users.', 'Module Description', 'jetpack' ),
+			),
+
 			'wordads' => array(
 				'name' => _x( 'Ads', 'Module Name', 'jetpack' ),
 				'description' => _x( 'Earn income by allowing Jetpack to display high quality ads.', 'Module Description', 'jetpack' ),
@@ -244,6 +239,7 @@ function jetpack_get_module_i18n_tag( $key ) {
 			// Modules with `Other` tag:
 			//  - modules/contact-form.php
 			//  - modules/notes.php
+			//  - modules/woocommerce-analytics.php
 			'Other' =>_x( 'Other', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Photos and Videos` tag:
@@ -285,7 +281,6 @@ function jetpack_get_module_i18n_tag( $key ) {
 			//  - modules/gravatar-hovercards.php
 			//  - modules/infinite-scroll.php
 			//  - modules/lazy-images.php
-			//  - modules/minileven.php
 			//  - modules/photon-cdn.php
 			//  - modules/photon.php
 			//  - modules/seo-tools.php
@@ -297,13 +292,11 @@ function jetpack_get_module_i18n_tag( $key ) {
 
 			// Modules with `Developers` tag:
 			//  - modules/json-api.php
-			//  - modules/pwa.php
 			//  - modules/sso.php
 			'Developers' =>_x( 'Developers', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Recommended` tag:
 			//  - modules/lazy-images.php
-			//  - modules/minileven.php
 			//  - modules/monitor.php
 			//  - modules/photon-cdn.php
 			//  - modules/photon.php
@@ -313,15 +306,12 @@ function jetpack_get_module_i18n_tag( $key ) {
 			//  - modules/sharedaddy.php
 			//  - modules/sitemaps.php
 			//  - modules/stats.php
+			//  - modules/woocommerce-analytics.php
 			'Recommended' =>_x( 'Recommended', 'Module Tag', 'jetpack' ),
 
 			// Modules with `General` tag:
 			//  - modules/masterbar.php
 			'General' =>_x( 'General', 'Module Tag', 'jetpack' ),
-
-			// Modules with `Mobile` tag:
-			//  - modules/minileven.php
-			'Mobile' =>_x( 'Mobile', 'Module Tag', 'jetpack' ),
 
 			// Modules with `Traffic` tag:
 			//  - modules/sitemaps.php

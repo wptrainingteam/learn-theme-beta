@@ -51,7 +51,7 @@ function dailymotion_embed_to_shortcode( $content ) {
 			}
 
 			$id = basename( substr( $src, strlen( 'www.dailymotion.com/swf' ) ) );
-			$id = preg_replace( '/[^a-z0-9].*$/i', '', $id );
+			$id = preg_replace( '/[^a-z0-9].*$/is', '', $id );
 
 			$content = str_replace( $match[0], "[dailymotion id=$id]", $content );
 			/** This action is documented in modules/shortcodes/youtube.php */
@@ -151,6 +151,15 @@ function dailymotion_shortcode( $atts ) {
 		$width = $height / 334 * 425;
 	}
 
+	if ( class_exists( 'Jetpack_AMP_Support' ) && Jetpack_AMP_Support::is_amp_request() ) {
+		return sprintf(
+			'<amp-dailymotion data-videoid="%1$s" layout="responsive" width="%2$d" height="%3$d"></amp-dailymotion>',
+			esc_attr( $id ),
+			absint( $width ),
+			absint( $height )
+		);
+	}
+
 	/**
 	 * Let's add parameters if needed.
 	 *
@@ -248,13 +257,13 @@ function dailymotion_channel_shortcode( $atts ) {
 
 	switch ( $atts['type'] ) {
 		case 'grid':
-			$channel_iframe = '<iframe width="300px" height="264px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=grid' ) . '"></iframe>';
+			$channel_iframe = '<iframe sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" width="300px" height="264px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=grid' ) . '"></iframe>';
 			break;
 		case 'carousel':
-			$channel_iframe = '<iframe width="300px" height="360px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=carousel' ) . '"></iframe>';
+			$channel_iframe = '<iframe sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" width="300px" height="360px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username . '?type=carousel' ) . '"></iframe>';
 			break;
 		default:
-			$channel_iframe = '<iframe width="300px" height="78px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username ) . '"></iframe>';
+			$channel_iframe = '<iframe sandbox="allow-popups allow-scripts allow-same-origin allow-presentation" width="300px" height="78px" scrolling="no" style="border:0;" src="' . esc_url( '//www.dailymotion.com/badge/user/' . $username ) . '"></iframe>';
 	}
 
 	return $channel_iframe;

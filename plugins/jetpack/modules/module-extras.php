@@ -9,7 +9,7 @@
 
 /**
  * Features available all the time:
- *    - When in development mode.
+ *    - When in offline mode.
  *    - When connected to WordPress.com.
  */
 $tools = array(
@@ -18,6 +18,8 @@ $tools = array(
 	'custom-post-types/testimonial.php',
 	'custom-post-types/nova.php',
 	'geo-location.php',
+	// Those oEmbed providers are always available.
+	'shortcodes/others.php',
 	'theme-tools.php',
 	'theme-tools/social-links.php',
 	'theme-tools/random-redirect.php',
@@ -28,6 +30,7 @@ $tools = array(
 	'theme-tools/site-breadcrumbs.php',
 	'theme-tools/social-menu.php',
 	'theme-tools/content-options.php',
+	'theme-tools/devicepx.php',
 	// Needed for SEO Tools.
 	'seo-tools/jetpack-seo-utils.php',
 	'seo-tools/jetpack-seo-titles.php',
@@ -42,9 +45,10 @@ $tools = array(
 $connected_tools = array(
 	'calypsoify/class.jetpack-calypsoify.php',
 	'plugin-search.php',
+	'scan/scan.php', // Shows Jetpack Scan alerts in the admin bar if threats found.
 	'simple-payments/simple-payments.php',
-	'woocommerce-analytics/wp-woocommerce-analytics.php',
 	'wpcom-block-editor/class-jetpack-wpcom-block-editor.php',
+	'wpcom-tos/wpcom-tos.php',
 );
 
 // Add connected features to our existing list if the site is currently connected.
@@ -56,7 +60,7 @@ if ( Jetpack::is_active() ) {
  * Filter extra tools (not modules) to include.
  *
  * @since 2.4.0
- * @since 5.4.0 can be used in multisite when Jetpack is not connected to WordPress.com and not in development mode.
+ * @since 5.4.0 can be used in multisite when Jetpack is not connected to WordPress.com and not in offline mode.
  *
  * @param array $tools Array of extra tools to include.
  */
