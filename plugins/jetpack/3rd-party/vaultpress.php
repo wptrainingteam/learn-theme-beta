@@ -1,5 +1,7 @@
 <?php
 
+use Automattic\Jetpack\Redirect;
+
 /**
  * Notify user that VaultPress has been disabled. Hide VaultPress notice that requested attention.
  *
@@ -15,9 +17,27 @@ function jetpack_vaultpress_rewind_enabled_notice() {
 		unset( $_GET['activate'] );
 	}
 	?>
-	<div class="notice notice-success vp-deactivated">
-		<h2 style="margin-bottom: 0.25em;"><?php _e( 'Jetpack is now handling your backups.', 'jetpack' ); ?></h2>
-		<p><?php _e( 'VaultPress is no longer needed and has been deactivated.', 'jetpack' ); ?></p>
+	<div class="notice notice-success is-dismissible vp-deactivated">
+		<p style="margin-bottom: 0.25em;"><strong><?php esc_html_e( 'Jetpack is now handling your backups.', 'jetpack' ); ?></strong></p>
+		<p>
+			<?php esc_html_e( 'VaultPress is no longer needed and has been deactivated.', 'jetpack' ); ?>
+			<?php
+				echo sprintf(
+					wp_kses(
+						/* Translators: first variable is the full URL to the new dashboard */
+						__( 'You can access your backups at <a href="%s" target="_blank" rel="noopener noreferrer">this  dashboard</a>.', 'jetpack' ),
+						array(
+							'a' => array(
+								'href'   => array(),
+								'target' => array(),
+								'rel'    => array(),
+							),
+						)
+					),
+					esc_url( Redirect::get_url( 'calypso-backups' ) )
+				);
+			?>
+		</p>
 	</div>
 	<style>#vp-notice{display:none;}</style>
 	<?php

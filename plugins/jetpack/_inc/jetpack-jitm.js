@@ -1,6 +1,6 @@
-jQuery( document ).ready( function( $ ) {
+jQuery( document ).ready( function ( $ ) {
 	var templates = {
-		default: function( envelope ) {
+		default: function ( envelope ) {
 			var html =
 				'<div class="jitm-card jitm-banner ' +
 				( envelope.CTA.message ? 'has-call-to-action' : '' ) +
@@ -9,8 +9,8 @@ jQuery( document ).ready( function( $ ) {
 				'" data-stats_url="' +
 				envelope.jitm_stats_url +
 				'">';
-			html += '<div class="jitm-banner__icon-plan">' + envelope.content.icon + '</div>';
 			html += '<div class="jitm-banner__content">';
+			html += '<div class="jitm-banner__icon-plan">' + envelope.content.icon + '</div>';
 			html += '<div class="jitm-banner__info">';
 			html += '<div class="jitm-banner__title">' + envelope.content.message + '</div>';
 			if ( envelope.content.description && envelope.content.description !== '' ) {
@@ -44,6 +44,10 @@ jQuery( document ).ready( function( $ ) {
 				html += '</div>';
 			}
 			html += '</div>';
+			html += '</div>';
+
+			html += '<div class="jitm-banner__buttons_container">';
+
 			if ( envelope.activate_module ) {
 				html += '<div class="jitm-banner__action" id="jitm-banner__activate">';
 				html +=
@@ -62,12 +66,14 @@ jQuery( document ).ready( function( $ ) {
 					ctaClasses += ' is-primary';
 				}
 
+				var ajaxAction = envelope.CTA.ajax_action;
+
 				html += '<div class="jitm-banner__action">';
 				html +=
 					'<a href="' +
 					envelope.url +
 					'" target="' +
-					( envelope.CTA.newWindow === false ? '_self' : '_blank' ) +
+					( envelope.CTA.newWindow === false || ajaxAction ? '_self' : '_blank' ) +
 					'" rel="noopener noreferrer" title="' +
 					envelope.CTA.message +
 					'" data-module="' +
@@ -76,27 +82,33 @@ jQuery( document ).ready( function( $ ) {
 					ctaClasses +
 					'" data-jptracks-name="nudge_click" data-jptracks-prop="jitm-' +
 					envelope.id +
-					'">' +
+					'" ' +
+					( ajaxAction ? 'data-ajax-action="' + ajaxAction + '"' : '' ) +
+					'>' +
 					envelope.CTA.message +
 					'</a>';
 				html += '</div>';
 			}
-			html +=
-				'<a href="#" data-module="' +
-				envelope.feature_class +
-				'" class="jitm-banner__dismiss"></a>';
+
 			html += '</div>';
+
+			if ( envelope.is_dismissible ) {
+				html +=
+					'<a href="#" data-module="' +
+					envelope.feature_class +
+					'" class="jitm-banner__dismiss"></a>';
+			}
 			html += '</div>';
 
 			return $( html );
 		},
 	};
 
-	var setJITMContent = function( $el, response, redirect ) {
+	var setJITMContent = function ( $el, response, redirect ) {
 		var template;
 
-		var render = function( $my_template ) {
-			return function( e ) {
+		var render = function ( $my_template ) {
+			return function ( e ) {
 				e.preventDefault();
 
 				$my_template.hide();
@@ -104,6 +116,9 @@ jQuery( document ).ready( function( $ ) {
 				$.ajax( {
 					url: window.jitm_config.api_root + 'jetpack/v4/jitm',
 					method: 'POST', // using DELETE without permalinks is broken in default nginx configuration
+					beforeSend: function( xhr ) {
+						xhr.setRequestHeader( 'X-WP-Nonce', window.jitm_config.nonce );
+					},
 					data: {
 						id: response.id,
 						feature_class: response.feature_class,
@@ -141,7 +156,7 @@ jQuery( document ).ready( function( $ ) {
 		}
 
 		// Handle Module activation button if it exists.
-		$template.find( '#jitm-banner__activate a' ).click( function() {
+		$template.find( '#jitm-banner__activate a' ).click( function () {
 			var $activate_button = $( this );
 
 			// Do not allow any requests if the button is disabled.
@@ -157,27 +172,50 @@ jQuery( document ).ready( function( $ ) {
 					$activate_button.data( 'module' ) +
 					'/active',
 				method: 'POST',
-				beforeSend: function( xhr ) {
+				beforeSend: function ( xhr ) {
 					xhr.setRequestHeader( 'X-WP-Nonce', $el.data( 'nonce' ) );
 
 					// Change the button status to disabled as the change is in progress.
 					$( '#jitm-banner__activate a' ).text( window.jitm_config.activating_module_text );
 					$( '#jitm-banner__activate a' ).attr( 'disabled', true );
 				},
-			} ).done( function() {
+			} ).done( function () {
 				$( '#jitm-banner__activate a' ).text( window.jitm_config.activated_module_text );
 				$( '#jitm-banner__activate a' ).attr( 'disabled', true );
 
 				// Hide the JITM after 2 seconds.
-				setTimeout( function() {
+				setTimeout( function () {
 					$template.fadeOut( 'slow' );
 				}, 2000 );
 			} );
 		} );
+
+		// Handle CTA ajax actions.
+		$template.find( '.jitm-button[data-ajax-action]' ).click( function ( e ) {
+			e.preventDefault();
+			var button = $( this );
+			button.attr( 'disabled', true );
+			$.post( window.ajaxurl, {
+				action: button.data( 'ajax-action' ),
+				_nonce: $el.data( 'ajax-nonce' ),
+			} )
+				.done( function () {
+					$template.fadeOut( 'slow' );
+				} )
+				.fail( function () {
+					button.attr( 'disabled', false );
+				} );
+			return false;
+		} );
 	};
 
-	var reFetch = function() {
-		$( '.jetpack-jitm-message' ).each( function() {
+	var reFetch = function () {
+		// Do not render JITMs if the Wizard Banner is displayed.
+		if ( $( '#jp-wizard-banner' ).length ) {
+			return;
+		}
+
+		$( '.jetpack-jitm-message' ).each( function () {
 			var $el = $( this );
 
 			var message_path = $el.data( 'message-path' );
@@ -193,11 +231,14 @@ jQuery( document ).ready( function( $ ) {
 				);
 			}
 
+			var full_jp_logo_exists = $( '.jetpack-logo__masthead' ).length ? true : false;
+
 			$.get( window.jitm_config.api_root + 'jetpack/v4/jitm', {
 				message_path: message_path,
 				query: query,
+				full_jp_logo_exists: full_jp_logo_exists,
 				_wpnonce: $el.data( 'nonce' ),
-			} ).then( function( response ) {
+			} ).then( function ( response ) {
 				if ( 'object' === typeof response && response[ '1' ] ) {
 					response = [ response[ '1' ] ];
 				}
@@ -215,7 +256,7 @@ jQuery( document ).ready( function( $ ) {
 
 	reFetch();
 
-	$( window ).bind( 'hashchange', function( e ) {
+	$( window ).bind( 'hashchange', function ( e ) {
 		var newURL = e.originalEvent.newURL;
 
 		if ( newURL.indexOf( 'jetpack#/' ) >= 0 ) {

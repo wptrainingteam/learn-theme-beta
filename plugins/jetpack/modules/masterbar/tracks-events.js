@@ -1,5 +1,5 @@
 /*globals jQuery, JSON */
-( function( $ ) {
+( function ( $ ) {
 	var eventName = 'masterbar_click';
 
 	var linksTracksEvents = {
@@ -13,6 +13,7 @@
 		'wp-admin-bar-switch-site': 'my_sites_switch_site',
 		'wp-admin-bar-blog-info': 'my_sites_blog_info',
 		'wp-admin-bar-site-view': 'my_sites_view_site',
+		'wp-admin-bar-my-home': 'my_sites_my_home',
 		'wp-admin-bar-blog-stats': 'my_sites_blog_stats',
 		'wp-admin-bar-activity': 'my_sites_activity',
 		'wp-admin-bar-plan': 'my_sites_plan',
@@ -44,7 +45,6 @@
 		'wp-admin-bar-reader-followed-sites-manage': 'reader_manage_followed_sites',
 		'wp-admin-bar-discover-discover': 'reader_discover',
 		'wp-admin-bar-discover-search': 'reader_search',
-		'wp-admin-bar-discover-recommended-blogs': 'reader_recommendations',
 		'wp-admin-bar-my-activity-my-likes': 'reader_my_likes',
 		//account
 		'wp-admin-bar-user-info': 'my_account_user_name',
@@ -61,20 +61,20 @@
 	};
 
 	var notesTracksEvents = {
-		openSite: function( data ) {
+		openSite: function ( data ) {
 			return {
 				clicked: 'masterbar_notifications_panel_site',
 				site_id: data.siteId,
 			};
 		},
-		openPost: function( data ) {
+		openPost: function ( data ) {
 			return {
 				clicked: 'masterbar_notifications_panel_post',
 				site_id: data.siteId,
 				post_id: data.postId,
 			};
 		},
-		openComment: function( data ) {
+		openComment: function ( data ) {
 			return {
 				clicked: 'masterbar_notifications_panel_comment',
 				site_id: data.siteId,
@@ -92,14 +92,14 @@
 		}
 	}
 
-	$( document ).ready( function() {
+	$( document ).ready( function () {
 		var trackableLinks =
 			'.mb-trackable .ab-item:not(div),' +
 			'#wp-admin-bar-notes .ab-item,' +
 			'#wp-admin-bar-user-info .ab-item,' +
 			'.mb-trackable .ab-secondary';
 
-		$( trackableLinks ).on( 'click touchstart', function( e ) {
+		$( trackableLinks ).on( 'click touchstart', function ( e ) {
 			if ( ! window.jpTracksAJAX || 'function' !== typeof window.jpTracksAJAX.record_ajax_event ) {
 				return;
 			}
@@ -126,15 +126,17 @@
 				window.jpTracksAJAX.record_ajax_event( eventName, 'click', eventProps );
 			} else {
 				e.preventDefault();
-				window.jpTracksAJAX.record_ajax_event( eventName, 'click', eventProps ).always( function() {
-					window.location = $target.attr( 'href' );
-				} );
+				window.jpTracksAJAX
+					.record_ajax_event( eventName, 'click', eventProps )
+					.always( function () {
+						window.location = $target.attr( 'href' );
+					} );
 			}
 		} );
 	} );
 
 	// listen for postMessage events from the notifications iframe
-	$( window ).on( 'message', function( e ) {
+	$( window ).on( 'message', function ( e ) {
 		if ( ! window.jpTracksAJAX || 'function' !== typeof window.jpTracksAJAX.record_ajax_event ) {
 			return;
 		}

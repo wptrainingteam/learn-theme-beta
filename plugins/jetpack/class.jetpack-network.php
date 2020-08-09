@@ -7,7 +7,9 @@
 
 use Automattic\Jetpack\Connection\Client;
 use Automattic\Jetpack\Connection\Manager;
+use Automattic\Jetpack\Connection\Utils as Connection_Utils;
 use Automattic\Jetpack\Constants;
+use Automattic\Jetpack\Status;
 
 /**
  * Used to manage Jetpack installation on Multisite Network installs
@@ -83,6 +85,7 @@ class Jetpack_Network {
 		 */
 		if ( is_multisite() && is_plugin_active_for_network( 'jetpack/jetpack.php' ) ) {
 			add_action( 'wp_before_admin_bar_render', array( $this, 'add_to_menubar' ) );
+			add_filter( 'jetpack_disconnect_cap', array( $this, 'set_multisite_disconnect_cap' ) );
 
 			/*
 			 * If admin wants to automagically register new sites set the hook here
@@ -250,8 +253,10 @@ class Jetpack_Network {
 
 		if ( is_string( $args ) ) {
 			$name = $args;
-		} else {
+		} else if ( is_array( $args ) ) {
 			$name = $args['name'];
+		} else {
+			return $url;
 		}
 
 		switch ( $name ) {
@@ -381,6 +386,26 @@ class Jetpack_Network {
 	}
 
 	/**
+	 * Set the disconnect capability for multisite.
+	 *
+	 * @param array $caps The capabilities array.
+	 */
+	public function set_multisite_disconnect_cap( $caps ) {
+		// Can individual site admins manage their own connection?
+		if ( ! is_super_admin() && ! $this->get_option( 'sub-site-connection-override' ) ) {
+			/*
+			 * We need to update the option name -- it's terribly unclear which
+			 * direction the override goes.
+			 *
+			 * @todo: Update the option name to `sub-sites-can-manage-own-connections`
+			 */
+			return array( 'do_not_allow' );
+		}
+
+		return $caps;
+	}
+
+	/**
 	 * Shows the Jetpack plugin notices.
 	 */
 	public function show_jetpack_notice() {
@@ -430,7 +455,7 @@ class Jetpack_Network {
 			return;
 		}
 
-		if ( Jetpack::is_development_mode() ) {
+		if ( ( new Status() )->is_offline_mode() ) {
 			return;
 		}
 
@@ -468,7 +493,7 @@ class Jetpack_Network {
 	 */
 	public function filter_register_user_token( $token ) {
 		$is_master_user = ! Jetpack::is_active();
-		Jetpack::update_user_token(
+		Connection_Utils::update_user_token(
 			get_current_user_id(),
 			sprintf( '%s.%d', $token->secret, get_current_user_id() ),
 			$is_master_user
@@ -478,8 +503,8 @@ class Jetpack_Network {
 	/**
 	 * Filters the registration request body to include additional properties.
 	 *
-	 * @param Array $properties standard register request body properties.
-	 * @return Array amended properties.
+	 * @param array $properties standard register request body properties.
+	 * @return array amended properties.
 	 */
 	public function filter_register_request_body( $properties ) {
 		$blog_details = get_blog_details();
@@ -541,7 +566,7 @@ class Jetpack_Network {
 		restore_current_blog();
 
 		// If we are in dev mode, just show the notice and bail.
-		if ( Jetpack::is_development_mode() ) {
+		if ( ( new Status() )->is_offline_mode() ) {
 			Jetpack::show_development_mode_notice();
 			return;
 		}

@@ -156,7 +156,7 @@ class Jetpack_Comments extends Highlander_Comments_Base {
 
 		// Detect whether it's a Facebook or Twitter avatar
 		$foreign_avatar          = get_comment_meta( $comment->comment_ID, 'hc_avatar', true );
-		$foreign_avatar_hostname = parse_url( $foreign_avatar, PHP_URL_HOST );
+		$foreign_avatar_hostname = wp_parse_url( $foreign_avatar, PHP_URL_HOST );
 		if ( ! $foreign_avatar_hostname ||
 			! preg_match( '/\.?(graph\.facebook\.com|twimg\.com)$/', $foreign_avatar_hostname ) ) {
 			return $avatar;
@@ -174,7 +174,7 @@ class Jetpack_Comments extends Highlander_Comments_Base {
 	 */
 	public function comment_form_before() {
 		/**
-		 * Filters the setting that determines if Jetpagk comments should be enabled for
+		 * Filters the setting that determines if Jetpack comments should be enabled for
 		 * the current post type.
 		 *
 		 * @module comments

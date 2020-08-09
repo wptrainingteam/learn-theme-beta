@@ -1,4 +1,7 @@
 <?php
+
+use Automattic\Jetpack\Status;
+
 /**
  * This is the base class for every Core API endpoint Jetpack uses.
  *
@@ -196,7 +199,7 @@ class Jetpack_Core_API_Module_List_Endpoint {
 			if (
 				isset( $modules[ $slug ]['requires_connection'] )
 				&& $modules[ $slug ]['requires_connection']
-				&& Jetpack::is_development_mode()
+				&& ( new Status() )->is_offline_mode()
 			) {
 				$modules[ $slug ]['activated'] = false;
 			}
@@ -363,7 +366,7 @@ class Jetpack_Core_API_Data extends Jetpack_Core_API_XMLRPC_Consumer_Endpoint {
 			if (
 				isset( $module['requires_connection'] )
 				&& $module['requires_connection']
-				&& Jetpack::is_development_mode()
+				&& ( new Status() )->is_offline_mode()
 			) {
 				$module['activated'] = false;
 			}
@@ -461,6 +464,11 @@ class Jetpack_Core_API_Data extends Jetpack_Core_API_XMLRPC_Consumer_Endpoint {
 						'installWooCommerce' => is_plugin_active( 'woocommerce/woocommerce.php' ),
 						'stats' => Jetpack::is_active() && Jetpack::is_module_active( 'stats' ),
 					);
+					break;
+
+				case 'search_auto_config':
+					// Only writable.
+					$response[ $setting ] = 1;
 					break;
 
 				default:
@@ -678,24 +686,7 @@ class Jetpack_Core_API_Data extends Jetpack_Core_API_XMLRPC_Consumer_Endpoint {
 					break;
 
 				case 'post_by_email_address':
-					if ( 'create' == $value ) {
-						$result = $this->_process_post_by_email(
-							'jetpack.createPostByEmailAddress',
-							esc_html__( 'Unable to create the Post by Email address. Please try again later.', 'jetpack' )
-						);
-					} elseif ( 'regenerate' == $value ) {
-						$result = $this->_process_post_by_email(
-							'jetpack.regeneratePostByEmailAddress',
-							esc_html__( 'Unable to regenerate the Post by Email address. Please try again later.', 'jetpack' )
-						);
-					} elseif ( 'delete' == $value ) {
-						$result = $this->_process_post_by_email(
-							'jetpack.deletePostByEmailAddress',
-							esc_html__( 'Unable to delete the Post by Email address. Please try again later.', 'jetpack' )
-						);
-					} else {
-						$result = false;
-					}
+					$result = Jetpack_Post_By_Email::init()->process_api_request( $value );
 
 					// If we got an email address (create or regenerate) or 1 (delete), consider it done.
 					if ( is_string( $result ) && preg_match( '/[a-z0-9]+@post.wordpress.com/', $result ) ) {
@@ -737,6 +728,24 @@ class Jetpack_Core_API_Data extends Jetpack_Core_API_XMLRPC_Consumer_Endpoint {
 
 					// If option value was the same, consider it done.
 					$updated = $grouped_options_current != $grouped_options ? Jetpack_Options::update_option( 'relatedposts', $grouped_options ) : true;
+					break;
+
+				case 'search_auto_config':
+					if ( ! $value ) {
+						$updated = true;
+					} elseif ( class_exists( 'Jetpack_Search' ) ) {
+						$jps = Jetpack_Search::instance();
+						if ( is_a( $jps, 'Jetpack_Instant_Search' ) ) {
+							$jps->auto_config_search();
+							$updated = true;
+						} else {
+							$updated = new WP_Error( 'instant_search_disabled', 'Instant Search Disabled', array( 'status' => 400 ) );
+							$error   = $updated->get_error_message();
+						}
+					} else {
+						$updated = new WP_Error( 'search_disabled', 'Search Disabled', array( 'status' => 400 ) );
+						$error   = $updated->get_error_message();
+					}
 					break;
 
 				case 'google':
@@ -1204,39 +1213,6 @@ class Jetpack_Core_API_Data extends Jetpack_Core_API_XMLRPC_Consumer_Endpoint {
 	}
 
 	/**
-	 * Calls WPCOM through authenticated request to create, regenerate or delete the Post by Email address.
-	 * @todo: When all settings are updated to use endpoints, move this to the Post by Email module and replace __process_ajax_proxy_request.
-	 *
-	 * @since 4.3.0
-	 *
-	 * @param string $endpoint Process to call on WPCOM to create, regenerate or delete the Post by Email address.
-	 * @param string $error	   Error message to return.
-	 *
-	 * @return array
-	 */
-	private function _process_post_by_email( $endpoint, $error ) {
-		if ( ! current_user_can( 'edit_posts' ) ) {
-			return array( 'message' => $error );
-		}
-
-		$this->xmlrpc->query( $endpoint );
-
-		if ( $this->xmlrpc->isError() ) {
-			return array( 'message' => $error );
-		}
-
-		$response = $this->xmlrpc->getResponse();
-		if ( empty( $response ) ) {
-			return array( 'message' => $error );
-		}
-
-		// Used only in Jetpack_Core_Json_Api_Endpoints::get_remote_value.
-		update_option( 'post_by_email_address' . get_current_user_id(), $response );
-
-		return $response;
-	}
-
-	/**
 	 * Check if user is allowed to perform the update.
 	 *
 	 * @since 4.3.0
@@ -1643,7 +1619,8 @@ class Jetpack_Core_API_Module_Data_Endpoint {
 				'code'    => 'success',
 				'message' => esc_html(
 					sprintf(
-						__( 'Your site was successfully backed-up %s ago.', 'jetpack' ),
+						/* translators: placeholder is a unit of time (1 hour, 5 days, ...) */
+						esc_html__( 'Your site was successfully backed up %s ago.', 'jetpack' ),
 						human_time_diff(
 							$data->backups->last_backup,
 							current_time( 'timestamp' )

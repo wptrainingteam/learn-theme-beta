@@ -1,5 +1,7 @@
 <?php
 
+use Automattic\Jetpack\Redirect;
+
 abstract class Publicize_Base {
 
 	/**
@@ -208,6 +210,10 @@ abstract class Publicize_Base {
 			case 'linkedin':
 				return 'LinkedIn';
 				break;
+			case 'google_drive': // google-drive used to be called google_drive.
+			case 'google-drive':
+				return 'Google Drive';
+				break;
 			case 'twitter':
 			case 'facebook':
 			case 'tumblr':
@@ -320,7 +326,7 @@ abstract class Publicize_Base {
 		$cmeta = $this->get_connection_meta( $connection );
 
 		if ( isset( $cmeta['connection_data']['meta']['link'] ) ) {
-			if ( 'facebook' == $service_name && 0 === strpos( parse_url( $cmeta['connection_data']['meta']['link'], PHP_URL_PATH ), '/app_scoped_user_id/' ) ) {
+			if ( 'facebook' == $service_name && 0 === strpos( wp_parse_url( $cmeta['connection_data']['meta']['link'], PHP_URL_PATH ), '/app_scoped_user_id/' ) ) {
 				// App-scoped Facebook user IDs are not usable profile links
 				return false;
 			}
@@ -337,7 +343,7 @@ abstract class Publicize_Base {
 				return false;
 			}
 
-			$profile_url_query = parse_url( $cmeta['connection_data']['meta']['profile_url'], PHP_URL_QUERY );
+			$profile_url_query = wp_parse_url( $cmeta['connection_data']['meta']['profile_url'], PHP_URL_QUERY );
 			wp_parse_str( $profile_url_query, $profile_url_query_args );
 			if ( isset( $profile_url_query_args['key'] ) ) {
 				$id = $profile_url_query_args['key'];
@@ -1234,7 +1240,6 @@ abstract class Publicize_Base {
 }
 
 function publicize_calypso_url() {
-	$calypso_sharing_url = 'https://wordpress.com/marketing/connections/';
 	if ( class_exists( 'Jetpack' ) && method_exists( 'Jetpack', 'build_raw_urls' ) ) {
 		$site_suffix = Jetpack::build_raw_urls( home_url() );
 	} elseif ( class_exists( 'WPCOM_Masterbar' ) && method_exists( 'WPCOM_Masterbar', 'get_calypso_site_slug' ) ) {
@@ -1242,8 +1247,8 @@ function publicize_calypso_url() {
 	}
 
 	if ( $site_suffix ) {
-		return $calypso_sharing_url . $site_suffix;
+		return Redirect::get_url( 'calypso-marketing-connections', array( 'site' => $site_suffix ) );
 	} else {
-		return $calypso_sharing_url;
+		return Redirect::get_url( 'calypso-marketing-connections-base' );
 	}
 }
